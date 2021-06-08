@@ -1,0 +1,7 @@
+{
+  "name": "BiblioAQ",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

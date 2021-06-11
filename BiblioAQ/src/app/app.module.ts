@@ -15,6 +15,7 @@ import {IonicStorageModule} from '@ionic/storage-angular';
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
+// eslint-disable-next-line prefer-arrow/prefer-arrow-functions
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }

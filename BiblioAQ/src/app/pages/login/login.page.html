@@ -1,42 +1,44 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title color="light" text-center>{{ 'LOGIN_TITLE' | translate }}</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content padding class="animated fadeIn login auth-page">
-  <div class="theme-bg"></div>
-  <div class="auth-content">
-
-    <!-- Logo -->
-    <div padding-horizontal text-center class="animated fadeInDown">
-      <div class="logo"></div>
-    </div>
-
-    <!-- Login form -->
-    <form [formGroup]="loginFormModel" class="list-form">
-      <ion-item no-padding class="animated fadeInUp">
-        <ion-label position="floating">
-          <ion-icon name="contact" item-start></ion-icon>{{ 'USERNAME' | translate }}</ion-label>
-        <ion-input color="secondary" type="email" formControlName="username"></ion-input>
-      </ion-item>
-      <p ion-text class="text08" *ngIf="loginFormModel.get('username').touched && loginFormModel.get('username').invalid">
-        <ion-text color="danger">{{ 'USERNAME_REQUIRED' | translate }}</ion-text>
-      </p>
-      <ion-item no-padding class="animated fadeInUp">
-        <ion-label position="floating">
-          <ion-icon name="lock" item-start></ion-icon>{{ 'PASSWORD' | translate }}</ion-label>
-        <ion-input color="secondary" type="password" formControlName="password"></ion-input>
-      </ion-item>
-      <p ion-text class="text08" *ngIf="loginFormModel.get('password').touched && loginFormModel.get('password').invalid">
-        <ion-text color="danger">{{ 'PASSWORD_REQUIRED' | translate }}</ion-text>
-      </p>
-      <div margin-top="20px">
-        <ion-button icon-left size="medium" expand="full" shape="round" color="primary" (click)="onLogin()" [disabled]="!loginFormModel.valid" tappable>
-          <ion-icon name="log-in"></ion-icon>
-          {{ 'LOGIN_BUTTON' | translate }}
-        </ion-button>
-      </div>
-    </form>
+<ion-content>
+  <div class="login-logo">
+    <img src="assets/images/logo.jpg" alt="BiblioAQ logo">
   </div>
+
+  <form #loginForm="ngForm" novalidate>
+    <ion-list>
+      <ion-item>
+        <ion-label position="stacked" color="primary">Username</ion-label>
+        <ion-input [(ngModel)]="login.username" name="username" type="text" #username="ngModel" spellcheck="false" autocapitalize="off"
+                   required>
+        </ion-input>
+      </ion-item>
+
+      <ion-text color="danger">
+        <p [hidden]="username.valid || submitted == false" class="ion-padding-start">
+          Username is required
+        </p>
+      </ion-text>
+
+      <ion-item>
+        <ion-label position="stacked" color="primary">Password</ion-label>
+        <ion-input [(ngModel)]="login.password" name="password" type="password" #password="ngModel" required>
+        </ion-input>
+      </ion-item>
+
+      <ion-text color="danger">
+        <p [hidden]="password.valid || submitted == false" class="ion-padding-start">
+          Password is required
+        </p>
+      </ion-text>
+    </ion-list>
+
+    <ion-row>
+      <ion-col>
+        <ion-button (click)="onLogin(loginForm)" type="submit" expand="block">Login</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="onSignup()" color="light" expand="block">Signup</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+
 </ion-content>

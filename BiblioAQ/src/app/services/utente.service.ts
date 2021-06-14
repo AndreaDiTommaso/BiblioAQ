@@ -2,7 +2,7 @@ import {HttpClient, HttpResponse} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Storage} from '@ionic/storage';
 
-import {AUTH_TOKEN, URL, UTENTE_STORAGE, X_AUTH} from '../constants';
+//import {AUTH_TOKEN, URL, UTENTE_STORAGE, X_AUTH} from '../constants';
 import {Utente} from '../model/utente.model';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
@@ -12,7 +12,7 @@ export interface Account {
   password: string;
 
 }
-
+/*
 @Injectable({
   providedIn: 'root'
 })
@@ -72,5 +72,5 @@ export class UtenteService {
 
   isLogged(): Observable<boolean> {
     return this.loggedIn$.asObservable();
-  }
-}
+  }}*/
+

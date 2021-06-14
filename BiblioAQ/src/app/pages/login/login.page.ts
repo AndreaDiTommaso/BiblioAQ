@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {AlertController, NavController} from '@ionic/angular';
-import {TranslateService} from '@ngx-translate/core';
+import {Router} from '@angular/router';
+import {NgForm} from '@angular/forms';
+import {Account} from '../../services/utente.service';
+import {AlertController, NavController} from "@ionic/angular";
 
 @Component({
   selector: 'app-login',
@@ -9,51 +10,26 @@ import {TranslateService} from '@ngx-translate/core';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  login: Account = { username: '', password: ''};
+  submitted = false;
 
-  private loginFormModel: FormGroup;
-  private loginTitle: string;
-  private loginSubTitle: string;
+  constructor(
+    private alertController: AlertController,
+    private navController: NavController
+  ) { }
 
-  constructor(private formBuilder: FormBuilder,
-              private alertController: AlertController,
-              private translateService: TranslateService,
-              private navController: NavController) {
+  onLogin(form: NgForm){
+    this.submitted = true;
+
+    if (form.valid) {
+      this.navController.navigateRoot('menu');
+    }
   }
 
-  ngOnInit() {
-    this.loginFormModel = this.formBuilder.group({
-      username: ['amleto', Validators.compose([
-        Validators.required
-      ])],
-      password: ['amleto', Validators.compose([
-        Validators.required
-      ])]
-    });
-    this.initTranslate();
+  onSignup() {
+    this.navController.navigateRoot('menu');
   }
-
-  onLogin() {
-    this.navController.navigateRoot('tabs');
-  }
-
-  async showLoginError() {
-    const alert = await this.alertController.create({
-      header: this.loginTitle,
-      message: this.loginSubTitle,
-      buttons: ['OK']
-    });
-
-    await alert.present();
-  }
-
-
-  private initTranslate() {
-    this.translateService.get('LOGIN_ERROR_SUB_TITLE').subscribe((data) => {
-      this.loginSubTitle = data;
-    });
-    this.translateService.get('LOGIN_ERROR_TITLE').subscribe((data) => {
-      this.loginTitle = data;
-    });
+ngOnInit() {
   }
 
 }

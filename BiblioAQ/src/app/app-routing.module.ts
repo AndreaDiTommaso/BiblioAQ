@@ -26,6 +26,14 @@ const routes: Routes = [
     path: 'lista',
     loadChildren: () => import('./pages/lista/lista.module').then( m => m.ListaPageModule)
   },
+  {
+    path: 'libro',
+    loadChildren: () => import('./pages/libro/libro.module').then( m => m.LibroPageModule)
+  },
+  {
+    path: 'catalogo',
+    loadChildren: () => import('./pages/catalogo/catalogo.module').then( m => m.CatalogoPageModule)
+  },
 
 
 ];

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {AlertController, NavController} from '@ionic/angular';
+
 
 @Component({
   selector: 'app-libro',
@@ -7,9 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LibroPage implements OnInit {
 
-  constructor() { }
+  constructor(public  alertController: AlertController) { }
 
   ngOnInit() {
   }
+  async showAlert() {
+    const alert = await this.alertController.create({
+
+      message: 'prenotazione effettuata con successo.',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+
+    const { role } = await alert.onDidDismiss();
+    console.log('onDidDismiss resolved with role', role);
+  }
+
 
 }
+
+
+
+
+
+
+

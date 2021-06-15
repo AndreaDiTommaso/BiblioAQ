@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {NgForm} from '@angular/forms';
 import {Account} from '../../services/utente.service';
-import {AlertController, NavController} from "@ionic/angular";
+import {AlertController, NavController} from '@ionic/angular';
 
 @Component({
   selector: 'app-login',

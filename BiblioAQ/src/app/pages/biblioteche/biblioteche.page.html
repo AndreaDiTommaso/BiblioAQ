@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-center">biblioteche</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let biblioteca of biblioteche | async" button="true">
+    <ion-card-header>
+      <ion-card-title>{{biblioteca.nome}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ul>
+        <li>
+          <ion-label><strong>Indirizzo: </strong>{{biblioteca.indirizzo}}</ion-label>
+        </li>
+        <li>
+          <ion-label><strong>Tel: </strong>{{biblioteca.telefono}}</ion-label>
+        </li>
+        <li>
+          <ion-label><strong>Orari: </strong>{{biblioteca.orari}}</ion-label>
+        </li>
+        <li>
+          <ion-label><strong>Posti: </strong>{{biblioteca.posti}}</ion-label>
+        </li>
+      </ul>
+    </ion-card-content>
+  </ion-card>
+
+
+</ion-content>

@@ -34,6 +34,10 @@ const routes: Routes = [
     path: 'catalogo',
     loadChildren: () => import('./pages/catalogo/catalogo.module').then( m => m.CatalogoPageModule)
   },
+  {
+    path: 'biblioteche',
+    loadChildren: () => import('./pages/biblioteche/biblioteche.module').then( m => m.BibliotechePageModule)
+  },
 
 
 ];

@@ -1,25 +1,61 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>menu</ion-title>
+    <ion-title class="ion-text-center">menu</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-grid>
-    <ion-row>
+    <ion-row id="row1">
       <ion-col class="ion-text-center">
-        <ion-button><ion-icon name="map-outline"></ion-icon>mappa</ion-button>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>
+              Mappa
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-icon name="map-outline"></ion-icon>
+          </ion-card-content>
+        </ion-card>
       </ion-col>
-      <ion-col class="ion-text-center">
-        <ion-button><ion-icon name="list-outline"></ion-icon>biblioteche</ion-button>
+      <ion-col class="ion-text-center" [routerLink]="['/biblioteche']">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>
+              biblioteche
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-icon name="list-outline"></ion-icon>
+          </ion-card-content>
+        </ion-card>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col class="ion-text-center">
-        <ion-button><ion-icon name="person-outline"></ion-icon>profilo</ion-button>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>
+              Profilo
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-icon name="person-outline"></ion-icon>
+          </ion-card-content>
+        </ion-card>
       </ion-col>
       <ion-col class="ion-text-center">
-        <ion-button><ion-icon name="search-outline"></ion-icon>cerca</ion-button>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>
+              Cerca
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-icon name="search-outline"></ion-icon>
+          </ion-card-content>
+        </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>

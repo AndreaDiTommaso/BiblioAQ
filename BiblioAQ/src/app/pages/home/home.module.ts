@@ -5,7 +5,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
-import {TranslateModule} from "@ngx-translate/core";
+import {TranslateModule} from '@ngx-translate/core';
 
 
 @NgModule({
@@ -14,7 +14,7 @@ import {TranslateModule} from "@ngx-translate/core";
     FormsModule,
     IonicModule,
     HomePageRoutingModule,
-    TranslateModule,
+    TranslateModule.forChild(),
     ReactiveFormsModule
   ],
   declarations: [HomePage]

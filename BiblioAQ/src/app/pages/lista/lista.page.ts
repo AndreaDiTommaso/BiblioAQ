@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import {Observable} from 'rxjs';
+import {Biblioteca} from '../../model/biblioteca.model';
+import {BibliotecaService} from '../../services/biblioteca.service';
+import {ActivatedRoute, NavigationExtras, Router} from '@angular/router';
+
+
+
 
 @Component({
   selector: 'app-lista',
@@ -7,9 +14,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListaPage implements OnInit {
 
-  constructor() { }
+  private biblioteche: Observable<Biblioteca[]>;
+
+  constructor(private bibliotecaService: BibliotecaService) {}
+
+
+
 
   ngOnInit() {
+    this.biblioteche = this.bibliotecaService.list();
   }
-
 }

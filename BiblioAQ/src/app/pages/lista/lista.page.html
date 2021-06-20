@@ -1,26 +1,14 @@
-<ion-header>
+<ion-header >
   <ion-toolbar>
-    <ion-title>lista</ion-title>
+    <ion-title class="ion-text-center">lista</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item>
-      <ion-button expand="full" fill="clear" [routerLink]="['/biblioteche']" router-direction="forward" fill="clear">Biblioteca</ion-button>
-    </ion-item>
-    <ion-item>
-      <ion-button expand="full" fill="clear" >Biblioteca</ion-button>
-    </ion-item>
-    <ion-item>
-      <ion-button expand="full" fill="clear" >Biblioteca</ion-button>
-    </ion-item>
-    <ion-item>
-      <ion-button expand="full" fill="clear" >Biblioteca</ion-button>
-    </ion-item>
-    <ion-item>
-      <ion-button expand="full" fill="clear" >Biblioteca</ion-button>
-    </ion-item>
-  </ion-list>
-
+  <ion-card [routerLink]="['/biblioteche',{ biblioteca: this.biblioteca}]" rourouter-direction="forward" fill="clear"
+            *ngFor="let biblioteca of biblioteche | async" button="true">
+    <ion-card-header>
+      <ion-card-title>{{biblioteca.nome}}</ion-card-title>
+    </ion-card-header>
+  </ion-card>
 </ion-content>

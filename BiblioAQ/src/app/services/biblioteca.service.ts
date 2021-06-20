@@ -9,7 +9,8 @@ import { Observable } from'rxjs';
 })
 export class BibliotecaService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   list(): Observable<Biblioteca[]> {
     return this.http.get<Biblioteca[]>(URL.BIBLIOTECHE);

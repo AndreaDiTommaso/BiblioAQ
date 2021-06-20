@@ -9,5 +9,4 @@ export class Biblioteca {
     longitudine: string;
     posti: number;
     info: string;
-  
-  }
+}

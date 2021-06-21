@@ -16,9 +16,9 @@ export class BibliotecaService {
     return this.http.get<Biblioteca[]>(URL.BIBLIOTECHE);
   }
 
-  findById(biblioId: string): Observable<Biblioteca> {
-    const params = new HttpParams().set('id', biblioId);
-    const apiURL = `${URL.BIBLIOTECA}/`;
-    return this.http.get<Biblioteca>(apiURL, {params});
+  findById(biblioId: string): Observable<Biblioteca[]> {
+      const params = new HttpParams().set('id', biblioId);
+      const apiURL = `${URL.BIBLIOTECA}/`;
+      return this.http.get<Biblioteca[]>(apiURL, {params});
   }
 }

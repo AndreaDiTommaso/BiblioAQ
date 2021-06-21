@@ -37,15 +37,15 @@ class Biblioteca{
 
 
     }
-    function findById($id){
-    $query = "SELECT * FROM {$this->table_name} ";
+    function findById($id)
+    {
+          $query = "SELECT * FROM {$this->table_name} WHERE id={$id}; ";
 
-    if($result = $this->conn->query($query)){
-                
+           if($result = $this->conn->query($query))
+           {
 
-                return $result;
-                }
-    else { echo 'dio cane';}
+                 return $result;
+           }
     }
 
 }

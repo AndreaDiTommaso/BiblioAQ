@@ -2,11 +2,12 @@ export class Biblioteca {
 
     id: number;
     nome: string;
+    orari: string;
     indirizzo: string;
     telefono: number;
-    orari: string;
     latitudine: string;
     longitudine: string;
     posti: number;
     info: string;
+    immagine:string;
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Biblioteca } from 'src/app/model/biblioteca.model';
 import { BibliotecaService } from 'src/app/services/biblioteca.service';
 import { Observable } from 'rxjs';
+import {ActivatedRoute, ParamMap} from "@angular/router";
 
 
 @Component({
@@ -11,11 +12,13 @@ import { Observable } from 'rxjs';
 })
 export class BibliotechePage implements OnInit {
 
-  private biblioteche: Observable<Biblioteca[]>;
+  private biblioteca: Observable<Biblioteca>;
 
-  constructor(private bibliotecaService: BibliotecaService,) {}
+  constructor(private bibliotecaService: BibliotecaService,private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.biblioteche = this.bibliotecaService.list();
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      this.biblioteca = this.bibliotecaService.findById(params.get('id'));
+    });
   }
 }

@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-card [routerLink]="['/biblioteche',{ biblioteca: this.biblioteca}]" rourouter-direction="forward" fill="clear"
+  <ion-card [routerLink]="['/biblioteche',biblioteca.id]" rourouter-direction="forward" fill="clear"
             *ngFor="let biblioteca of biblioteche | async" button="true">
     <ion-card-header>
       <ion-card-title>{{biblioteca.nome}}</ion-card-title>

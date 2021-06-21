@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-card *ngFor="let biblioteca of biblioteche | async" button="true">
+  <ion-card  *ngIf="(biblioteca | async) as biblioteca">
     <ion-card-header>
       <ion-card-title>{{biblioteca.nome}}</ion-card-title>
     </ion-card-header>

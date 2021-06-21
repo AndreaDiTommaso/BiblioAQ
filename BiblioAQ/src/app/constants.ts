@@ -1,7 +1,8 @@
 export const LINGUA = 'lingua';
 
-export const URL_BASE = 'http://localhost:80/BiblioAQ_api';
+export const URL_BASE = 'https://localhost/~loris/BiblioAQ/api';
 
 export const URL = {
-    BIBLIOTECHE: URL_BASE + '/biblioteca/read.php'
-}
+    BIBLIOTECHE: URL_BASE + '/biblioteca/read.php',
+    BIBLIOTECA: URL_BASE + '/biblioteca/find.php'
+};

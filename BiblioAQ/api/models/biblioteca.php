@@ -31,8 +31,21 @@ class Biblioteca{
 
             return $result;
 
+
+
         }
-        
+
+
+    }
+    function findById($id){
+    $query = "SELECT * FROM {$this->table_name} ";
+
+    if($result = $this->conn->query($query)){
+                
+
+                return $result;
+                }
+    else { echo 'dio cane';}
     }
 
 }

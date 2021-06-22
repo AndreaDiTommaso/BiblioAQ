@@ -13,7 +13,6 @@ import {ActivatedRoute, ParamMap} from '@angular/router';
 export class BibliotechePage implements OnInit {
 
   private biblioteca$: Observable<Biblioteca[]>;
-
   constructor(private bibliotecaService: BibliotecaService,private route: ActivatedRoute) {}
 
   ngOnInit() {

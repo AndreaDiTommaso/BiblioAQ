@@ -24,10 +24,11 @@
           <ion-label><strong>Posti: </strong>{{biblioteca.posti}}</ion-label>
         </li>
       </ul>
+      <ion-button [routerLink]="['/catalogo',biblioteca]" router-direction="forward"> Catalogo </ion-button>
     </ion-card-content>
   </ion-card>
 
-  <ion-button> Catalogo </ion-button>
+
 
 
 </ion-content>

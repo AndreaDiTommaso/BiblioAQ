@@ -4,23 +4,10 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-list>
-  <ion-card>
-    <img src="assets/images/zeno.jpg"/>
-    <ion-card-content>
-      <ion-card-title>
-        la coscienza di zeno
-      </ion-card-title>
-    </ion-card-content>
+<ion-content  >
+  <ion-row *ngFor="let libro of catalogo$ | async" >
+  <ion-card *ngIf="libro.prenotato" >
+    {{libro.titolo}}
   </ion-card>
-  <ion-card>
-    <img src="assets/images/zeno.jpg"/>
-    <ion-card-content>
-      <ion-card-title>
-        la coscienza di zeno
-      </ion-card-title>
-    </ion-card-content>
-  </ion-card>
-    </ion-list>
+  </ion-row>
 </ion-content>

@@ -1,6 +1,6 @@
 <?php
 
-class Biblioteca{
+class Libro{
 
     private $conn;
     private $table_name = 'libri';
@@ -46,6 +46,7 @@ class Biblioteca{
             }
 
      }
+
       function read_by_biblioteca($biblioteca){
 
              $query = "SELECT * FROM {$this->table_name} WHERE id_biblioteca = {$biblioteca} ;";

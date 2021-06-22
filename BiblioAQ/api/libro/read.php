@@ -1,18 +1,24 @@
 <?php
+
+/*
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+*/
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
 include_once '../config/database.php';
 include_once '../models/libro.php';
-$biblioteca = $_GET['id'];
-//$biblioteca= '1';
+$id = $_GET['id'];
+
 $database = new Database();
 $db = $database->getConnection();
 // Creo un nuovo oggetto Biblioteca
 $libro = new Libro($db);
 
 
-$result = $libro->read_by_biblioteca($biblioteca);
+$result = $libro->read_by_id($id);
 
 $num = $result->num_rows;
 // se vengono trovate biblioteche nel database
@@ -28,46 +34,17 @@ if($num>0){
             "genere" => $row['genere'],
             "idbiblioteca" => $row['id_biblioteca'],
             "prenotato" => $row['prenotato'],
-            "desrizione" => $row['descrizione'],
+            "descrizione" => $row['descrizione'],
             "immagine" => $row['immagine'],
 
 
         );
         array_push($libro_arr, $libro_item);
     }
-    $arr=array();
-    $precedente="";
-    foreach ($libro_arr as $libro_item)
-    {
-
-      if($libro_item['titolo'] != $precedente)
-      {array_push($arr, $libro_item);}
-      $precedente=$libro_item['titolo'];
-    }
-        $i=0;
-        foreach ($arr as $libro_item)
-            {
-
-               $name=$libro_item['titolo'];
-               $copie=0;
-               foreach ($libro_arr as $libro_item2)
-                  {
-
-                    if($libro_item2['titolo'] == $name && !$libro_item2['prenotato'])
-                    {$copie=$copie+1;}
-
-                  }
-
-               $arr[$i] += ["copie"=>$copie];
-               $i=$i+1;
-            }
-
-
-    echo json_encode($arr);
-
+    echo json_encode($libro_arr);
 }else{
     echo json_encode(
-        array("message" => "Nessuna Libro Trovato.")
+        array("message" => "Nessuna biblioteca Trovata.")
     );
 }
 

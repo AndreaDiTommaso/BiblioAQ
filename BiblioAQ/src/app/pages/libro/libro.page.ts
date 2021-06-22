@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {AlertController, NavController} from '@ionic/angular';
+import {Observable} from "rxjs";
+import {Libro} from "../../model/libro.model";
+import {LibroService} from "../../services/libro.service";
+import {ActivatedRoute, ParamMap} from "@angular/router";
+
 
 
 @Component({
@@ -8,10 +13,16 @@ import {AlertController, NavController} from '@ionic/angular';
   styleUrls: ['./libro.page.scss'],
 })
 export class LibroPage implements OnInit {
-
-  constructor(public  alertController: AlertController) { }
-
+  private libro$: Observable<Libro[]>;
+  private copie$;
+  constructor(public  alertController: AlertController,private route: ActivatedRoute,private libroService: LibroService) { }
   ngOnInit() {
+      this.route.paramMap.subscribe((params: ParamMap) => {
+      this.libro$ = this.libroService.findByid(params.get('id'));
+    });
+      this.route.paramMap.subscribe((params: ParamMap) => {
+      this.copie$ = params.get('copie');
+    });
   }
   async showAlert() {
     const alert = await this.alertController.create({

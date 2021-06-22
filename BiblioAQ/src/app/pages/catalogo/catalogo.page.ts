@@ -3,6 +3,7 @@ import {ActivatedRoute, ParamMap} from '@angular/router';
 import {Observable} from 'rxjs';
 import {Libro} from '../../model/libro.model';
 import {CatalogoService} from '../../services/catalogo.service';
+
 import {newArray} from '@angular/compiler/src/util';
 @Component({
   selector: 'app-catalogo',
@@ -12,14 +13,16 @@ import {newArray} from '@angular/compiler/src/util';
 export class CatalogoPage implements OnInit
 {
 
-
+  private biblioteca$;
   private catalogo$: Observable<Libro[]>;
-  private arr$: any[];
   constructor(private catalogoService: CatalogoService,private route: ActivatedRoute) {}
 
   ngOnInit() {
        this.route.paramMap.subscribe((params: ParamMap) => {
        this.catalogo$ = this.catalogoService.findBybiblio(params.get('id'));
+       });
+       this.route.paramMap.subscribe((params: ParamMap) => {
+         this.biblioteca$ =  params.get('nome');
        });
   }
 }

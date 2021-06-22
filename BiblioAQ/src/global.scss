@@ -14,7 +14,11 @@
 ion-item {
   --ion-item-background: transparent;
 }
-
+ion-text
+{
+  font-family: "Times New Roman";
+  color: var(--ion-color-dark);
+}
 // backgrounds //
 .bg-white {
   background-color: #fff;
@@ -87,7 +91,9 @@ ion-item {
 }
 
 .text-primary {
-  color: var(--ion-color-primary);
+  font-size: 1.5rem;
+  color: var(--ion-color-secondary);
+
 }
 
 .text-secondary {

@@ -23,10 +23,11 @@ $result = $libro->read_by_id($id);
 $num = $result->num_rows;
 // se vengono trovate biblioteche nel database
 if($num>0){
-    $libro_arr = array();
-    while ($row = $result->fetch_assoc()){
 
-        $libro_item = array(
+    $row = $result->fetch_assoc();
+
+         $copie=$libro->copie($row['titolo'],$row['id_biblioteca']);
+         $libro_item = array(
             "id" => $row['id'],
             "titolo" => $row['titolo'],
             "autore" => $row['autore'],
@@ -36,13 +37,14 @@ if($num>0){
             "nonprenotato" => $row['non_prenotato'],
             "descrizione" => $row['descrizione'],
             "immagine" => $row['immagine'],
+            "copie" => $copie
 
 
         );
-        array_push($libro_arr, $libro_item);
+        echo json_encode($libro_item);
     }
-    echo json_encode($libro_arr);
-}else{
+
+    else{
     echo json_encode(
         array("message" => "Nessuna biblioteca Trovata.")
     );

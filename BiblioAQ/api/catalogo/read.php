@@ -27,7 +27,7 @@ if($num>0){
             "casaeditrice" => $row['casa_editrice'],
             "genere" => $row['genere'],
             "idbiblioteca" => $row['id_biblioteca'],
-            "non_prenotato" => $row['non_prenotato'],
+            "nonprenotato" => $row['non_prenotato'],
             "desrizione" => $row['descrizione'],
             "immagine" => $row['immagine'],
 
@@ -41,11 +41,12 @@ if($num>0){
     foreach ($libro_arr as $libro_item)
     {
 
-      if($libro_item['titolo'] != $precedente && $libro_item['non_prenotato'])
+      if($libro_item['titolo'] != $precedente and $libro_item['nonprenotato'])
       {
          array_push($arr, $libro_item);
+         $precedente=$libro_item['titolo'];
       }
-       $precedente=$libro_item['titolo'];
+
 
     }
  foreach ($libro_arr as $libro_item)
@@ -70,7 +71,7 @@ if($num>0){
                foreach ($libro_arr as $libro_item2)
                   {
 
-                    if($libro_item2['titolo'] == $name && $libro_item2['non_prenotato'])
+                    if($libro_item2['titolo'] == $name && $libro_item2['nonprenotato'])
                     {$copie=$copie+1;}
 
                   }

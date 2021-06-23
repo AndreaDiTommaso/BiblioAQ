@@ -69,5 +69,18 @@ class Libro{
              }
 
       }
+      function copie($titolo,$biblioteca){
+
+                   $query = "SELECT * FROM {$this->table_name} WHERE titolo = '{$titolo}' AND id_biblioteca = {$biblioteca} AND non_prenotato = TRUE  ;";
+
+                   if($result = $this->conn->query($query)){
+                       $num = $result->num_rows;
+                       $result;
+                       return $num;
+
+                   }
+                   $result;
+
+            }
 
 }

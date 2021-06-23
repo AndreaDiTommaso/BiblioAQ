@@ -11,14 +11,14 @@ export class LibroService {
 
   constructor(private http: HttpClient) {
   }
-  findByid(biblioId: string): Observable<Libro[]> {
+  findByid(biblioId: string): Observable<Libro> {
     const params = new HttpParams().set('id', biblioId);
     const apiURL = `${URL.LIBRO}/`;
-    return this.http.get<Libro[]>(apiURL, {params});
+    return this.http.get<Libro>(apiURL, {params});
   }
   prenota($id){
     const params = new HttpParams().set('id', $id);
     const apiURL = `${URL.LIBROP}/`;
-    return this.http.get<string>(apiURL, {params});
+    return this.http.get<Libro>(apiURL, {params});
   }
 }

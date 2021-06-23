@@ -9,5 +9,6 @@ export class Libro {
   nonprenotato: boolean;
   descrizione: string;
   immagine: string;
-  copie: number;
+  copie;
+
 }

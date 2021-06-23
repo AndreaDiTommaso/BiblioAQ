@@ -15,8 +15,8 @@
         <ion-col>
 
 
+          <img   src="{{path$}}{{libro.immagine}}" />
 
-          <img   src="http://localhost:80/BiblioAQ_api/copertine/{{libro.immagine}}" />
 
 
           <ion-list>
@@ -65,7 +65,8 @@
     </ion-card>
     <ion-row>
       <ion-col>
-        <ion-button  (click)="showAlert()">Prenota</ion-button>
+
+        <ion-button  *ngIf="libro.nonprenotato" (click)="prenota(libro.id)" >Prenota </ion-button>
         copie rimanenti{{copie$}}
       </ion-col>
       <ion-col>

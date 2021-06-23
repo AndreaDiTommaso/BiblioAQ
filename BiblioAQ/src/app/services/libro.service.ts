@@ -16,4 +16,9 @@ export class LibroService {
     const apiURL = `${URL.LIBRO}/`;
     return this.http.get<Libro[]>(apiURL, {params});
   }
+  prenota($id){
+    const params = new HttpParams().set('id', $id);
+    const apiURL = `${URL.LIBROP}/`;
+    return this.http.get<string>(apiURL, {params});
+  }
 }

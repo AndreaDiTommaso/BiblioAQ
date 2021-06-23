@@ -33,7 +33,7 @@ if($num>0){
             "casaeditrice" => $row['casa_editrice'],
             "genere" => $row['genere'],
             "idbiblioteca" => $row['id_biblioteca'],
-            "prenotato" => $row['prenotato'],
+            "nonprenotato" => $row['non_prenotato'],
             "descrizione" => $row['descrizione'],
             "immagine" => $row['immagine'],
 

@@ -6,7 +6,7 @@ export class Libro {
   casaeditrice: string;
   genere: string;
   idbiblioteca: string;
-  prenotato: boolean;
+  nonprenotato: boolean;
   descrizione: string;
   immagine: string;
   copie: number;

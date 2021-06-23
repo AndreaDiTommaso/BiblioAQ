@@ -58,6 +58,16 @@ class Libro{
              }
 
       }
+      function prenota($id){
 
+             $query = "UPDATE {$this->table_name} SET non_prenotato = False WHERE id = {$id} ;";
+
+             if($result = $this->conn->query($query)){
+
+                 return $result;
+
+             }
+
+      }
 
 }

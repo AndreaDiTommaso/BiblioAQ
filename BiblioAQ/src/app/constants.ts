@@ -7,5 +7,6 @@ export const URL = {
     BIBLIOTECA: URL_BASE + '/biblioteca/read2.php',
     CATALOGO: URL_BASE + '/catalogo/read.php',
     COPERTINE: URL_BASE + '/copertine',
-    LIBRO: URL_BASE + '/libro/read.php'
+    LIBRO: URL_BASE + '/libro/read.php',
+    LIBROP: URL_BASE + '/libro/prenota.php'
 };

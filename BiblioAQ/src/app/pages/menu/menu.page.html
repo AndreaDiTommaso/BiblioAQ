@@ -10,7 +10,7 @@
   </ion-row>
     <ion-row >
       <ion-col class="ion-text-center">
-        <ion-card>
+        <ion-card [routerLink]="['/mappa']" router-direction="forward" fill="clear">
           <ion-card-header>
             <ion-card-title>
               Mappa
@@ -38,7 +38,7 @@
 
     <ion-row>
       <ion-col class="ion-text-center">
-        <ion-card>
+        <ion-card [routerLink]="['/login']" router-direction="forward" fill="clear">
           <ion-card-header>
             <ion-card-title>
               Profilo

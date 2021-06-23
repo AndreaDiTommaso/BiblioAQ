@@ -8,5 +8,12 @@ export const URL = {
     CATALOGO: URL_BASE + '/catalogo/read.php',
     COPERTINE: URL_BASE + '/copertine',
     LIBRO: URL_BASE + '/libro/read.php',
-    LIBROP: URL_BASE + '/libro/prenota.php'
+    LIBROP: URL_BASE + '/libro/prenota.php',
+    SIGNUP: URL_BASE + '/utente/signup.php'
 };
+
+export const X_AUTH = 'X-Auth';
+
+export const AUTH_TOKEN = 'auth-token';
+
+export const UTENTE_STORAGE = 'utente';

@@ -38,7 +38,11 @@ const routes: Routes = [
   {
     path: 'biblioteche/:id',
     loadChildren: () => import('./pages/biblioteche/biblioteche.module').then( m => m.BibliotechePageModule)
+  },  {
+    path: 'registrazione',
+    loadChildren: () => import('./pages/registrazione/registrazione.module').then( m => m.RegistrazionePageModule)
   },
+
 
 
 

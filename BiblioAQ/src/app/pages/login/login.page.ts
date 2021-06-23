@@ -10,7 +10,7 @@ import {AlertController, NavController} from '@ionic/angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  login: Account = { username: '', password: ''};
+  login: Account = { email: '', password: ''};
   submitted = false;
 
   constructor(
@@ -22,7 +22,6 @@ export class LoginPage implements OnInit {
     this.submitted = true;
 
     if (form.valid) {
-      this.navController.navigateRoot('menu');
     }
   }
 

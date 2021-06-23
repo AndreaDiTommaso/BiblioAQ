@@ -2,17 +2,17 @@ import {HttpClient, HttpResponse} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Storage} from '@ionic/storage';
 
-//import {AUTH_TOKEN, URL, UTENTE_STORAGE, X_AUTH} from '../constants';
+
 import {Utente} from '../model/utente.model';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {AUTH_TOKEN, UTENTE_STORAGE, X_AUTH} from '../constants';
+
 
 export interface Account {
-  username: string;
+  email: string;
   password: string;
-
 }
-/*
+
 @Injectable({
   providedIn: 'root'
 })
@@ -36,41 +36,4 @@ export class UtenteService {
 
   }
 
-  login(account: Account): Observable<Utente> {
-    return this.http.post<Utente>(URL.LOGIN, account, {observe: 'response'}).pipe(
-      map((resp: HttpResponse<Utente>) => {
-        const token = resp.headers.get(X_AUTH);
-        this.storage.set(AUTH_TOKEN, token);
-        this.authToken = token;
-        // Utente memorizzato nello storage in modo tale che se si vuole cambiare il
-        // profilo dell'utente stesso non si fa una chiamata REST.
-        this.storage.set(UTENTE_STORAGE, resp.body);
-        // update dell'observable dell'utente
-        this.utente$.next(resp.body);
-        this.loggedIn$.next(true);
-        return resp.body;
-      }));
-  }
-
-  logout() {
-    this.authToken = null;
-    this.loggedIn$.next(true);
-    this.storage.remove(AUTH_TOKEN);
-    this.storage.remove(UTENTE_STORAGE);
-
-    // Nessuna chiamata al server perche' JWT e' stateless quindi non prevede alcun logout.
-    // Per gestirlo si dovrebbe fare lato server una blacklist.
-  }
-
-  getUtente(): BehaviorSubject<Utente> {
-    return this.utente$;
-  }
-
-  getAuthToken(): string {
-    return this.authToken;
-  }
-
-  isLogged(): Observable<boolean> {
-    return this.loggedIn$.asObservable();
-  }}*/
-
+}

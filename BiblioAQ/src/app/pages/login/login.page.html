@@ -1,20 +1,29 @@
-<ion-content>
+
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title>Login</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
   <div class="login-logo">
     <img src="assets/images/logo.jpg" alt="BiblioAQ logo">
   </div>
 
-  <form #loginForm="ngForm" novalidate>
+  <form #loginForm="ngForm" ngNativeValidate="email">
     <ion-list>
       <ion-item>
-        <ion-label position="stacked" color="primary">Username</ion-label>
-        <ion-input [(ngModel)]="login.username" name="username" type="text" #username="ngModel" spellcheck="false" autocapitalize="off"
+        <ion-label position="stacked" color="primary">Email</ion-label>
+        <ion-input [(ngModel)]="login.email" name="email" type="text" #email="ngModel" spellcheck="false" autocapitalize="off"
                    required>
         </ion-input>
       </ion-item>
 
       <ion-text color="danger">
-        <p [hidden]="username.valid || submitted == false" class="ion-padding-start">
-          Username is required
+        <p [hidden]="email.valid || submitted === false" class="ion-padding-start">
+          Email is required
         </p>
       </ion-text>
 
@@ -25,7 +34,7 @@
       </ion-item>
 
       <ion-text color="danger">
-        <p [hidden]="password.valid || submitted == false" class="ion-padding-start">
+        <p [hidden]="password.valid || submitted === false" class="ion-padding-start">
           Password is required
         </p>
       </ion-text>
@@ -36,7 +45,8 @@
         <ion-button (click)="onLogin(loginForm)" type="submit" expand="block">Login</ion-button>
       </ion-col>
       <ion-col>
-        <ion-button (click)="onSignup()" color="light" expand="block">Signup</ion-button>
+        <ion-button [routerLink]="['/registrazione']" router-direction="forward" fill="outline"
+                      expand="block">Signup</ion-button>
       </ion-col>
     </ion-row>
   </form>

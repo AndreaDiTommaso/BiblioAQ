@@ -3,7 +3,8 @@ import {ActivatedRoute, ParamMap} from '@angular/router';
 import {Observable} from 'rxjs';
 import {Libro} from '../../model/libro.model';
 import {CatalogoService} from '../../services/catalogo.service';
-
+import {tap} from 'rxjs/internal/operators/tap';
+import {IonRefresher} from "@ionic/angular";
 import {newArray} from '@angular/compiler/src/util';
 @Component({
   selector: 'app-catalogo',
@@ -13,16 +14,26 @@ import {newArray} from '@angular/compiler/src/util';
 export class CatalogoPage implements OnInit
 {
 
-  private biblioteca$;
+  private nomebiblioteca$;
+  private idbiblioteca$;
   private catalogo$: Observable<Libro[]>;
   constructor(private catalogoService: CatalogoService,private route: ActivatedRoute) {}
 
   ngOnInit() {
        this.route.paramMap.subscribe((params: ParamMap) => {
-       this.catalogo$ = this.catalogoService.findBybiblio(params.get('id'));
+         this.idbiblioteca$=params.get('id');
+         this.nomebiblioteca$ =  params.get('nome');
        });
-       this.route.paramMap.subscribe((params: ParamMap) => {
-         this.biblioteca$ =  params.get('nome');
-       });
+       this.catalogo$ = this.catalogoService.findBybiblio(this.idbiblioteca$);
+  }
+  doRefresh(event) {
+      this.catalogo$ = this.catalogoService.findBybiblio(this.idbiblioteca$)
+          .pipe(tap(() => {
+         event.target.complete();
+      }));
+      setTimeout(() => {
+      console.log('Async operation has ended');
+      event.complete();
+    }, 2000);
   }
 }

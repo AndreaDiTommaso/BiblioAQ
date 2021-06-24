@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header class="bg-light">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
@@ -12,6 +12,7 @@
       </ion-row>
     </ion-title>
   </ion-toolbar>
+
 </ion-header>
 
 
@@ -19,6 +20,7 @@
 
 
 <ion-content   >
+  <ion-searchbar   [debounce]="500" placeholder="Cerca"></ion-searchbar>
   <ion-label [routerLink]="['/libro',libro]" *ngFor="let libro of catalogo$ | async" >
   <ion-item>
     <ion-row>
@@ -36,4 +38,6 @@
       </ion-row>
   </ion-item>
   </ion-label>
+
+  (ionInput)="getItems($event)"
 </ion-content>

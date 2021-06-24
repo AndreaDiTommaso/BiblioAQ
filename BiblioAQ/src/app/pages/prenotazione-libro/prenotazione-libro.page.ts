@@ -12,21 +12,17 @@ import {LibroService} from "../../services/libro.service";
 export class PrenotazioneLibroPage implements OnInit {
    private libro$: Observable<Libro>;
    private copie$;
-   private result$;
+
   constructor(private route: ActivatedRoute,private libroService: LibroService) { }
 
   ngOnInit() {
 
       this.route.paramMap.subscribe((params: ParamMap) => {
-        //this.result$=this.libroService.prenota(params.get('id'));
         this.libro$ = this.libroService.prenota(params.get('id'));
-
-    });
-
+      });
       this.libro$.subscribe((params: Libro) => {
       this.copie$ = params.copie;
-
-    });
+      });
 
   }
 

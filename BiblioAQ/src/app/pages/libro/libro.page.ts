@@ -16,6 +16,7 @@ export class LibroPage implements OnInit {
   private libro$: Observable<Libro>;
   private copie$;
 
+
   constructor(private route: ActivatedRoute,private libroService: LibroService) { }
   ngOnInit() {
       this.route.paramMap.subscribe((params: ParamMap) => {

@@ -14,9 +14,11 @@ import {newArray} from '@angular/compiler/src/util';
 export class CatalogoPage implements OnInit
 {
 
-  private nomebiblioteca$;
+  private nomebiblioteca$: string;
   private idbiblioteca$;
   private catalogo$: Observable<Libro[]>;
+  private filtra$=false;
+  private ricercapertitolo$: string;
   constructor(private catalogoService: CatalogoService,private route: ActivatedRoute) {}
 
   ngOnInit() {
@@ -31,9 +33,15 @@ export class CatalogoPage implements OnInit
           .pipe(tap(() => {
          event.target.complete();
       }));
-      setTimeout(() => {
-      console.log('Async operation has ended');
-      event.complete();
-    }, 2000);
   }
+  getItems(event) {
+    if (event.target.value!==''){
+      this.filtra$=true;
+      this.ricercapertitolo$=String(event.target.value).toLowerCase();
+    }
+    else{this.filtra$=false;}
+
+
+  }
+
 }

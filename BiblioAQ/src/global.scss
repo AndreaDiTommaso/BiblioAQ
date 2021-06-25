@@ -51,13 +51,13 @@ ion-text
 .bg-main {
   background-image: linear-gradient(-135deg, var(--ion-color-medium), var(--ion-color-light))
 }
-
+.center{ margin-left:25%; margin-right: 25%; width:50%}
 // Helpers //
 .w100 {
   width: 100%;
 }
 
-.bold,
+.bold{font-weight:bold;}
 .fw500 {
   font-weight: 500 !important;
 }
@@ -76,10 +76,12 @@ ion-text
 
 .text12 {
   font-size: 1.2rem;
+
 }
 
 .text15 {
   font-size: 1.5rem;
+  color: var(--ion-color-secondary);
 }
 
 .text20 {
@@ -102,7 +104,7 @@ ion-text
 
 .text-dark {
   color: var(--ion-color-dark);
-  font-weight:bold;
+
 }
 
 // menu //

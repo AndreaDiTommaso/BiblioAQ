@@ -1,27 +1,43 @@
-<ion-header>
+<ion-header >
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goback()">
+
+        <ion-icon color="light" slot="start" name="chevron-back-outline"></ion-icon>
+
+      </ion-button>
+    </ion-buttons>
+
     <ion-title>
-
-      <ion-img src="../../assets/icon/icon.jpg">
-
-      </ion-img>
+      <ion-img src="../../assets/icon/icon.jpg"></ion-img>
     </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="'/menu'">
+        <ion-icon  color="light" slot="end" name="home"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content *ngIf="(libro$ | async) as libro" >
+
 <ion-card >
+
   <ion-card-title>
-    <ion-text class="text-secondary">
-     RIEPILOGO PRENOTAZIONE:
+    <br>
+    <ion-list-header >
+    <ion-text   class="text-primary">
+          RIEPILOGO PRENOTAZIONE:
     </ion-text>
+    </ion-list-header>
   </ion-card-title>
   <ion-card-content>
     <ion-list>
 
       <ion-label>
         <ion-row>
-        <ion-text class="text-dark">
+        <ion-text class="bold">
           TITOLO:
         </ion-text>
       </ion-row>
@@ -33,7 +49,7 @@
       </ion-label>
       <ion-label>
         <ion-row>
-          <ion-text class="text-dark">
+          <ion-text class="bold">
             BIBLIOTECA:
           </ion-text>
         </ion-row>
@@ -43,9 +59,10 @@
           </ion-text>
         </ion-row>
       </ion-label>
+
       <ion-label>
         <ion-row>
-          <ion-text class="text-dark">
+          <ion-text class="bold">
             DATA PRENOTAZIONE:
           </ion-text>
         </ion-row>
@@ -55,24 +72,30 @@
           </ion-text>
         </ion-row>
       </ion-label>
+      <br>
+      <ion-label>
+        <ion-row>
+          <ion-text class="text1">
+            {{libro.copie}} COPIE DISPONIBILI NEL CATALOGO.
+          </ion-text>
+        </ion-row>
 
+      </ion-label>
+
+      <ion-button (click)="prenota()">Conferma prenotazione</ion-button>
     </ion-list>
 
 
 
   </ion-card-content>
 </ion-card>
-  <ion-list>
 
-    <ion-item >
-  <ion-button ion-button  large (click)="prenota()">Conferma prenotazione</ion-button>
-  </ion-item>
-    <br>
+
     <ion-item>
 
-      <ion-text class="text-secondary">
+      <ion-text class="text15" >
         ATTENZIONE! se procedi con la prenotazione ricorda che il libro da te prenotato verrà tenuto da parte fino al giorno {{this.scadenza$}}.
       </ion-text>
     </ion-item>
-  </ion-list>
+
 </ion-content>

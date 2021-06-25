@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import {Libro} from '../../model/libro.model';
-import {AlertController} from '@ionic/angular';
+import {AlertController, NavController} from '@ionic/angular';
 import {Observable} from "rxjs";
 import {LibroService} from "../../services/libro.service";
 import{Router} from "@angular/router";
@@ -19,7 +19,7 @@ export class PrenotazioneLibroPage implements OnInit {
    private idbiblio$;
    private scadenza$;
 
-  constructor(private catalogoService: CatalogoService, private _router:Router,private  alertController: AlertController, private bibliotecaService: BibliotecaService,private route: ActivatedRoute,private libroService: LibroService) { }
+  constructor( private navCtrl: NavController,private  catalogoService: CatalogoService, private _router:Router,private  alertController: AlertController, private bibliotecaService: BibliotecaService,private route: ActivatedRoute,private libroService: LibroService) { }
 
   ngOnInit() {
 
@@ -73,6 +73,9 @@ export class PrenotazioneLibroPage implements OnInit {
 
     //const { role } = await alert.onDidDismiss();
 
+  }
+  goback(){
+    this.navCtrl.back();
   }
 
 }

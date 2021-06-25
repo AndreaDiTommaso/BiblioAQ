@@ -46,6 +46,11 @@
               {{libro.casaeditrice}}
             </ion-text>
             </ion-item>
+            <ion-item>
+              <ion-text class="text-dark">
+                {{libro.nomebiblioteca}}
+              </ion-text>
+            </ion-item>
 
 
 
@@ -55,7 +60,7 @@
       </ion-slide>
       <ion-slide>
         <ion-label>
-        <ion-text class="text-dark">
+        <ion-text text-align="center">
           {{libro.descrizione}}
         </ion-text>
           </ion-label>
@@ -69,10 +74,11 @@
       <ion-col>
          <ion-row *ngIf="copie$>0">
            <ion-col>
-           <ion-button  [routerLink]="['/prenotazione-libro',libro]" >Prenota </ion-button>
+           <ion-button  [routerLink]="['/prenotazione-libro',libro]" > Prenota </ion-button>
            </ion-col>
              <ion-col>
-           <ion-text>copie rimanenti {{copie$}}
+
+           <ion-text class="bold">copie rimanenti {{copie$}}
            </ion-text>
              </ion-col>
          </ion-row>
@@ -82,8 +88,7 @@
           </ion-text>
         </ion-row>
 
-      </ion-col>
-      <ion-col>
+
         <ion-button ion-button  large >Aggiungi ai preferiti</ion-button>
       </ion-col>
     </ion-row>

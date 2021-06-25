@@ -1,36 +1,78 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>prenotazione_libro</ion-title>
+    <ion-title>
+
+      <ion-img src="../../assets/icon/icon.jpg">
+
+      </ion-img>
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content *ngIf="(libro$ | async) as libro" >
 <ion-card >
   <ion-card-title>
-    <ion-text class="text-primary">
-      riepilogo prenotazione:
+    <ion-text class="text-secondary">
+     RIEPILOGO PRENOTAZIONE:
     </ion-text>
   </ion-card-title>
   <ion-card-content>
     <ion-list>
-      <ion-item>
-        <ion-text>
-          titolo:{{libro.titolo}}
+
+      <ion-label>
+        <ion-row>
+        <ion-text class="text-dark">
+          TITOLO:
         </ion-text>
-      </ion-item>
-      <ion-item>
+      </ion-row>
+        <ion-row>
         <ion-text>
-          biblioteca:{{libro.nomebiblioteca}}
+          {{libro.titolo}}
         </ion-text>
-      </ion-item>
-      <ion-item>
-        <ion-text>
-          data:{{this.recuperodata()}}
-        </ion-text>
-      </ion-item>
+        </ion-row>
+      </ion-label>
+      <ion-label>
+        <ion-row>
+          <ion-text class="text-dark">
+            BIBLIOTECA:
+          </ion-text>
+        </ion-row>
+        <ion-row>
+          <ion-text>
+            {{libro.nomebiblioteca}}
+          </ion-text>
+        </ion-row>
+      </ion-label>
+      <ion-label>
+        <ion-row>
+          <ion-text class="text-dark">
+            DATA PRENOTAZIONE:
+          </ion-text>
+        </ion-row>
+        <ion-row>
+          <ion-text>
+            {{this.recuperodata()}}
+          </ion-text>
+        </ion-row>
+      </ion-label>
+
     </ion-list>
+
+
+
   </ion-card-content>
 </ion-card>
-  {{copie$}}
+  <ion-list>
 
+    <ion-item >
+  <ion-button ion-button  large (click)="prenota()">Conferma prenotazione</ion-button>
+  </ion-item>
+    <br>
+    <ion-item>
+
+      <ion-text class="text-secondary">
+        ATTENZIONE! se procedi con la prenotazione ricorda che il libro da te prenotato verrà tenuto da parte fino al giorno {{this.scadenza$}}.
+      </ion-text>
+    </ion-item>
+  </ion-list>
 </ion-content>

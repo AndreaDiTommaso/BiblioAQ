@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import {Libro} from '../../model/libro.model';
-
+import {AlertController} from '@ionic/angular';
 import {Observable} from "rxjs";
 import {LibroService} from "../../services/libro.service";
-import {Biblioteca} from "../../model/biblioteca.model";
+import{Router} from "@angular/router";
 import {BibliotecaService} from "../../services/biblioteca.service";
+import {CatalogoService} from "../../services/catalogo.service";
 @Component({
   selector: 'app-prenotazione-libro',
   templateUrl: './prenotazione-libro.page.html',
@@ -13,11 +14,12 @@ import {BibliotecaService} from "../../services/biblioteca.service";
 })
 export class PrenotazioneLibroPage implements OnInit {
    private libro$: Observable<Libro>;
-   private biblioteca$: Observable<Biblioteca[]>;
    private copie$;
-   private nomebiblio$;
+   private id$;
+   private idbiblio$;
+   private scadenza$;
 
-  constructor( private bibliotecaService: BibliotecaService,private route: ActivatedRoute,private libroService: LibroService) { }
+  constructor(private catalogoService: CatalogoService, private _router:Router,private  alertController: AlertController, private bibliotecaService: BibliotecaService,private route: ActivatedRoute,private libroService: LibroService) { }
 
   ngOnInit() {
 
@@ -25,7 +27,12 @@ export class PrenotazioneLibroPage implements OnInit {
         this.libro$ = this.libroService.findByid(params.get('id'));
     });
 
-    this.libro$.subscribe((params: Libro) => {this.copie$ = params.copie;});
+    this.libro$.subscribe((params: Libro) => {
+      this.copie$ = params.copie;
+      this.id$ = params.id;
+      this.idbiblio$=params.idbiblioteca;
+    });
+
 
 
 
@@ -35,8 +42,37 @@ export class PrenotazioneLibroPage implements OnInit {
     var dd = String(today.getDate()).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
     var yyyy = today.getFullYear();
-    var string= mm + '/' + dd + '/' + yyyy;
+    var string= dd + '/' + mm + '/' + yyyy;
+    dd = String(parseInt(String(today.getDate()))+3).padStart(2, '0');
+    this.scadenza$=dd + '/' + mm + '/' + yyyy;
     return string;
+
+  }
+  prenota(){
+    this.libro$=this.libroService.prenota(this.id$);
+    this.showAlert();
+    //this._router.navigate(['/catalogo'],this.catalogoService.findBybiblio(this.idbiblio$).subscribe());
+  }
+  async showAlert() {
+    const alert = await this.alertController.create({
+
+
+      message: 'prenotazione effettuata con successo.',
+      buttons: [
+        {
+          text:'Torna al menù',
+          handler: () => {
+            this._router.navigate(['/menu']);
+          }
+        }],
+      backdropDismiss: false
+
+    });
+
+    await alert.present();
+
+    //const { role } = await alert.onDidDismiss();
+
   }
 
 }

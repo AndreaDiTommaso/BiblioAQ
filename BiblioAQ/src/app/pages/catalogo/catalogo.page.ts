@@ -24,6 +24,7 @@ export class CatalogoPage implements OnInit
   ngOnInit() {
        this.route.paramMap.subscribe((params: ParamMap) => {
          this.idbiblioteca$=params.get('id');
+         //this.idbiblioteca$=params;
          this.nomebiblioteca$ =  params.get('nome');
        });
        this.catalogo$ = this.catalogoService.findBybiblio(this.idbiblioteca$);

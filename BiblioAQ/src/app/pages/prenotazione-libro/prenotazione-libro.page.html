@@ -4,8 +4,33 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-{{result$}}
+<ion-content *ngIf="(libro$ | async) as libro" >
+<ion-card >
+  <ion-card-title>
+    <ion-text class="text-primary">
+      riepilogo prenotazione:
+    </ion-text>
+  </ion-card-title>
+  <ion-card-content>
+    <ion-list>
+      <ion-item>
+        <ion-text>
+          titolo:{{libro.titolo}}
+        </ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-text>
+          biblioteca:{{libro.nomebiblioteca}}
+        </ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-text>
+          data:{{this.recuperodata()}}
+        </ion-text>
+      </ion-item>
+    </ion-list>
+  </ion-card-content>
+</ion-card>
   {{copie$}}
 
 </ion-content>

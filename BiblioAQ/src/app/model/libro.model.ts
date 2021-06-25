@@ -5,7 +5,8 @@ export class Libro {
   autore: string;
   casaeditrice: string;
   genere: string;
-  idbiblioteca: string;
+  idbiblioteca: number;
+  nomebiblioteca: string;
   nonprenotato: boolean;
   descrizione: string;
   immagine: string;

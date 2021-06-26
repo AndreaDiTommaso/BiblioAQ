@@ -4,6 +4,7 @@ import {Libro} from '../../model/libro.model';
 import {LibroService} from '../../services/libro.service';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import { URL } from '../../constants';
+import {NavController} from "@ionic/angular";
 
 
 @Component({
@@ -17,7 +18,7 @@ export class LibroPage implements OnInit {
   private copie$;
 
 
-  constructor(private route: ActivatedRoute,private libroService: LibroService) { }
+  constructor(private navCtrl: NavController,private route: ActivatedRoute,private libroService: LibroService) { }
   ngOnInit() {
       this.route.paramMap.subscribe((params: ParamMap) => {
       this.libro$ = this.libroService.findByid(params.get('id'));
@@ -26,6 +27,9 @@ export class LibroPage implements OnInit {
       this.copie$ = params.copie;
 
     });
+  }
+  goback(){
+    this.navCtrl.back();
   }
 }
 

@@ -34,6 +34,7 @@ ion-text
 
 .bg-primary {
   background-color: var(--ion-color-primary);
+  color: var(--ion-color-primary);
 }
 
 .bg-secondary {
@@ -52,6 +53,7 @@ ion-text
   background-image: linear-gradient(-135deg, var(--ion-color-medium), var(--ion-color-light))
 }
 .center{ margin-left:25%; margin-right: 25%; width:50%}
+
 // Helpers //
 .w100 {
   width: 100%;

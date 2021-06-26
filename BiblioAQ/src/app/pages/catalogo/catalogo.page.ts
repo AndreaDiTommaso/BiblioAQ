@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 import {Libro} from '../../model/libro.model';
 import {CatalogoService} from '../../services/catalogo.service';
 import {tap} from 'rxjs/internal/operators/tap';
-import {IonRefresher} from "@ionic/angular";
+import {IonRefresher, NavController} from "@ionic/angular";
 import {newArray} from '@angular/compiler/src/util';
 @Component({
   selector: 'app-catalogo',
@@ -19,7 +19,7 @@ export class CatalogoPage implements OnInit
   private catalogo$: Observable<Libro[]>;
   private filtra$=false;
   private ricercapertitolo$: string;
-  constructor(private catalogoService: CatalogoService,private route: ActivatedRoute) {}
+  constructor(private navCtrl: NavController,private catalogoService: CatalogoService,private route: ActivatedRoute) {}
 
   ngOnInit() {
        this.route.paramMap.subscribe((params: ParamMap) => {
@@ -43,6 +43,9 @@ export class CatalogoPage implements OnInit
     else{this.filtra$=false;}
 
 
+  }
+  goback(){
+    this.navCtrl.back();
   }
 
 }

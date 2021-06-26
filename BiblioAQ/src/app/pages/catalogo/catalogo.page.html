@@ -1,19 +1,23 @@
-<ion-header class="bg-light">
+<ion-header >
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-button (click)="goback()">
+
+        <ion-icon color="light" slot="start" name="chevron-back-outline"></ion-icon>
+
+      </ion-button>
     </ion-buttons>
+
     <ion-title>
-      <ion-row>
-      <ion-text> CATALOGO</ion-text>
-      </ion-row>
-      <ion-row>
-      <ion-text>{{nomebiblioteca$}}</ion-text>
-      </ion-row>
+      <ion-img src="../../assets/icon/icon.jpg"></ion-img>
     </ion-title>
 
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="'/menu'">
+        <ion-icon  color="light" slot="end" name="home"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
-
 </ion-header>
 
 
@@ -21,6 +25,8 @@
 
 
 <ion-content  padding >
+  <ion-item >
+    <ion-list>
   <ion-refresher   slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content
       pullingIcon="arrow-dropdown"
@@ -29,8 +35,21 @@
     </ion-refresher-content>
   </ion-refresher>
 
-  <ion-searchbar   (ionInput)="getItems($event)" [debounce]="500" placeholder="Cerca"></ion-searchbar>
+    <ion-row >
+      <ion-text  class="text15"> CATALOGO</ion-text>
+    </ion-row>
+    <ion-row  >
+      <ion-text  >    {{nomebiblioteca$}}</ion-text>
+    </ion-row>
 
+  <ion-searchbar   (ionInput)="getItems($event)" [debounce]="500" placeholder="Cerca">
+
+  </ion-searchbar>
+
+
+
+    </ion-list>
+  </ion-item>
   <ion-label [routerLink]="['/libro',libro]" *ngFor="let libro of catalogo$ | async" >
 
   <ion-item *ngIf="!filtra$ || libro.titolo.toLowerCase().includes(ricercapertitolo$)">

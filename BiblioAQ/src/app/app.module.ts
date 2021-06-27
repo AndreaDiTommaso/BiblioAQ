@@ -13,6 +13,7 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {IonicStorageModule} from '@ionic/storage-angular';
 
+
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
 // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
@@ -20,6 +21,7 @@ export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
+// @ts-ignore
 @NgModule({
     declarations: [AppComponent],
     entryComponents: [],
@@ -39,9 +41,10 @@ export function createTranslateLoader(http: HttpClient) {
         }),
         AppRoutingModule],
     providers: [
+
         //StatusBar,
         //SplashScreen,
-        {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
+        {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
     ],
     bootstrap: [AppComponent]
 })

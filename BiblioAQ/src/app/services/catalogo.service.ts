@@ -4,6 +4,7 @@ import { URL } from '../constants';
 import { Libro} from '../model/libro.model';
 import { Observable } from'rxjs';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -15,5 +16,9 @@ export class CatalogoService {
     const params = new HttpParams().set('id', biblioId);
     const apiURL = `${URL.CATALOGO}/`;
     return this.http.get<Libro[]>(apiURL, {params});
+  }
+
+  findAll(): Observable<Libro[]>{
+    return this.http.get<Libro[]>(URL.CERCA);
   }
 }

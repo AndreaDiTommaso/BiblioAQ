@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 import {Libro} from '../../model/libro.model';
 import {CatalogoService} from '../../services/catalogo.service';
 import {tap} from 'rxjs/internal/operators/tap';
-import {IonRefresher, NavController} from "@ionic/angular";
+import {IonRefresher, NavController} from '@ionic/angular';
 import {newArray} from '@angular/compiler/src/util';
 @Component({
   selector: 'app-catalogo',

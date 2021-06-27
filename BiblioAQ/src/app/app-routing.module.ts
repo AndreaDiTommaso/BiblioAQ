@@ -47,7 +47,11 @@ const routes: Routes = [
   {
     path: 'prenotazione-libro',
     loadChildren: () => import('./pages/prenotazione-libro/prenotazione-libro.module').then( m => m.PrenotazioneLibroPageModule)
+  },  {
+    path: 'cerca',
+    loadChildren: () => import('./pages/cerca/cerca.module').then( m => m.CercaPageModule)
   },
+
 
 
 

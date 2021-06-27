@@ -3,6 +3,8 @@ import { Biblioteca } from 'src/app/model/biblioteca.model';
 import { BibliotecaService } from 'src/app/services/biblioteca.service';
 import { Observable } from 'rxjs';
 import {ActivatedRoute, ParamMap} from '@angular/router';
+import {NavController} from '@ionic/angular';
+import {URL} from "../../constants";
 
 
 @Component({
@@ -13,11 +15,15 @@ import {ActivatedRoute, ParamMap} from '@angular/router';
 export class BibliotechePage implements OnInit {
 
   private biblioteca$: Observable<Biblioteca[]>;
-  constructor(private bibliotecaService: BibliotecaService,private route: ActivatedRoute) {}
+  private path$ = `${URL.IMMAGINI}/`;
+  constructor(private navCtrl: NavController,private bibliotecaService: BibliotecaService,private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.biblioteca$ = this.bibliotecaService.findById(params.get('id'));
     });
+  }
+  goback(){
+    this.navCtrl.back();
   }
 }

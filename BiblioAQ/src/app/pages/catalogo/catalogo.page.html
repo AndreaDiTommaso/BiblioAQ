@@ -24,9 +24,9 @@
 
 
 
-<ion-content  padding >
-  <ion-item >
-    <ion-list>
+<ion-content   padding >
+  <ion-card class="bg-tertiary" >
+    <ion-list class="bg-tertiary">
   <ion-refresher   slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content
       pullingIcon="arrow-dropdown"
@@ -49,11 +49,11 @@
 
 
     </ion-list>
-  </ion-item>
+  </ion-card>
   <ion-label [routerLink]="['/libro',libro]" *ngFor="let libro of catalogo$ | async" >
 
   <ion-item *ngIf="!filtra$ || libro.titolo.toLowerCase().includes(ricercapertitolo$)">
-    <ion-row>
+    <ion-row >
       <ion-col size="3">
     <img   src="http://localhost:80/BiblioAQ_api/copertine/{{libro.immagine}}" />
       </ion-col>

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
-import {NgForm} from '@angular/forms';
-import {Account} from '../../services/utente.service';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AlertController, NavController} from '@ionic/angular';
+import {TranslateService} from '@ngx-translate/core';
+import {Account, UtenteService} from '../../services/utente.service';
+import {Utente} from '../../model/utente.model';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -10,25 +12,63 @@ import {AlertController, NavController} from '@ionic/angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  login: Account = { email: '', password: ''};
-  submitted = false;
 
-  constructor(
-    private alertController: AlertController,
-    private navController: NavController
-  ) { }
+  private loginFormModel: FormGroup;
+  private loginTitle: string;
+  private loginSubTitle: string;
 
-  onLogin(form: NgForm){
-    this.submitted = true;
-
-    if (form.valid) {
-    }
+  constructor(private formBuilder: FormBuilder,
+              private alertController: AlertController,
+              private translateService: TranslateService,
+              private navController: NavController,
+              private utenteService: UtenteService) {
   }
 
-  onSignup() {
-    this.navController.navigateRoot('menu');
+  ngOnInit() {
+    this.loginFormModel = this.formBuilder.group({
+      username: ['amleto', Validators.compose([
+        Validators.required
+      ])],
+      password: ['amleto', Validators.compose([
+        Validators.required
+      ])]
+    });
+    this.initTranslate();
   }
-ngOnInit() {
+
+  onLogin() {
+    const account: Account = this.loginFormModel.value;
+    this.utenteService.login(account).subscribe(() => {
+        this.loginFormModel.reset();
+        this.navController.navigateRoot('menu');
+      },
+      (err: HttpErrorResponse) => {
+        if (err.status === 401) {
+          console.error('login request error: ' + err.status);
+          this.showLoginError();
+        }
+      });
+  }
+
+  async showLoginError() {
+    const alert = await this.alertController.create({
+      header: this.loginTitle,
+      message: this.loginSubTitle,
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
+
+  private initTranslate() {
+    this.translateService.get('LOGIN_ERROR_SUB_TITLE').subscribe((data) => {
+      this.loginSubTitle = data;
+    });
+    this.translateService.get('LOGIN_ERROR_TITLE').subscribe((data) => {
+      this.loginTitle = data;
+    });
   }
 
 }
+

@@ -8,30 +8,42 @@
 </ion-header>
 
 <ion-content>
-  <form>
-    <ion-item lines="full">
+  <form [formGroup]="signupFormModel" class="list-form">
+    <ion-item lines="full" class="animated fadeInUp">
       <ion-label position="floating">First name</ion-label>
-      <ion-input type="text" required></ion-input>
+      <ion-input type="text" formControlName="nome"></ion-input>
     </ion-item>
+    <p ion-text class="text08" *ngIf="signupFormModel.get('nome').touched && signupFormModel.get('nome').invalid">
+      <ion-text color="danger">NAME_REQUIRED</ion-text>
+    </p>
 
-    <ion-item lines="full">
+    <ion-item lines="full" class="animated fadeInUp">
       <ion-label position="floating">Last name</ion-label>
-      <ion-input type="text" required></ion-input>
+      <ion-input type="text" formControlName="cognome"></ion-input>
     </ion-item>
+    <p ion-text class="text08" *ngIf="signupFormModel.get('cognome').touched && signupFormModel.get('cognome').invalid">
+      <ion-text color="danger">LASTNAME_REQUIRED</ion-text>
+    </p>
 
-    <ion-item lines="full">
+    <ion-item lines="full" class="animated fadeInUp">
       <ion-label position="floating">Email</ion-label>
-      <ion-input type="text" required></ion-input>
+      <ion-input type="text" formControlName="email"></ion-input>
     </ion-item>
+    <p ion-text class="text08" *ngIf="signupFormModel.get('email').touched && signupFormModel.get('email').invalid">
+      <ion-text color="danger">EMAIL_REQUIRED</ion-text>
+    </p>
 
-    <ion-item lines="full">
+    <ion-item lines="full" class="animated fadeInUp">
       <ion-label position="floating">Password</ion-label>
-      <ion-input type="password" required></ion-input>
+      <ion-input type="password" formControlName="password"></ion-input>
     </ion-item>
+    <p ion-text class="text08" *ngIf="signupFormModel.get('password').touched && signupFormModel.get('password').invalid">
+      <ion-text color="danger">PASSWORD_REQUIRED</ion-text>
+    </p>
 
     <ion-row>
       <ion-col>
-        <ion-button type="submit" color="danger" expand="block">Sign Up</ion-button>
+        <ion-button type="submit" color="primary" expand="block" (click)="signup()" [disabled]="!signupFormModel.valid" tappable>Sign Up</ion-button>
       </ion-col>
     </ion-row>
   </form>

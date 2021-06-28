@@ -6,7 +6,6 @@ CREATE TABLE utenti (
     id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
     nome CHAR(60) NOT NULL,
     cognome CHAR(60) NOT NULL,
-	età TINYINT(3) NOT NULL,
 	email CHAR(60) NOT NULL,
 	password CHAR(60) NOT NULL,
     PRIMARY KEY (id)
@@ -71,8 +70,8 @@ CREATE TABLE preferiti (
 	FOREIGN KEY (id_utente) REFERENCES utenti(id)
 );
 INSERT INTO utenti VALUES (NULL, 'Mario', 'Rossi',40,'emailfasulla@boh.it','password');
-INSERT INTO biblioteche VALUES (NULL, 'La tana di Lupoleone', 30,'8:00-18:00','348 074 7694','Via Antica Arischia, 20','42.37060138538752', '13.366074415740936','bella biblioteca','percorsoimmagine');
-INSERT INTO biblioteche VALUES (NULL, 'Biblioteca Provinciale Salvatore Tommasi', 30,'8:00-18:00','086261964','Piazza del Palazzo, 30','42.35089219757118', '13.39926230167777','bella biblioteca','percorsoimmagine');
+INSERT INTO biblioteche VALUES (NULL, 'La tana di Lupoleone', 30,'8:00-18:00','348 074 7694','Via Antica Arischia, 20','42.37060138538752', '13.366074415740936','bella biblioteca','lupoleone.jpg');
+INSERT INTO biblioteche VALUES (NULL, 'Biblioteca Provinciale Salvatore Tommasi', 30,'8:00-18:00','086261964','Piazza del Palazzo, 30','42.35089219757118', '13.39926230167777','bella biblioteca','S_Tommasi.jpg');
 INSERT INTO libri VALUES (NULL, 'La fattoria degli animali', 'George Orwell','Mondadori','romanzo',1,'La tana di Lupoleone', TRUE,'Tutti gli animali sono uguali, ma alcuni animali sono più uguali degli altri. Stanchi dei soprusi, gli animali di una fattoria decidono di ribellarsi agli umani e, cacciato il proprietario, danno vita a un nuovo ordine fondato sull\'uguaglianza. Ben presto, però, emerge tra loro una nuova classe di burocrati, i maiali, che con astuzia, cupidigia e prepotenza si impongono sugli altri animali.','fattoria.jpg');
 INSERT INTO libri VALUES (NULL, 'La fattoria degli animali', 'George Orwell','Mondadori','romanzo',1,'La tana di Lupoleone', TRUE,'Tutti gli animali sono uguali, ma alcuni animali sono più uguali degli altri. Stanchi dei soprusi, gli animali di una fattoria decidono di ribellarsi agli umani e, cacciato il proprietario, danno vita a un nuovo ordine fondato sull\'uguaglianza. Ben presto, però, emerge tra loro una nuova classe di burocrati, i maiali, che con astuzia, cupidigia e prepotenza si impongono sugli altri animali.','fattoria.jpg');
 INSERT INTO libri VALUES (NULL, 'La coscienza di Zeno', 'Italo Svevo','Newton Compton Editori','romanzo',1,'La tana di Lupoleone',TRUE,'Rimasto incompreso per lungo tempo, "La coscienza di Zeno" è il più importante romanzo di Svevo e uno dei capolavori della letteratura italiana contemporanea. È il resoconto di un viaggio nell\'oscurità della psiche, nella quale si riflettono complessi e vizi della società borghese dei primi del Novecento, le sue ipocrisie, i suoi conformismi e insieme la sua nascosta, tortuosa, ambigua voglia di vivere.','zeno.jpg');

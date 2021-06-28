@@ -27,10 +27,13 @@ $utente = new Utente($db);
 
 $data = json_decode(file_get_contents("php://input"));
 
-$utente->email = $data->email;
-$password = $data->password;
+//$utente->email = $data->email;
+//$password = $data->password;
 
-
+$utente->email = 'and@gmail.com';
+$password = 'ciao';
+//echo $utente->email_exist();
+//echo password_verify($password, $utente->password);
 if($utente->email_exist() && password_verify($password, $utente->password)){
 
     $token = array(
@@ -46,24 +49,31 @@ if($utente->email_exist() && password_verify($password, $utente->password)){
 
         )
     );
+    $jwt = JWT::encode($token, $key);
 
              $item = array(
                 "id" => $utente->id,
                 "nome" => $utente->nome,
                 "cognome" => $utente->cognome,
                 "email" => $utente->email,
-                "password" => $utente->password
+                "password" => $utente->password,
+                "token"=>$jwt
+
 
       );
-      $item =json_encode($item);
+      //echo $item['id'];
+     // $item =json_encode($item);
 
     http_response_code(200);
-
-    $jwt = JWT::encode($token, $key, $item);
-    echo json_encode(array(
+ echo json_encode($item);
+   // $jwt = JWT::encode($token, $key);
+  /*  echo json_encode(array(
         "message" => "login avvenuto con successo",
-        "jwt" => $jwt
+        "jwt" => $jwt,
+        "item"=>$item
     ));
+    $item =json_encode($item);
+    */
 
 } else{
     http_response_code(401);

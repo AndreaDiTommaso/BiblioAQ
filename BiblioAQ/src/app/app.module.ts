@@ -36,7 +36,7 @@ export function createTranslateLoader(http: HttpClient) {
             }
         }),
         IonicStorageModule.forRoot({
-            name: 'myunivaq__db',
+            name: 'biblioaq__db',
             driverOrder: ['indexeddb', 'sqlite', 'websql']
         }),
         AppRoutingModule],

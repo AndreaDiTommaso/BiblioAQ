@@ -1,10 +1,12 @@
 export class Utente {
 
-  username: string;
+  id: string;
   nome: string;
   cognome: string;
   email: string;
-  telefono: string;
+  password: string;
+  token: any;
+
 
 
 }

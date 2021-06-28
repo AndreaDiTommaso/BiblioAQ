@@ -38,9 +38,9 @@ export class LoginPage implements OnInit {
 
   onLogin() {
     const account: Account = this.loginFormModel.value;
-    this.utenteService.login(account).subscribe(() => {
+    this.utenteService.login(account).subscribe((utente: Utente) => {
         this.loginFormModel.reset();
-        this.navController.navigateRoot('menu');
+        this.navController.navigateRoot('/menu');
       },
       (err: HttpErrorResponse) => {
         if (err.status === 401) {

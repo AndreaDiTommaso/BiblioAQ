@@ -5,7 +5,7 @@ import { IonicStorageModule } from '@ionic/storage-angular';
 
 import {Utente} from '../model/utente.model';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {AUTH_TOKEN, UTENTE_STORAGE, X_AUTH, URL} from '../constants';
+import {AUTH_TOKEN, UTENTE_STORAGE, X_AUTH, URL, ID_UTENTE} from '../constants';
 import {map} from 'rxjs/operators';
 
 
@@ -34,6 +34,7 @@ export class UtenteService {
         //this.storage.create();
         this.storage.set(AUTH_TOKEN, token);
         this.storage.set(UTENTE_STORAGE, resp.body.utente);
+        this.storage.set(ID_UTENTE, resp.body.utente.id);
         this.utente$.next(resp.body.utente);
         this.loggedIn$.next(true);
         this.storage.get(AUTH_TOKEN).then((value: any) => {

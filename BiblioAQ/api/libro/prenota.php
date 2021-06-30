@@ -10,16 +10,20 @@ header("Content-Type: application/json; charset=UTF-8");
 
 include_once '../config/database.php';
 include_once '../models/libro.php';
-$id = $_GET['id'];
+include_once '../models/prenotazione_libro.php';
+$id_libro = $_GET['libro'];
+$utente =$_GET['utente'];
+$data =$_GET['data'];
+
 //$id='2';
 $database = new Database();
 $db = $database->getConnection();
 // Creo un nuovo oggetto Biblioteca
 $libro = new Libro($db);
-
-
-$result = $libro->prenota($id);
-$result = $libro->read_by_id($id);
+$prenotazione = new Prenotazione_libro($db);
+$prenotazione->prenota($id_libro,$utente,$data);
+$result = $libro->prenota($id_libro);
+$result = $libro->read_by_id($id_libro);
 $num = $result->num_rows;
 // se vengono trovate biblioteche nel database
 if($num>0){

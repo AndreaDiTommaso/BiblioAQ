@@ -7,6 +7,11 @@ import {LibroService} from "../../services/libro.service";
 import{Router} from "@angular/router";
 import {BibliotecaService} from "../../services/biblioteca.service";
 import {CatalogoService} from "../../services/catalogo.service";
+import {UTENTE_STORAGE} from "../../constants";
+import {ID_UTENTE} from "../../constants";
+import {Storage} from '@ionic/storage';
+import {Utente} from "../../model/utente.model";
+
 @Component({
   selector: 'app-prenotazione-libro',
   templateUrl: './prenotazione-libro.page.html',
@@ -18,8 +23,9 @@ export class PrenotazioneLibroPage implements OnInit {
    private id$;
    private idbiblio$;
    private scadenza$;
+   private utente$;
 
-  constructor( private navCtrl: NavController,private  catalogoService: CatalogoService, private _router:Router,private  alertController: AlertController, private bibliotecaService: BibliotecaService,private route: ActivatedRoute,private libroService: LibroService) { }
+  constructor( private storage: Storage ,private navCtrl: NavController,private  catalogoService: CatalogoService, private _router:Router,private  alertController: AlertController, private bibliotecaService: BibliotecaService,private route: ActivatedRoute,private libroService: LibroService) { }
 
   ngOnInit() {
 
@@ -32,7 +38,9 @@ export class PrenotazioneLibroPage implements OnInit {
       this.id$ = params.id;
       this.idbiblio$=params.idbiblioteca;
     });
-
+    this.storage.get(UTENTE_STORAGE).then((value: string)=>{
+      this.utente$=String(value['id']);
+    });
 
 
 
@@ -49,9 +57,10 @@ export class PrenotazioneLibroPage implements OnInit {
 
   }
   prenota(){
-    this.libro$=this.libroService.prenota(this.id$);
+    const string=this.recuperodata().replace('/', '').replace('/', '');
+    this.libro$=this.libroService.prenota(this.id$,this.utente$,string);
     this.showAlert();
-    //this._router.navigate(['/catalogo'],this.catalogoService.findBybiblio(this.idbiblio$).subscribe());
+
   }
   async showAlert() {
     const alert = await this.alertController.create({

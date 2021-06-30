@@ -36,6 +36,7 @@ if($utente->email_exist() && password_verify($password, $utente->password)){
     $jwt = JWT::encode($token, $key);
 
     $data = array(
+         "id"=>$utente->id,
         "nome" => $utente->nome,
         "cognome" => $utente->cognome,
         "email" => $utente->email

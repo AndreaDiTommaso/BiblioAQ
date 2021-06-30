@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import {Geolocation, Geoposition} from '@ionic-native/geolocation/ngx';
-declare var google;
+declare let google;
 
 @Component({
   selector: 'app-mappa',
@@ -20,7 +20,7 @@ export class MappaPage implements AfterViewInit {
   cityName;
   stateName;
   constructor(private geolocation: Geolocation) {
-    
+
 
    }
 
@@ -29,14 +29,14 @@ export class MappaPage implements AfterViewInit {
     const marker=new google.maps.Marker({
       position: this.mapOptions.center,
       map:this.map,
-      title: "Locazione corrente",
+      title: 'Locazione corrente',
     });
     this.geocodeLatLng(this.mapOptions.center);
 
   }
   geocodeLatLng(currentPosition) {
     const geocoder = new google.maps.Geocoder();
-    
+
     geocoder.geocode({ location: currentPosition },(results, status) => {
         if (status==='OK') {
           if(results[0]){
@@ -51,7 +51,7 @@ export class MappaPage implements AfterViewInit {
                 if(item.types.indexOf('"administrative_area_level_1"')!== -1){
                   this.stateName=item.short_name;
                 }
-                
+
               });
             }
 
@@ -64,10 +64,10 @@ export class MappaPage implements AfterViewInit {
             map: this.map,
           });
         } else {
-          window.alert("No results found");
+          window.alert('No results found');
         }
       }else {
-        window.alert("Geodecoder failed due to: "+status);
+        window.alert('Geodecoder failed due to: '+status);
       }
       });
     }
@@ -92,7 +92,7 @@ export class MappaPage implements AfterViewInit {
   ngAfterViewInit(): void {
 
 
-    this.geolocation.getCurrentPosition().then((resp:Geoposition) => {
+    this.geolocation.getCurrentPosition().then((resp: Geoposition) => {
       this.mapOptions.center.lat=resp.coords.latitude;
       this.mapOptions.center.lng=resp.coords.longitude;
       this.loadMap();
@@ -105,7 +105,7 @@ export class MappaPage implements AfterViewInit {
 
 
 
-    
+
   }
 
 }

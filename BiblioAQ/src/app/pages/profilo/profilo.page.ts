@@ -1,6 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { UtenteService } from 'src/app/services/utente.service';
-import { NavController } from '@ionic/angular';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Lingua, LinguaService} from '../../services/lingua.service';
+import {UtenteService} from '../../services/utente.service';
+import {BehaviorSubject} from 'rxjs';
+import {Utente} from '../../model/utente.model';
+import {NavController} from '@ionic/angular';
+import {TranslateService} from '@ngx-translate/core';
+
 
 @Component({
   selector: 'app-profilo',
@@ -9,14 +15,49 @@ import { NavController } from '@ionic/angular';
 })
 export class ProfiloPage implements OnInit {
 
-  constructor(private utenteService: UtenteService,
-              private navController: NavController) { }
+  private lingue: Lingua[];
+  private profiloFormModel: FormGroup;
+  private utente: Utente;
 
-  ngOnInit() {
 
+  constructor(private formBuilder: FormBuilder,
+              private translateService: TranslateService,
+              private linguaService: LinguaService,
+              private utenteService: UtenteService,
+              private navController: NavController,
+              ) {
   }
 
-  onLogOut(){
+  ngOnInit() {
+    this.lingue = this.linguaService.getLingue();
+    this.profiloFormModel = this.formBuilder.group({
+      email: ['', Validators.compose([
+        Validators.required
+      ])],
+      linguaPreferita: ['', Validators.compose([
+        Validators.required
+      ])]
+    });
+    this.linguaService.getLinguaAttuale().subscribe((lingua) => {
+      this.profiloFormModel.patchValue({linguaPreferita: lingua});
+    });
+    this.utenteService.getUtente().subscribe((utente) => {
+      this.profiloFormModel.patchValue({email: utente.email});
+      this.utente = utente;
+    });
+  }
+
+  onSubmit(): void {
+    this.translateService.use(this.profiloFormModel.value.linguaPreferita);
+    this.linguaService.updateLingua(this.profiloFormModel.value.linguaPreferita);
+    this.utente.email = this.profiloFormModel.value.email;
+    //this.utenteService.updateProfilo(this.utente).subscribe((nuovoUtente: Utente) => {
+     // this.navController.back();
+    //});
+  }
+
+
+onLogOut(){
     this.utenteService.logout();
     this.navController.navigateRoot('/menu');
 

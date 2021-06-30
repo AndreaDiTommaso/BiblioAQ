@@ -2,15 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import {Libro} from '../../model/libro.model';
 import {AlertController, NavController} from '@ionic/angular';
-import {Observable} from "rxjs";
-import {LibroService} from "../../services/libro.service";
-import{Router} from "@angular/router";
-import {BibliotecaService} from "../../services/biblioteca.service";
-import {CatalogoService} from "../../services/catalogo.service";
-import {UTENTE_STORAGE} from "../../constants";
-import {ID_UTENTE} from "../../constants";
+import {Observable} from 'rxjs';
+import {LibroService} from '../../services/libro.service';
+import{Router} from '@angular/router';
+import {BibliotecaService} from '../../services/biblioteca.service';
+import {CatalogoService} from '../../services/catalogo.service';
+import {UTENTE_STORAGE} from '../../constants';
+import {ID_UTENTE} from '../../constants';
 import {Storage} from '@ionic/storage';
-import {Utente} from "../../model/utente.model";
+import {Utente} from '../../model/utente.model';
 
 @Component({
   selector: 'app-prenotazione-libro',
@@ -25,7 +25,7 @@ export class PrenotazioneLibroPage implements OnInit {
    private scadenza$;
    private utente$;
 
-  constructor( private storage: Storage ,private navCtrl: NavController,private  catalogoService: CatalogoService, private _router:Router,private  alertController: AlertController, private bibliotecaService: BibliotecaService,private route: ActivatedRoute,private libroService: LibroService) { }
+   constructor( private storage: Storage ,private navCtrl: NavController,private  catalogoService: CatalogoService, private _router:Router,private  alertController: AlertController, private bibliotecaService: BibliotecaService,private route: ActivatedRoute,private libroService: LibroService) { }
 
   ngOnInit() {
 

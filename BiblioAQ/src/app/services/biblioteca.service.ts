@@ -21,4 +21,10 @@ export class BibliotecaService {
       const apiURL = `${URL.BIBLIOTECA}/`;
       return this.http.get<Biblioteca[]>(apiURL, {params});
   }
+  prenota(biblioId): Observable<Biblioteca[]>{
+    const params = new HttpParams().set('id', biblioId);
+    const apiURL = `${URL.BIBLIOTECAP}/`;
+    return this.http.get<Biblioteca[]>(apiURL, {params});
+
+  }
 }

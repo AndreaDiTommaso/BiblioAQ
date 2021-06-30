@@ -31,6 +31,7 @@ if($num>0){
             "latitudine" => $row['latitudine'],
             "longitudine" => $row['longitudine'],
             "posti" => $row['posti'],
+            "postiliberi" => $row['posti_liberi'],
             "info" => $row['info'],
             "immagine" => $row['immagine']
 

@@ -45,7 +45,17 @@
           <ion-label><strong>Posti: </strong>{{biblioteca.posti}}</ion-label>
         </li>
       </ul>
-      <ion-button [routerLink]="['/catalogo',biblioteca]" router-direction="forward"> Catalogo </ion-button>
+      <ion-label>
+        <ion-row>
+        <ion-col>
+          <ion-button [routerLink]="['/catalogo',biblioteca]" router-direction="forward"> Catalogo </ion-button>
+        </ion-col>
+
+        <ion-col>
+          <ion-button [routerLink]="['/prenotazione-accesso',biblioteca]" router-direction="forward"> Prenota</ion-button>
+        </ion-col>
+        </ion-row>
+      </ion-label>
     </ion-card-content>
   </ion-card>
 

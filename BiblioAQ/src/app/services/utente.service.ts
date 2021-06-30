@@ -25,55 +25,30 @@ export class UtenteService {
   private utente$: BehaviorSubject<Utente> = new BehaviorSubject<Utente>({} as Utente);
 
 
-  /*constructor(private http: HttpClient, private storage: Storage) {
-
-    this.storage.get(AUTH_TOKEN).then((token) => {
-      console.log(token);
-      this.authToken = token;
-      if (token !== null && token !== undefined && token !== '') {
-        this.loggedIn$.next(true);
-      }
-    });
-    this.storage.get(UTENTE_STORAGE).then((utente) => {
-      this.utente$.next(utente);
-    });
-
-  }*/
-
- /* constructor(private http: HttpClient, private storage: Storage){
-    this.storage.get(AUTH_TOKEN).then((token) => {
-      console.log(token);
-      this.authToken = token;
-      if (token !== null && token !== undefined && token !== '') {
-        this.loggedIn$.next(true);
-      }
-    });
-    this.storage.get(UTENTE_STORAGE).then((utente) => {
-      this.utente$.next(utente);
-    });
-  }
-  */
   constructor(private http: HttpClient, private storage:  Storage){}
 
   signup(account: Account): Observable<any> {
     return this.http.post<any>(URL.SIGNUP, account, {observe: 'response'}).pipe(
-      map((resp: HttpResponse<any>) => resp.body
-      )
-    );
+      map((resp: HttpResponse<any>) => {
+        const token = resp.body['jwt'];
+        //this.storage.create();
+        this.storage.set(AUTH_TOKEN, token);
+        this.storage.set(UTENTE_STORAGE, resp.body['utente']);
+        this.utente$.next(resp.body['utente']);
+        this.loggedIn$.next(true);
+        this.storage.get(AUTH_TOKEN).then((value: any) => {
+          alert(value)})
+        return resp.body}));
+
   }
   login(account: Account): Observable<Utente> {
     return this.http.post<any>(URL.LOGIN, account, {observe: 'response'}).pipe(
       map((resp: HttpResponse<any>) => {
-       // const token = resp.body.get('token');
-        //this.storage.set(AUTH_TOKEN, token);
-       // this.authToken = token;
-        // Utente memorizzato nello storage in modo tale che se si vuole cambiare il
-        // profilo dell'utente stesso non si fa una chiamata REST.
-       //this.storage.set(UTENTE_STORAGE,resp.body.get('id'));
-        //this.storage.set(UTENTE_STORAGE,'merda');
-
-        // update dell'observable dell'utente
-        this.utente$.next(resp.body);
+        const token = resp.body['jwt'];
+        this.storage.create();
+        this.storage.set(AUTH_TOKEN, token);
+        this.storage.set(UTENTE_STORAGE, resp.body['utente']);
+        this.utente$.next(resp.body['utente']);
         this.loggedIn$.next(true);
         return resp.body;
       }));
@@ -81,9 +56,9 @@ export class UtenteService {
 
   logout() {
     this.authToken = null;
-    this.loggedIn$.next(true);
-    //this.storage.remove(AUTH_TOKEN);
-    //this.storage.remove(UTENTE_STORAGE);
+    this.loggedIn$.next(false);
+    this.storage.remove(AUTH_TOKEN);
+    this.storage.remove(UTENTE_STORAGE);
 
     // Nessuna chiamata al server perche' JWT e' stateless quindi non prevede alcun logout.
     // Per gestirlo si dovrebbe fare lato server una blacklist.

@@ -39,8 +39,8 @@ export class RegistrazionePage implements OnInit {
 
   signup(){
     const account: Account = this.signupFormModel.value;
-    this.utenteService.signup(account).subscribe(data => {
-        alert('utente creato! AUTH TOKEN = ' + data.jwt);
+    this.utenteService.signup(account).subscribe((data) => {
+        alert('utente creato!');
 
       },
       (err: HttpErrorResponse) => {
@@ -52,10 +52,8 @@ export class RegistrazionePage implements OnInit {
         if(err.status === 400){
           alert ('impossibile create utente');
         }
-        if(err.status === 200){
-          alert ('utente creato');
-        }
-      });
+      }
+    );
   }
 
 }

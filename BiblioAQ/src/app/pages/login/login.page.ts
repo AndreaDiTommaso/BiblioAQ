@@ -26,10 +26,10 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
     this.loginFormModel = this.formBuilder.group({
-      username: ['amleto', Validators.compose([
+      email: ['', Validators.compose([
         Validators.required
       ])],
-      password: ['amleto', Validators.compose([
+      password: ['', Validators.compose([
         Validators.required
       ])]
     });
@@ -38,9 +38,10 @@ export class LoginPage implements OnInit {
 
   onLogin() {
     const account: Account = this.loginFormModel.value;
-    this.utenteService.login(account).subscribe((utente: Utente) => {
+    this.utenteService.login(account).subscribe((data: any) => {
+        alert("loggato!");
         this.loginFormModel.reset();
-        this.navController.navigateRoot('/menu');
+        this.navController.navigateRoot('/profilo');
       },
       (err: HttpErrorResponse) => {
         if (err.status === 401) {

@@ -1,6 +1,6 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {NavController, Platform} from '@ionic/angular';
-import {GoogleMaps, GoogleMapsEvent, LatLng} from '@ionic-native/google-maps';
+//import {GoogleMaps, GoogleMapsEvent, LatLng} from '@ionic-native/google-maps';
 
 
 declare let google;

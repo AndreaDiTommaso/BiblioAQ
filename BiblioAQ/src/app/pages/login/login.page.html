@@ -18,11 +18,11 @@
     <form [formGroup]="loginFormModel" class="list-form">
       <ion-item no-padding class="animated fadeInUp">
         <ion-label position="floating">
-          <ion-icon name="contact" item-start></ion-icon>{{ 'USERNAME' | translate }}</ion-label>
-        <ion-input color="secondary" type="email" formControlName="username"></ion-input>
+          <ion-icon name="contact" item-start></ion-icon>{{ 'EMAIL' | translate }}</ion-label>
+        <ion-input color="secondary" type="email" formControlName="email"></ion-input>
       </ion-item>
-      <p ion-text class="text08" *ngIf="loginFormModel.get('username').touched && loginFormModel.get('username').invalid">
-        <ion-text color="danger">{{ 'USERNAME_REQUIRED' | translate }}</ion-text>
+      <p ion-text class="text08" *ngIf="loginFormModel.get('email').touched && loginFormModel.get('email').invalid">
+        <ion-text color="danger">{{ 'EMAIL_REQUIRED' | translate }}</ion-text>
       </p>
       <ion-item no-padding class="animated fadeInUp">
         <ion-label position="floating">
@@ -37,8 +37,8 @@
           <ion-icon name="log-in"></ion-icon>
           {{ 'LOGIN_BUTTON' | translate }}
         </ion-button>
-        <ion-button [routerLink]="'/registrazione'">registrati
-
+        <ion-button icon-left size="medium" expand="full" shape="round" color="tertiary" tappable [routerLink]="['/registrazione']">
+          {{ 'SIGNUP_BUTTON' | translate }}
         </ion-button>
       </div>
     </form>

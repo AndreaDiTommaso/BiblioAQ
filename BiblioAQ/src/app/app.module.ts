@@ -12,6 +12,7 @@ import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {IonicStorageModule} from '@ionic/storage-angular';
+import { Drivers } from '@ionic/storage';
 
 
 // The translate loader needs to know where to load i18n files
@@ -37,7 +38,7 @@ export function createTranslateLoader(http: HttpClient) {
         }),
         IonicStorageModule.forRoot({
             name: 'biblioaq__db',
-            driverOrder: ['indexeddb', 'sqlite', 'websql']
+            driverOrder: [Drivers.IndexedDB, Drivers.LocalStorage, 'websql']
         }),
         AppRoutingModule],
     providers: [

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './guard/auth.guard';
 
 const routes: Routes = [
   {
@@ -47,9 +48,15 @@ const routes: Routes = [
   {
     path: 'prenotazione-libro',
     loadChildren: () => import('./pages/prenotazione-libro/prenotazione-libro.module').then( m => m.PrenotazioneLibroPageModule)
-  },  {
+  },
+  {
     path: 'cerca',
     loadChildren: () => import('./pages/cerca/cerca.module').then( m => m.CercaPageModule)
+  },
+  {
+    path: 'profilo',
+    loadChildren: () => import('./pages/profilo/profilo.module').then( m => m.ProfiloPageModule),
+    canActivate: [AuthGuard]
   },
 
 

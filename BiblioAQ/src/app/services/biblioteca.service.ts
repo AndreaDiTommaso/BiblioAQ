@@ -28,7 +28,7 @@ export class BibliotecaService {
     console.log(apiURL);
     console.log('params');
     console.log(params);
-    return this.http.get<any>(apiURL, {params});
+    return this.http.get<Biblioteca[]>(apiURL, {params});
 
 
   }

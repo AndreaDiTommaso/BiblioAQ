@@ -1,30 +1,21 @@
 <?php
-
-/*
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-*/
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
 include_once '../config/database.php';
 include_once '../models/biblioteca.php';
 $id = $_GET['id'];
-
 $database = new Database();
 $db = $database->getConnection();
 // Creo un nuovo oggetto Biblioteca
 $biblioteca = new Biblioteca($db);
+$result=$biblioteca->findById($id);
+$row = $result->fetch_assoc();
 
-
-$result = $biblioteca->findById($id);
-
-$num = $result->num_rows;
-// se vengono trovate biblioteche nel database
-if($num>0){
-    $biblio_arr = array();
-    while ($row = $result->fetch_assoc()){
+$biblioteca->prenota($id,$row['posti_liberi']);
+$biblio_arr = array();
+$result=$biblioteca->findById($id);
+while ($row = $result->fetch_assoc()){
         $biblio_item = array(
             "id" => $row['id'],
             "nome" => $row['nome'],
@@ -40,12 +31,5 @@ if($num>0){
 
         );
         array_push($biblio_arr, $biblio_item);
-    }
-    echo json_encode($biblio_arr);
-}else{
-    echo json_encode(
-        array("message" => "Nessuna biblioteca Trovata.")
-    );
 }
-
-?>
+    echo json_encode($biblio_arr);

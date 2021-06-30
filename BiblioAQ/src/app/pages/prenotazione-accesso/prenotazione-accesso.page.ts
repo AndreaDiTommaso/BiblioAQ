@@ -11,7 +11,7 @@ import {URL} from '../../constants';
   styleUrls: ['./prenotazione-accesso.page.scss'],
 })
 export class PrenotazioneAccessoPage implements OnInit {
-  private biblioteca$: Observable<Biblioteca>;
+  private biblioteca$: Observable<Biblioteca[]>;
 
   private event = {
     giorno:'',
@@ -21,12 +21,14 @@ export class PrenotazioneAccessoPage implements OnInit {
   private nome$;
   private posti$;
   private indirizzo$;
+  private id$;
 
   constructor(private navCtrl: NavController,private bibliotecaService: BibliotecaService,private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe((params: ParamMap) => {
-        this.biblioteca$ = this.bibliotecaService.findById(String(params.get('id')))[0];
+        this.biblioteca$ = this.bibliotecaService.findById(String(params.get('id')));
+        this.id$=params.get('id');
         this.nome$=params.get('nome');
         this.posti$=params.get('posti');
         this.indirizzo$=params.get('indirizzo');
@@ -54,5 +56,9 @@ export class PrenotazioneAccessoPage implements OnInit {
 
   goback(){
     this.navCtrl.back();
+  }
+  prenota(){
+    this.biblioteca$=this.bibliotecaService.prenota(this.id$);
+
   }
 }

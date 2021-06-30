@@ -51,14 +51,17 @@
         </ion-label>
 </ion-item>
         <ion-item>
-          <ion-label>Start Date</ion-label>
-          <ion-datetime displayFormat="DD MMM YYYY" [(ngModel)]="event.giorno"></ion-datetime>
+          <ion-label>Data:</ion-label>
+          <ion-datetime min="{{event.giorno}}" max="2022" displayFormat="DD MMM YYYY" [(ngModel)]="event.giorno"></ion-datetime>
         </ion-item>
         <ion-item>
-          <ion-label>Start Time</ion-label>
+          <ion-label>Ora:</ion-label>
           <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="event.ora"></ion-datetime>
         </ion-item>
+         <ion-button (click)="prenota()" >Conferma Prenotazione</ion-button>
 {{event.giorno}}
+        {{event.ora}}
+        {{this.id$}}
       </ion-list>
 
 

@@ -4,7 +4,7 @@ import { BibliotecaService } from 'src/app/services/biblioteca.service';
 import { Observable } from 'rxjs';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import {NavController} from '@ionic/angular';
-import {URL} from '../../constants';
+import {URL} from "../../constants";
 
 
 @Component({

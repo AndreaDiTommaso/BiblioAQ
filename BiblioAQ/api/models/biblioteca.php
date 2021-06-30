@@ -47,17 +47,5 @@ class Biblioteca{
                  return $result;
            }
     }
-    function prenota($id,$posti)
-
-        {
-        $posti=$posti-1;
-              $query = "UPDATE {$this->table_name} SET posti_liberi = {$posti} WHERE id = {$id} ;";
-
-               if($result = $this->conn->query($query))
-               {
-
-                     return $result;
-               }
-        }
 
 }

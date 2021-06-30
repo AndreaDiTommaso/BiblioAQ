@@ -8,8 +8,6 @@ export class Biblioteca {
     latitudine: string;
     longitudine: string;
     posti: number;
-    postiliberi:number;
     info: string;
     immagine:string;
-
 }

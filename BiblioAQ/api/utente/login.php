@@ -1,9 +1,5 @@
 <?php
 
-ini_set('display_errors', true);
-error_reporting(E_ALL);
-
-
 require "../config/database.php";
 require "../config/token.php";
 require "../models/utente.php";
@@ -27,53 +23,31 @@ $utente = new Utente($db);
 
 $data = json_decode(file_get_contents("php://input"));
 
-//$utente->email = $data->email;
-//$password = $data->password;
+$utente->email = $data->email;
+$password = $data->password;
 
-$utente->email = 'and@gmail.com';
-$password = 'ciao';
-//echo $utente->email_exist();
-//echo password_verify($password, $utente->password);
 if($utente->email_exist() && password_verify($password, $utente->password)){
 
     $token = array(
         "iat" => $issued,
         "exp" => $expire,
         "iss" => $issuer,
-        "data" => array(
-            "id" => $utente->id,
-            "nome" => $utente->nome,
-            "cognome" => $utente->cognome,
-            "email" => $utente->email
-
-
-        )
     );
     $jwt = JWT::encode($token, $key);
 
-             $item = array(
-                "id" => $utente->id,
-                "nome" => $utente->nome,
-                "cognome" => $utente->cognome,
-                "email" => $utente->email,
-                "password" => $utente->password,
-                "token"=>$jwt
+    $data = array(
+        "nome" => $utente->nome,
+        "cognome" => $utente->cognome,
+        "email" => $utente->email
+    );
 
-
-      );
-      //echo $item['id'];
-     // $item =json_encode($item);
 
     http_response_code(200);
- echo json_encode($item);
-   // $jwt = JWT::encode($token, $key);
-  /*  echo json_encode(array(
-        "message" => "login avvenuto con successo",
-        "jwt" => $jwt,
-        "item"=>$item
-    ));
-    $item =json_encode($item);
-    */
+    echo json_encode(array(
+ 	    "jwt" => $jwt,
+        "utente" => $data)
+    );
+
 
 } else{
     http_response_code(401);

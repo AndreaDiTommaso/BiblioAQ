@@ -1,15 +1,11 @@
 <?php
 
-
-
 include_once '../config/database.php';
 include_once '../models/utente.php';
 require "../config/token.php";
 require "../vendor/autoload.php";
 
 use \Firebase\JWT\JWT;
-
-
 
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
@@ -39,23 +35,25 @@ if($utente->email_exist()){
     $token = array(
         "iat" => $issued,
         "exp" => $expire,
-        "iss" => $issuer,
-        "data" => array(
-            "id" => $utente->id,
-            "nome" => $utente->nome,
-            "cognome" => $utente->cognome,
-            "email" => $utente->email
-        )
+        "iss" => $issuer
+     );
+     $data = array(
+     "nome" => $utente->nome,
+     "cognome" => $utente->cognome,
+     "email" => $utente->email
     );
     http_response_code(200);
 
     $jwt = JWT::encode($token, $key);
     echo json_encode(array(
-        "jwt" => $jwt
+        "jwt" => $jwt,
+        "utente" => $data
     ));
 
 }else{
     http_response_code(400);
 }
+
+?>  
 
 

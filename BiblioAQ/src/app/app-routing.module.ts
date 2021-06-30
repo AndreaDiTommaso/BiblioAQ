@@ -57,7 +57,11 @@ const routes: Routes = [
     path: 'profilo',
     loadChildren: () => import('./pages/profilo/profilo.module').then( m => m.ProfiloPageModule),
     canActivate: [AuthGuard]
+  },  {
+    path: 'prenotazione-accesso',
+    loadChildren: () => import('./pages/prenotazione-accesso/prenotazione-accesso.module').then( m => m.PrenotazioneAccessoPageModule)
   },
+
 
 
 

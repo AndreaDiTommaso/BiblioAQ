@@ -51,6 +51,10 @@ const routes: Routes = [
     path: 'cerca',
     loadChildren: () => import('./pages/cerca/cerca.module').then( m => m.CercaPageModule)
   },
+  {
+    path: 'prenotazione-accesso',
+    loadChildren: () => import('./pages/prenotazione-accesso/prenotazione-accesso.module').then( m => m.PrenotazioneAccessoPageModule)
+  },
 
 
 

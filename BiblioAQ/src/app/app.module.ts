@@ -13,6 +13,7 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {IonicStorageModule} from '@ionic/storage-angular';
 import { Drivers } from '@ionic/storage';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 
 // The translate loader needs to know where to load i18n files
@@ -42,6 +43,7 @@ export function createTranslateLoader(http: HttpClient) {
         }),
         AppRoutingModule],
     providers: [
+        Geolocation,
 
         //StatusBar,
         //SplashScreen,

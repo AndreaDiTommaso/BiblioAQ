@@ -8,7 +8,7 @@ import{Router} from '@angular/router';
 import {BibliotecaService} from '../../services/biblioteca.service';
 import {CatalogoService} from '../../services/catalogo.service';
 import {UTENTE_STORAGE} from '../../constants';
-import {ID_UTENTE} from '../../constants';
+
 import {Storage} from '@ionic/storage';
 import {Utente} from '../../model/utente.model';
 

@@ -5,7 +5,7 @@ import { IonicStorageModule } from '@ionic/storage-angular';
 
 import {Utente} from '../model/utente.model';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {AUTH_TOKEN, UTENTE_STORAGE, X_AUTH, URL, ID_UTENTE} from '../constants';
+import {AUTH_TOKEN, UTENTE_STORAGE, X_AUTH, URL, LOGGATO} from '../constants';
 import {map} from 'rxjs/operators';
 
 
@@ -34,7 +34,6 @@ export class UtenteService {
         //this.storage.create();
         this.storage.set(AUTH_TOKEN, token);
         this.storage.set(UTENTE_STORAGE, resp.body.utente);
-        this.storage.set(ID_UTENTE, resp.body.utente.id);
         this.utente$.next(resp.body.utente);
         this.loggedIn$.next(true);
         this.storage.get(AUTH_TOKEN).then((value: any) => {
@@ -46,9 +45,10 @@ export class UtenteService {
     return this.http.post<any>(URL.LOGIN, account, {observe: 'response'}).pipe(
       map((resp: HttpResponse<any>) => {
         const token = resp.body.jwt;
-        this.storage.create();
+        //this.storage.create();
         this.storage.set(AUTH_TOKEN, token);
         this.storage.set(UTENTE_STORAGE, resp.body.utente);
+        this.storage.set(LOGGATO, true);
         this.utente$.next(resp.body.utente);
         this.loggedIn$.next(true);
         return resp.body;
@@ -60,6 +60,7 @@ export class UtenteService {
     this.loggedIn$.next(false);
     this.storage.remove(AUTH_TOKEN);
     this.storage.remove(UTENTE_STORAGE);
+    this.storage.set(LOGGATO, false);
 
     // Nessuna chiamata al server perche' JWT e' stateless quindi non prevede alcun logout.
     // Per gestirlo si dovrebbe fare lato server una blacklist.

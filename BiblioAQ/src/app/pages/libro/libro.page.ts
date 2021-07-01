@@ -7,6 +7,7 @@ import { URL } from '../../constants';
 import {NavController} from "@ionic/angular";
 
 
+
 @Component({
   selector: 'app-libro',
   templateUrl: './libro.page.html',
@@ -18,15 +19,15 @@ export class LibroPage implements OnInit {
   private copie$;
 
 
-  constructor(private navCtrl: NavController,private route: ActivatedRoute,private libroService: LibroService) { }
+
+  constructor(private storage: Storage,private navCtrl: NavController,private route: ActivatedRoute,private libroService: LibroService) { }
   ngOnInit() {
       this.route.paramMap.subscribe((params: ParamMap) => {
       this.libro$ = this.libroService.findByid(params.get('id'));
     });
       this.libro$.subscribe((params: Libro) => {
       this.copie$ = params.copie;
-
-    });
+      });
   }
   goback(){
     this.navCtrl.back();

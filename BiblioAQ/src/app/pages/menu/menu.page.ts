@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NavigationExtras, Router} from '@angular/router';
-import {Storage} from "@ionic/storage";
-import {LOGGATO} from "../../constants";
+
 
 @Component({
   selector: 'app-menu',
@@ -10,11 +9,10 @@ import {LOGGATO} from "../../constants";
 })
 export class MenuPage implements OnInit {
 
-  constructor(private storage: Storage) { }
+  constructor() { }
 
   ngOnInit() {
-    this.storage.create();
-    this.storage.set(LOGGATO, false);
+
   }
 
 }

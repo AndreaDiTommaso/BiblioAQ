@@ -9,10 +9,7 @@ $database = new Database();
 $db = $database->getConnection();
 // Creo un nuovo oggetto Biblioteca
 $biblioteca = new Biblioteca($db);
-$result=$biblioteca->findById($id);
-$row = $result->fetch_assoc();
 
-$biblioteca->prenota($id,$row['posti_liberi']);
 $biblio_arr = array();
 $result=$biblioteca->findById($id);
 while ($row = $result->fetch_assoc()){
@@ -25,7 +22,6 @@ while ($row = $result->fetch_assoc()){
             "latitudine" => $row['latitudine'],
             "longitudine" => $row['longitudine'],
             "posti" => $row['posti'],
-            "postiliberi" => $row['posti_liberi'],
             "info" => $row['info'],
             "immagine" => $row['immagine']
 

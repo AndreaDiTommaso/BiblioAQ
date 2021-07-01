@@ -28,6 +28,8 @@ export class BibliotecaService {
     console.log(apiURL);
     console.log('params');
     console.log(params);
+    const result=this.http.get<Biblioteca[]>(apiURL, {params});
+     console.log(result);
     return this.http.get<Biblioteca[]>(apiURL, {params});
 
 

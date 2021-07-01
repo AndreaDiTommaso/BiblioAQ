@@ -20,7 +20,7 @@ export class LibroPage implements OnInit {
 
 
 
-  constructor(private storage: Storage,private navCtrl: NavController,private route: ActivatedRoute,private libroService: LibroService) { }
+  constructor(private navCtrl: NavController,private route: ActivatedRoute,private libroService: LibroService) { }
   ngOnInit() {
       this.route.paramMap.subscribe((params: ParamMap) => {
       this.libro$ = this.libroService.findByid(params.get('id'));

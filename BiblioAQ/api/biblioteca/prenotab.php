@@ -4,14 +4,19 @@ header("Content-Type: application/json; charset=UTF-8");
 
 include_once '../config/database.php';
 include_once '../models/biblioteca.php';
-$id = $_GET['id'];
+include_once '../models/prenotazione_accesso.php';
+$biblioteca_id = $_GET['biblioteca'];
+$utente= $_GET['utente'];
+$data= $_GET['data'];
 $database = new Database();
 $db = $database->getConnection();
 // Creo un nuovo oggetto Biblioteca
 $biblioteca = new Biblioteca($db);
+$prenotazione=new Prenotazione_accesso($db);
+$prenotazione->prenota($biblioteca_id,$utente,$data);
 
 $biblio_arr = array();
-$result=$biblioteca->findById($id);
+$result=$biblioteca->findById($biblioteca_id);
 while ($row = $result->fetch_assoc()){
         $biblio_item = array(
             "id" => $row['id'],

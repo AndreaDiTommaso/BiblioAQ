@@ -21,16 +21,23 @@ export class BibliotecaService {
       const apiURL = `${URL.BIBLIOTECA}/`;
       return this.http.get<Biblioteca[]>(apiURL, {params});
   }
-  prenota(biblioId: string): Observable<Biblioteca[]>{
-    const params = new HttpParams().set('id', biblioId);
-    const apiURL = `${URL.BIBLIOTECAP}/`;
+  posti($biblio,$data){
+    const params = {'id':$biblio,'data':$data};
+    const apiURL = `${URL.POSTI}/`;
+    return this.http.get(apiURL, {params});
+  }
+  prenota(biblio,data,utente){
+    const params = {'biblioteca':biblio,'data':data,'utente':utente};
+   // const apiURL = `${URL.BIBLIOTECAP}/`;
+    const apiURL = 'http://localhost:80/BiblioAQ_api/biblioteca/prenotab.php';
     console.log('url');
     console.log(apiURL);
     console.log('params');
     console.log(params);
-    const result=this.http.get<Biblioteca[]>(apiURL, {params});
-     console.log(result);
-    return this.http.get<Biblioteca[]>(apiURL, {params});
+    //const result=this.http.get<Biblioteca[]>(apiURL, {params});
+     //console.log(result);
+    return this.http.get(apiURL,{params});
+    console.log("ciaooo");
 
 
   }

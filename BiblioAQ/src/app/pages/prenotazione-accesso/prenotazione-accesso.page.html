@@ -53,16 +53,31 @@
 </ion-item>
         <ion-item>
           <ion-label>Data:</ion-label>
-          <ion-datetime min="{{event.giorno}}" max="2022" displayFormat="DD MM YYYY" [(ngModel)]="event.giorno"></ion-datetime>
+          <ion-datetime (ionChange)="aggiornaposti()" min="{{event.giorno}}" max="2022" displayFormat="DD MM YYYY" [(ngModel)]="event.giorno"></ion-datetime>
         </ion-item>
         <ion-item>
-          <ion-label>Ora:</ion-label>
-          <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="event.ora"></ion-datetime>
+          <ion-label>
+            <ion-row>
+              <ion-text class="bold">
+                POSTI DISPONIBILI <br> IL GIORNO SELEZIONATO:
+              </ion-text>
+            </ion-row>
+
+            <ion-row>
+              <ion-text>
+
+                {{this.posti$}}
+              </ion-text>
+            </ion-row>
+          </ion-label>
+
         </ion-item>
+
          <ion-button (click)="prenota()" >Conferma Prenotazione</ion-button>
-{{event.giorno}}
-        {{event.ora}}
-        {{this.id$}}
+
+
+
+
       </ion-list>
 
 

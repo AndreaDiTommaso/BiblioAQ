@@ -52,7 +52,6 @@ CREATE TABLE prenotazioni_libri (
 CREATE TABLE prenotazioni_accesso (
     id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
 	giorno CHAR(12) NOT NULL,
-	ora CHAR(10) NOT NULL,
 	id_biblioteca SMALLINT UNSIGNED NOT NULL,
 	id_utente SMALLINT UNSIGNED NOT NULL,
 	PRIMARY KEY (id),

@@ -47,7 +47,7 @@ class Biblioteca{
                  return $result;
            }
     }
-    function prenota($id,$posti)
+    function prenota($id,$utente,$data)
 
         {
         $posti=$posti-1;

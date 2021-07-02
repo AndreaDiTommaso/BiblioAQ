@@ -1,28 +1,12 @@
-<ion-header>
+<ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>Mappa</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <ion-card>
-    <div #mapElement class="map"></div>
-  <ion-card-header>
-    <ion-card-subtitle>Destinatione corrente</ion-card-subtitle>
-    <ion-card-title>{{cityName}},{{stateName}}</ion-card-title>
-  </ion-card-header>
-  <ion-card-content>
-    <b>Indirizzo:</b> {{address}}
-  </ion-card-content>
-
-
-  </ion-card>
+  <div #map id="map"></div>
+    
 
 
 

@@ -1,65 +1,72 @@
-<ion-header>
+<ion-header >
   <ion-toolbar>
-    <ion-title class="ion-text-center">menu</ion-title>
+
+
+    <ion-title>
+      <ion-img src="../../assets/icon/icon.jpg"></ion-img>
+    </ion-title>
+
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
-  <ion-grid  >
+<ion-content class="ion-text-center" >
+  <ion-item class="ion-text-center">
+<ion-text class="text20">Menu</ion-text>
+  </ion-item>
+  <ion-grid fixed="true" >
 
     <ion-row >
       <ion-col  >
-        <ion-tab-button class="ion-color-primary" [routerLink]="['/mappa']" router-direction="forward" >
-<ion-tab-button >
-            <ion-text [class.bold]="" class="text1">
+        <ion-tab-button mode="md"  layout="icon-start"  [routerLink]="['/mappa']" router-direction="forward" >
+<ion-tab-button mode="md" class="bg-primary" layout="icon-top" >
+            <ion-text [class.bold]="true" class="text1">
               Mappa
             </ion-text>
 <br>
 
-            <ion-icon name="map"></ion-icon>
+            <ion-icon color="dark" name="map"></ion-icon>
 </ion-tab-button>
         </ion-tab-button>
       </ion-col>
 
       <ion-col [offset]="-1" >
-        <ion-tab-button [routerLink]="['/lista']" router-direction="forward" >
-
-            <ion-text>
+        <ion-tab-button mode="md" layout="icon-start" class="ion-color-primary"  [routerLink]="['/lista']" router-direction="forward" >
+          <ion-tab-button mode="md" class="bg-primary" layout="icon-top" >
+            <ion-text  [class.bold]="true" class="text1">
               Lista
             </ion-text>
 
           <br>
-            <ion-icon name="list"></ion-icon>
-
+            <ion-icon color="dark" name="list"></ion-icon>
+          </ion-tab-button>
         </ion-tab-button>
       </ion-col>
     </ion-row>
 
     <ion-row>
       <ion-col >
-        <ion-tab-button [routerLink]="['/profilo']" router-direction="forward" fill="clear">
-
-            <ion-text>
+        <ion-tab-button mode="md" layout="icon-start" class="ion-color-primary" [routerLink]="['/profilo']" router-direction="forward" fill="clear">
+          <ion-tab-button mode="md" class="bg-primary" layout="icon-top" >
+            <ion-text  [class.bold]="true" class="text1">
               Profilo
             </ion-text>
 
           <br>
-            <ion-icon name="person"></ion-icon>
-
+            <ion-icon color="dark"   name="person"></ion-icon>
+          </ion-tab-button>
         </ion-tab-button>
       </ion-col>
 
       <ion-col [offset]="-1" >
-        <ion-tab-button [routerLink]="['/cerca']" router-direction="forward" fill="clear">
-
-            <ion-text [class.bold]="" class="text1">
+        <ion-tab-button mode="md" layout="icon-start" class="ion-color-primary" [routerLink]="['/cerca']" router-direction="forward" fill="clear">
+          <ion-tab-button mode="md" class="bg-primary" layout="icon-top" >
+            <ion-text  [class.bold]="true" class="text1">
               Cerca
             </ion-text>
 
           <br>
-            <ion-icon name="search"></ion-icon>
-
+            <ion-icon color="dark" name="search"></ion-icon>
+          </ion-tab-button>
         </ion-tab-button>
       </ion-col>
     </ion-row>

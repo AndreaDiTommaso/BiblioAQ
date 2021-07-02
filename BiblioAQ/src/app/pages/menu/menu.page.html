@@ -6,61 +6,61 @@
 
 <ion-content>
 
-  <ion-grid class="--ion-grid-width-sm" fixed="true">
+  <ion-grid  >
 
     <ion-row >
       <ion-col  >
-        <ion-card [routerLink]="['/mappa']" router-direction="forward" fill="clear">
-          <ion-card-header>
-            <ion-card-title>
+        <ion-tab-button class="ion-color-primary" [routerLink]="['/mappa']" router-direction="forward" >
+<ion-tab-button >
+            <ion-text [class.bold]="" class="text1">
               Mappa
-            </ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
-            <ion-icon name="map-outline"></ion-icon>
-          </ion-card-content>
-        </ion-card>
+            </ion-text>
+<br>
+
+            <ion-icon name="map"></ion-icon>
+</ion-tab-button>
+        </ion-tab-button>
       </ion-col>
 
-      <ion-col [offset]="-2" >
-        <ion-card [routerLink]="['/lista']" router-direction="forward" fill="clear">
-          <ion-card-header>
-            <ion-card-title>
+      <ion-col [offset]="-1" >
+        <ion-tab-button [routerLink]="['/lista']" router-direction="forward" >
+
+            <ion-text>
               Lista
-            </ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
-            <ion-icon name="list-outline"></ion-icon>
-          </ion-card-content>
-        </ion-card>
+            </ion-text>
+
+          <br>
+            <ion-icon name="list"></ion-icon>
+
+        </ion-tab-button>
       </ion-col>
     </ion-row>
 
     <ion-row>
       <ion-col >
-        <ion-card [routerLink]="['/profilo']" router-direction="forward" fill="clear">
-          <ion-card-header>
-            <ion-card-title>
+        <ion-tab-button [routerLink]="['/profilo']" router-direction="forward" fill="clear">
+
+            <ion-text>
               Profilo
-            </ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
-            <ion-icon name="person-outline"></ion-icon>
-          </ion-card-content>
-        </ion-card>
+            </ion-text>
+
+          <br>
+            <ion-icon name="person"></ion-icon>
+
+        </ion-tab-button>
       </ion-col>
 
-      <ion-col [offset]="-2" >
-        <ion-card [routerLink]="['/cerca']" router-direction="forward" fill="clear">
-          <ion-card-header>
-            <ion-card-title >
+      <ion-col [offset]="-1" >
+        <ion-tab-button [routerLink]="['/cerca']" router-direction="forward" fill="clear">
+
+            <ion-text [class.bold]="" class="text1">
               Cerca
-            </ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
-            <ion-icon name="search-outline"></ion-icon>
-          </ion-card-content>
-        </ion-card>
+            </ion-text>
+
+          <br>
+            <ion-icon name="search"></ion-icon>
+
+        </ion-tab-button>
       </ion-col>
     </ion-row>
 

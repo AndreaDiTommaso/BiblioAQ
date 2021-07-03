@@ -47,7 +47,8 @@ const routes: Routes = [
 
   {
     path: 'prenotazione-libro',
-    loadChildren: () => import('./pages/prenotazione-libro/prenotazione-libro.module').then( m => m.PrenotazioneLibroPageModule)
+    loadChildren: () => import('./pages/prenotazione-libro/prenotazione-libro.module').then( m => m.PrenotazioneLibroPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'cerca',
@@ -57,9 +58,11 @@ const routes: Routes = [
     path: 'profilo',
     loadChildren: () => import('./pages/profilo/profilo.module').then( m => m.ProfiloPageModule),
     canActivate: [AuthGuard]
-  },  {
-    path: 'prenotazione-accesso',
-    loadChildren: () => import('./pages/prenotazione-accesso/prenotazione-accesso.module').then( m => m.PrenotazioneAccessoPageModule)
+  },
+  {
+    path: 'accesso',
+    loadChildren: () => import('./pages/accesso/accesso.module').then( m => m.AccessoPageModule),
+    canActivate: [AuthGuard]
   },
 
 

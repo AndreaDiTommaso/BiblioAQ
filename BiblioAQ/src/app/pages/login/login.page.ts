@@ -39,7 +39,7 @@ export class LoginPage implements OnInit {
   onLogin() {
     const account: Account = this.loginFormModel.value;
     this.utenteService.login(account).subscribe((data: any) => {
-        alert("loggato!");
+        this.showLoginSuccess();
         this.loginFormModel.reset();
         this.navController.navigateRoot('/profilo');
       },
@@ -60,7 +60,14 @@ export class LoginPage implements OnInit {
 
     await alert.present();
   }
+  async showLoginSuccess() {
+    const alert = await this.alertController.create({
+      message: 'login effettuato con successo.',
+      buttons: ['OK']
+    });
 
+    await alert.present();
+  }
 
   private initTranslate() {
     this.translateService.get('LOGIN_ERROR_SUB_TITLE').subscribe((data) => {

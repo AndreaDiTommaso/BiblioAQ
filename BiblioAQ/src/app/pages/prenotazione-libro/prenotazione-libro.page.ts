@@ -25,7 +25,14 @@ export class PrenotazioneLibroPage implements OnInit {
    private scadenza$;
    private utente$;
 
-   constructor( private storage: Storage ,private navCtrl: NavController,private  catalogoService: CatalogoService, private _router:Router,private  alertController: AlertController, private bibliotecaService: BibliotecaService,private route: ActivatedRoute,private libroService: LibroService) { }
+   constructor( private storage: Storage,
+                private navCtrl: NavController,
+                private  catalogoService: CatalogoService,
+                private _router:Router,
+                private  alertController: AlertController,
+                private bibliotecaService: BibliotecaService,
+                private route: ActivatedRoute,
+                private libroService: LibroService) { }
 
   ngOnInit() {
 

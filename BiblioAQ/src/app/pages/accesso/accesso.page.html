@@ -20,7 +20,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content  *ngFor="let biblioteca of biblioteca$ | async" >
+<ion-content class="ion-align-items-center" *ngFor="let biblioteca of biblioteca$ | async" >
 
   <ion-card class="bg-tertiary" >
 
@@ -73,7 +73,8 @@
 
         </ion-item>
 
-        <ion-button (click)="prenota()" >Conferma Prenotazione</ion-button>
+        <ion-button *ngIf="this.posti$>0" (click)="prenota()" >Conferma Prenotazione</ion-button>
+        <ion-text *ngIf="this.posti$===0">non ci sono posti liberi per il giorno selezionato</ion-text>
 
 
 

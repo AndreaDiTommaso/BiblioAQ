@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {BibliotecaService} from "../../services/biblioteca.service";
-import {ActivatedRoute, ParamMap} from "@angular/router";
+import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {Observable} from "rxjs";
 import {Biblioteca} from "../../model/biblioteca.model";
 import {UTENTE_STORAGE} from "../../constants";
 import {Storage} from "@ionic/storage";
-import {NavController} from "@ionic/angular";
+import {AlertController, NavController} from "@ionic/angular";
 
 @Component({
   selector: 'app-accesso',
@@ -14,7 +14,7 @@ import {NavController} from "@ionic/angular";
 })
 export class AccessoPage implements OnInit {
   private biblioteca$: Observable<Biblioteca[]>;
-  private id$;
+  private id$=1;
   private event = {
     giorno:''
 
@@ -22,16 +22,24 @@ export class AccessoPage implements OnInit {
   private data$;
   private utente$;
   private posti$;
-  constructor(private navCtrl: NavController,private storage: Storage,private route: ActivatedRoute,private bibliotecaService: BibliotecaService) { }
+  constructor(
+    private navCtrl: NavController,
+    private storage: Storage,
+    private route: ActivatedRoute,
+    private _router:Router,
+    private  alertController: AlertController,
+    private bibliotecaService: BibliotecaService) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.biblioteca$ = this.bibliotecaService.findById(String(params.get('id')));});
 
     this.biblioteca$.subscribe((params: Biblioteca[]) => {
-      this.id$ = params[0].id;});
+      this.id$ = params[0].id;
+      this.posti$=params[0].posti;
+    });
     this.event.giorno=this.recuperodata();
-    const check=this.aggiornaposti();
+    this.aggiornaposti();
     this.storage.get(UTENTE_STORAGE).then((value: string)=>{
       this.utente$=String(value['id']);
     });
@@ -39,6 +47,28 @@ export class AccessoPage implements OnInit {
   }
   prenota(){
     this.biblioteca$ = this.bibliotecaService.accesso(this.id$,this.data$,this.utente$);
+    this.showAlert();
+
+  }
+  async showAlert() {
+    const alert = await this.alertController.create({
+
+
+      message: 'prenotazione effettuata con successo.',
+      buttons: [
+        {
+          text:'Torna al menù',
+          handler: () => {
+            this._router.navigate(['/menu']);
+          }
+        }],
+      backdropDismiss: false
+
+    });
+
+    await alert.present();
+
+    //const { role } = await alert.onDidDismiss();
 
   }
   aggiornaposti(){

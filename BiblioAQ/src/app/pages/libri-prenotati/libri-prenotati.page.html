@@ -19,15 +19,61 @@
 </ion-header>
 
 <ion-content>
-  <ion-item *ngFor="let prenotazione of prenotazionilibri$ | async" >
-    {{prenotazione.data}}
-    {{prenotazione.libro}}
+  <ion-label>
+  <ion-text class="text-primary">Prenotazioni</ion-text>
+  </ion-label>
+  <ion-segment value="libri" (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="libri">
+      <ion-label>Libri</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="accessi">
+      <ion-label>accessi</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <ion-list *ngIf="this.argomento$==='libri'">
+    <ion-card *ngFor="let prenotazione of prenotazionilibri$ | async" >
+
+
+    <ion-row *ngFor="let libro of libri$ | async" >
+      <ion-label  *ngIf="prenotazione.libro===libro.id" >
+        <ion-row >
+
+          <ion-col>
+            <ion-row>
+              <ion-text color="ion-color-primary" class="text1" >{{libro.titolo}}</ion-text>
+            </ion-row>
+            <ion-row >
+              <ion-text>{{libro.autore}}</ion-text>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+
+        <ion-list>
+          <ion-text>prenotazione effettua il:</ion-text>
+          <br>
+          {{prenotazione.data}}
+          <br>
+          <ion-text>presso la bibliioteca:</ion-text>
+          <br>
+          {{libro.nomebiblioteca}}
+        </ion-list>
+      </ion-label>
+
+    </ion-row>
+
+    </ion-card>
+
+
+
+
+  </ion-list>
+  <ion-card *ngIf="this.argomento$==='accessi'">
 
 
 
 
 
-  </ion-item>
+  </ion-card>
 
 
 
@@ -36,25 +82,30 @@
 
 
 
-  <ion-tabs>
-    <ion-tab-bar [routerLink]="'/profilo'" slot="bottom">
-      <ion-tab-button  tab="profilo">
-        <ion-icon name="person-circle"></ion-icon>
-        <ion-label>Profilo</ion-label>
-
-      </ion-tab-button>
-
-      <ion-tab-button selected="true" [routerLink]="['/libri-prenotati']" tab="prenotazioni">
-        <ion-icon name="bookmark"></ion-icon>
-        <ion-label>Prenotazioni</ion-label>
-      </ion-tab-button>
-
-      <ion-tab-button tab="map">
-        <ion-icon name="star"></ion-icon>
-        <ion-label>Preferiti</ion-label>
-      </ion-tab-button>
 
 
-    </ion-tab-bar>
-  </ion-tabs>
+
 </ion-content>
+<ion-toolbar>
+<ion-tabs >
+  <ion-tab-bar [routerLink]="'/profilo'" slot="bottom" >
+    <ion-tab-button  tab="profilo">
+      <ion-icon name="person-circle"></ion-icon>
+      <ion-label>Profilo</ion-label>
+
+    </ion-tab-button>
+
+    <ion-tab-button selected="true" [routerLink]="['/libri-prenotati']" tab="prenotazioni">
+      <ion-icon name="bookmark"></ion-icon>
+      <ion-label>Prenotazioni</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="map">
+      <ion-icon name="star"></ion-icon>
+      <ion-label>Preferiti</ion-label>
+    </ion-tab-button>
+
+
+  </ion-tab-bar>
+</ion-tabs>
+  </ion-toolbar>

@@ -19,11 +19,11 @@ import {Observable} from "rxjs";
 export class LibriPrenotatiPage implements OnInit {
 private utente$;
 private prenotazionilibri$: Observable<Prenotazionelibro[]>;
-private libri$;
+private libri$: Observable<Libro[]>;
 private libro$;
 private titolo$;
 private autore$;
-
+ private argomento$='libri';
 
   constructor(
     private storage: Storage,
@@ -36,6 +36,11 @@ private autore$;
       this.utente$=params.get('id');
     });
     this.prenotazionilibri$=this.pls.findByutente(this.utente$);
-  }
+    this.libri$= this.libroService.readbyutente(this.utente$);
 
+  }
+  segmentChanged(ev: any) {
+    this.argomento$=ev.target.value;
+    console.log(ev.target.value);
+  }
 }

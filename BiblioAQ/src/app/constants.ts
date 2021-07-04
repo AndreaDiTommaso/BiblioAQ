@@ -12,6 +12,7 @@ export const URL = {
     LIBRO: URL_BASE + '/libro/read.php',
     LIBROP: URL_BASE + '/libro/prenota.php',
     PL: URL_BASE + '/prenotazioni_libri/readbyutente.php',
+    LIBRIPRENOTATI: URL_BASE + '/libro/readbyutente.php',
     SIGNUP: URL_BASE + '/utente/signup.php',
     CERCA: URL_BASE + '/catalogo/list.php',
     IMMAGINI: URL_BASE + '/immagini',

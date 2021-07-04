@@ -1,0 +1,60 @@
+<ion-header >
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button [routerLink]="'/menu'">
+        <ion-icon  color="light" slot="end" name="home"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>
+      <ion-img src="../../assets/icon/icon.jpg"></ion-img>
+    </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="'/menu'">
+        <ion-icon color="light" slot="end" name="settings-sharp"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item *ngFor="let prenotazione of prenotazionilibri$ | async" >
+    {{prenotazione.data}}
+    {{prenotazione.libro}}
+
+
+
+
+
+  </ion-item>
+
+
+
+
+
+
+
+
+  <ion-tabs>
+    <ion-tab-bar [routerLink]="'/profilo'" slot="bottom">
+      <ion-tab-button  tab="profilo">
+        <ion-icon name="person-circle"></ion-icon>
+        <ion-label>Profilo</ion-label>
+
+      </ion-tab-button>
+
+      <ion-tab-button selected="true" [routerLink]="['/libri-prenotati']" tab="prenotazioni">
+        <ion-icon name="bookmark"></ion-icon>
+        <ion-label>Prenotazioni</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="map">
+        <ion-icon name="star"></ion-icon>
+        <ion-label>Preferiti</ion-label>
+      </ion-tab-button>
+
+
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-content>

@@ -16,6 +16,15 @@ export class LibroService {
     const apiURL = `${URL.LIBRO}/`;
     return this.http.get<Libro>(apiURL, {params});
   }
+ /* findByutente(utenteId: string): Observable<libro[]> {
+    const params = new HttpParams().set('utente', utenteId);
+    const apiURL = `${URL.LIBRO}/`;
+    const prenotazioni = this.http.get<Prenotazionelibro[]>(apiURL, {params});
+
+
+  }
+
+  */
   prenota(libro,utente,data){
 
     const params = {'libro':libro,'utente':utente,'data':data};

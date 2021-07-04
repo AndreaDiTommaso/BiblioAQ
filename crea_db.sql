@@ -63,10 +63,12 @@ CREATE TABLE prenotazioni_accesso (
 CREATE TABLE preferiti (
     id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
 	id_utente SMALLINT UNSIGNED NOT NULL,
-	libri TEXT,
+	id_libro SMALLINT UNSIGNED NOT NULL,
 	PRIMARY KEY (id),
 	INDEX (id_utente),
-	FOREIGN KEY (id_utente) REFERENCES utenti(id)
+	FOREIGN KEY (id_utente) REFERENCES utenti(id),
+	INDEX (id_libro),
+	FOREIGN KEY (id_libro) REFERENCES libri(id)
 );
 INSERT INTO utenti VALUES (NULL, 'Mario', 'Rossi','emailfasulla@boh.it','password');
 INSERT INTO biblioteche VALUES (NULL, 'La tana di Lupoleone', 30,'8:00-18:00','348 074 7694','Via Antica Arischia, 20','42.37060138538752', '13.366074415740936','bella biblioteca','lupoleone.jpg');

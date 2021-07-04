@@ -47,6 +47,7 @@ export class PrenotazioneLibroPage implements OnInit {
     });
     this.storage.get(UTENTE_STORAGE).then((value: string)=>{
       this.utente$=String(value['id']);
+
     });
 
 

@@ -62,8 +62,6 @@ onLogOut(){
     this.navController.navigateRoot('/menu');
 
   }
-  goback(){
-    this.navController.navigateRoot('/menu');
-  }
+
 
 }

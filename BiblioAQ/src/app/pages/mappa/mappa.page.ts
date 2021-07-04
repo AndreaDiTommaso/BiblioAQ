@@ -64,15 +64,27 @@ export class MappaPage {
                               '<h2 id ="firstHeading" class"firstHeading">'+marker.title+'</h2>'+
                               '<p>Latitude: ' + marker.latitude + '</p>' +
                               '<p>Longitide: ' + marker.longitude +'</p>'+
+                              '<ion-button id="navigate">Navigate</ion-button>' +
                               '</div>';
-  let infoWindow=new google.maps.infoWindow({
+  let infoWindow=new google.maps.InfoWindow({
     content: infoWindowContent
   });
 
   marker.addListener('click',()=>{
     this.closeAllInfoWindows();
     infoWindow.open(this.map, marker);
-  });
+
+    google.maps.event.addListenerOnce(infoWindow, 'domready',()=>{
+      document.getElementById('navigate').addEventListener('click',()=>{
+        console.log('navigate button clicked!');
+        //code to navigate using google maps app
+        //window.open('https://www.google.com/maps/dir?api=1&destination='+marker.latitude+','+marker.longitude);
+        window.open('https://www.google.it/maps/dir///'+marker.latitude+','+marker.longitude);
+
+      });
+    });
+
+    });
   this.infoWindows.push(infoWindow);
   }
 

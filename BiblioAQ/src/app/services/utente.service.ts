@@ -28,7 +28,7 @@ export class UtenteService {
   constructor(private http: HttpClient, private storage:  Storage){}
 
   signup(account: Account): Observable<any> {
-    return this.http.post<any>(URL.SIGNUP, account, {observe: 'response'}).pipe(
+   return this.http.post<any>(URL.SIGNUP, account, {observe: 'response'}).pipe(
       map((resp: HttpResponse<any>) => {
         const token = resp.body.jwt;
         //this.storage.create();
@@ -39,6 +39,7 @@ export class UtenteService {
         this.storage.get(AUTH_TOKEN).then((value: any) => {
           alert(value);});
         return resp.body;}));
+
 
   }
   login(account: Account): Observable<Utente> {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {AlertController, NavController} from '@ionic/angular';
+import {AlertController, NavController, ToastController} from '@ionic/angular';
 import {Biblioteca} from '../../model/biblioteca.model';
 import {Utente} from '../../model/utente.model';
 import { Account, UtenteService } from 'src/app/services/utente.service';
@@ -18,7 +18,9 @@ export class RegistrazionePage implements OnInit {
   private signupFormModel: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
-              private utenteService: UtenteService) { }
+              private utenteService: UtenteService,
+              private navController: NavController,
+              private toastController: ToastController) { }
 
   ngOnInit() {
     this.signupFormModel = this.formBuilder.group({
@@ -40,20 +42,34 @@ export class RegistrazionePage implements OnInit {
   signup(){
     const account: Account = this.signupFormModel.value;
     this.utenteService.signup(account).subscribe((data) => {
-        alert('utente creato!');
+        this.presentToast('utente creato!');
 
       },
       (err: HttpErrorResponse) => {
 
         if(err.status === 406){
-          alert ('email già esistente');
+          this.presentToast('email già esistente');
         }
-
+else{
         if(err.status === 400){
-          alert ('impossibile create utente');
+          this.presentToast('impossibile create utente');
+        }
+        else{
+          this.presentToast('utente creato!');
+          this.navController.navigateRoot('/menu')
+
+        }
         }
       }
     );
+  }
+  async presentToast(text) {
+    const toast = await this.toastController.create({
+      message: text,
+      duration: 2000,
+      position: 'top'
+    });
+    toast.present();
   }
 
 }

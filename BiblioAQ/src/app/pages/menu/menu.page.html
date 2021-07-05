@@ -60,7 +60,7 @@
       </ion-col>
 
       <ion-col [offset]="-1" >
-        <ion-tab-button mode="md" layout="icon-start" class="ion-color-primary" [routerLink]="['/cerca']" router-direction="forward" fill="clear">
+        <ion-tab-button  mode="md" layout="icon-start" class="ion-color-primary" [routerLink]="['/cerca']" router-direction="forward" fill="clear">
           <ion-tab-button mode="md" class="bg-primary" layout="icon-top" >
             <ion-text  [class.bold]="true" class="text1">
               Cerca
@@ -72,6 +72,22 @@
         </ion-tab-button>
       </ion-col>
     </ion-row>
-
+    <br>
+    <div *ngIf="islogged$" margin-top="30px" align="center">
+      <ion-button (click)="logout()" expand="block" size="medium"  color="primary">
+        LOGOUT
+      </ion-button>
+    </div>
+    <div *ngIf="!islogged$" margin-top="30px" align="center">
+      <ion-button [routerLink]="['/login']" expand="block" size="medium"  color="primary">
+        LOGIN
+      </ion-button>
+    </div>
+    <div margin-top="30px" align="center">
+      <ion-button [routerLink]="['/registrazione']" expand="block" size="medium"  color="primary" >
+        REGISTRATI
+      </ion-button>
+    </div>
   </ion-grid>
+
 </ion-content>

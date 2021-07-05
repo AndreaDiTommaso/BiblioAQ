@@ -41,7 +41,7 @@ export class LoginPage implements OnInit {
     this.utenteService.login(account).subscribe((data: any) => {
         this.showLoginSuccess();
         this.loginFormModel.reset();
-        this.navController.navigateRoot('/profilo');
+        this.goback();
       },
       (err: HttpErrorResponse) => {
         if (err.status === 401) {
@@ -77,6 +77,8 @@ export class LoginPage implements OnInit {
       this.loginTitle = data;
     });
   }
-
+  goback(){
+    this.navController.back();
+  }
 }
 

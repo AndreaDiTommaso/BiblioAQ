@@ -1,7 +1,22 @@
-
-<ion-header>
+<ion-header >
   <ion-toolbar>
-    <ion-title color="light" text-center>{{ 'LOGIN_TITLE' | translate }}</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="goback()">
+
+        <ion-icon color="light" slot="start" name="chevron-back-outline"></ion-icon>
+
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>
+      <ion-img src="../../assets/icon/icon.jpg"></ion-img>
+    </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="'/menu'">
+        <ion-icon  color="light" slot="end" name="home"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 

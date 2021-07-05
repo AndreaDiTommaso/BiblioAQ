@@ -20,7 +20,7 @@
 
 <ion-content>
   <ion-label>
-  <ion-text class="text-primary">Prenotazioni</ion-text>
+  <ion-text class="text15">Prenotazioni</ion-text>
   </ion-label>
   <ion-segment mode="md" value="libri" (ionChange)="segmentChanged($event)">
     <ion-segment-button value="libri">
@@ -37,26 +37,31 @@
     <ion-row *ngFor="let libro of libri$ | async" >
       <ion-label  *ngIf="prenotazione.libro===libro.id" >
         <ion-row >
-
+<ion-item>
           <ion-col>
             <ion-row>
-              <ion-text color="ion-color-primary" class="text1" >{{libro.titolo}}</ion-text>
+              <ion-text color="ion-color-primary" class="bold" >{{libro.titolo}}</ion-text>
             </ion-row>
             <ion-row >
               <ion-text>{{libro.autore}}</ion-text>
             </ion-row>
           </ion-col>
+</ion-item>
         </ion-row>
-
+<ion-item>
         <ion-list>
-          <ion-text>prenotazione effettua il:</ion-text>
+
+          <ion-text class="bold">prenotazione effettua il:</ion-text>
           <br>
-          {{this.modificadata(prenotazione.data)}}
+          <ion-text>{{this.modificadata(prenotazione.data)}}</ion-text>
+
           <br>
-          <ion-text>presso la bibliioteca:</ion-text>
+          <ion-text class="bold">presso la biblioteca:</ion-text>
           <br>
-          {{libro.nomebiblioteca}}
+          <ion-text>{{libro.nomebiblioteca}}</ion-text>
+
         </ion-list>
+</ion-item>
       </ion-label>
 
     </ion-row>
@@ -74,18 +79,21 @@
         <ion-row *ngFor="let biblioteca of biblioteche$ | async" >
           <ion-label  *ngIf="prenotazione.biblioteca===biblioteca.id" >
 
-
+<ion-item>
             <ion-list>
-              <ion-text>prenotazione effettua il:</ion-text>
+              <ion-text class="bold">prenotazione effettua il:</ion-text>
               <br>
               {{this.modificadata(prenotazione.data)}}
               <br>
-              <ion-text>presso la bibliioteca:</ion-text>
+              <ion-text class="bold">presso la biblioteca:</ion-text>
               <br>
-              {{biblioteca.nome}}
+              <ion-text>{{biblioteca.nome}}</ion-text>
+
               <br>
-              {{biblioteca.indirizzo}}
+              <ion-text>{{biblioteca.indirizzo}}</ion-text>
+
             </ion-list>
+</ion-item>
           </ion-label>
 
         </ion-row>

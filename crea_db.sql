@@ -70,7 +70,7 @@ CREATE TABLE preferiti (
 	INDEX (id_libro),
 	FOREIGN KEY (id_libro) REFERENCES libri(id)
 );
-INSERT INTO utenti VALUES (NULL, 'Mario', 'Rossi','emailfasulla@boh.it','password');
+INSERT INTO utenti VALUES (NULL, 'Mario', 'Rossi','email','$2y$10$eBUqn9F4jDiU7cJRG/b0jObkpJGXRnM2UDLbfMdSofUc7DTN3772y');
 INSERT INTO biblioteche VALUES (NULL, 'La tana di Lupoleone', 30,'8:00-18:00','348 074 7694','Via Antica Arischia, 20','42.37060138538752', '13.366074415740936','bella biblioteca','lupoleone.jpg');
 INSERT INTO biblioteche VALUES (NULL, 'Biblioteca Provinciale Salvatore Tommasi', 30,'8:00-18:00','086261964','Piazza del Palazzo, 30','42.35089219757118', '13.39926230167777','bella biblioteca','S_Tommasi.jpg');
 INSERT INTO libri VALUES (NULL, 'La fattoria degli animali', 'George Orwell','Mondadori','romanzo',1,'La tana di Lupoleone', TRUE,'Tutti gli animali sono uguali, ma alcuni animali sono più uguali degli altri. Stanchi dei soprusi, gli animali di una fattoria decidono di ribellarsi agli umani e, cacciato il proprietario, danno vita a un nuovo ordine fondato sull\'uguaglianza. Ben presto, però, emerge tra loro una nuova classe di burocrati, i maiali, che con astuzia, cupidigia e prepotenza si impongono sugli altri animali.','fattoria.jpg');

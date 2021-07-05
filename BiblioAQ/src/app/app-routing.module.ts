@@ -63,9 +63,11 @@ const routes: Routes = [
     path: 'accesso',
     loadChildren: () => import('./pages/accesso/accesso.module').then( m => m.AccessoPageModule),
     canActivate: [AuthGuard]
-  },  {
+  },
+  {
     path: 'libri-prenotati',
-    loadChildren: () => import('./pages/libri-prenotati/libri-prenotati.module').then( m => m.LibriPrenotatiPageModule)
+    loadChildren: () => import('./pages/libri-prenotati/libri-prenotati.module').then( m => m.LibriPrenotatiPageModule),
+    canActivate: [AuthGuard]
   },
 
 

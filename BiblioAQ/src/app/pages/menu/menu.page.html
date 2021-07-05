@@ -9,22 +9,26 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-text-center" >
-  <ion-item class="ion-text-center">
+<ion-content  >
+  <ion-item >
 <ion-text class="text20">Menu</ion-text>
   </ion-item>
+  <br>
+  <br>
   <ion-grid fixed="true" >
 
     <ion-row >
       <ion-col  >
         <ion-tab-button mode="md"  layout="icon-start"  [routerLink]="['/mappa']" router-direction="forward" >
 <ion-tab-button mode="md" class="bg-primary" layout="icon-top" >
+
             <ion-text [class.bold]="true" class="text1">
               Mappa
             </ion-text>
 <br>
 
             <ion-icon color="dark" name="map"></ion-icon>
+
 </ion-tab-button>
         </ion-tab-button>
       </ion-col>
@@ -41,9 +45,7 @@
           </ion-tab-button>
         </ion-tab-button>
       </ion-col>
-    </ion-row>
 
-    <ion-row>
       <ion-col >
         <ion-tab-button mode="md" layout="icon-start" class="ion-color-primary" [routerLink]="['/profilo']" router-direction="forward" fill="clear">
           <ion-tab-button mode="md" class="bg-primary" layout="icon-top" >

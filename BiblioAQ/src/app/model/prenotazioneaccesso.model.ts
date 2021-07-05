@@ -1,7 +1,7 @@
-export class Prenotazionelibro {
+export class Prenotazioneaccessi {
 
   id: number;
   utente: number;
-  libro: number;
+  biblioteca: number;
   data: string;
 }

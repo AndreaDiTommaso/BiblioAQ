@@ -3,6 +3,7 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import { URL } from '../constants';
 import { Biblioteca } from '../model/biblioteca.model';
 import { Observable } from'rxjs';
+import {Libro} from "../model/libro.model";
 
 @Injectable({
   providedIn: 'root'
@@ -31,4 +32,8 @@ export class BibliotecaService {
    const params = {'biblioteca':biblio,'data':data,'utente':utente};
    const apiURL = `${URL.BIBLIOTECAP}/`;
     return this.http.get<Biblioteca[]>(apiURL,{params});}
+  readbyutente(utente): Observable<Biblioteca[]>{
+    const params = {'utente':utente};
+    const apiURL = `${URL.ACCESSIPRENOTATI}/`;
+    return this.http.get<Biblioteca[]>(apiURL, {params});}
 }

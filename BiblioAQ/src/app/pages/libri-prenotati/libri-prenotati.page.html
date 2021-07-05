@@ -22,7 +22,7 @@
   <ion-label>
   <ion-text class="text-primary">Prenotazioni</ion-text>
   </ion-label>
-  <ion-segment value="libri" (ionChange)="segmentChanged($event)">
+  <ion-segment mode="md" value="libri" (ionChange)="segmentChanged($event)">
     <ion-segment-button value="libri">
       <ion-label>Libri</ion-label>
     </ion-segment-button>
@@ -51,7 +51,7 @@
         <ion-list>
           <ion-text>prenotazione effettua il:</ion-text>
           <br>
-          {{prenotazione.data}}
+          {{this.modificadata(prenotazione.data)}}
           <br>
           <ion-text>presso la bibliioteca:</ion-text>
           <br>
@@ -67,13 +67,40 @@
 
 
   </ion-list>
-  <ion-card *ngIf="this.argomento$==='accessi'">
+  <ion-list *ngIf="this.argomento$==='accessi'">
+
+      <ion-card *ngFor="let prenotazione of prenotazioniaccessi$ | async" >
+
+        <ion-row *ngFor="let biblioteca of biblioteche$ | async" >
+          <ion-label  *ngIf="prenotazione.biblioteca===biblioteca.id" >
+
+
+            <ion-list>
+              <ion-text>prenotazione effettua il:</ion-text>
+              <br>
+              {{this.modificadata(prenotazione.data)}}
+              <br>
+              <ion-text>presso la bibliioteca:</ion-text>
+              <br>
+              {{biblioteca.nome}}
+              <br>
+              {{biblioteca.indirizzo}}
+            </ion-list>
+          </ion-label>
+
+        </ion-row>
+
+      </ion-card>
+
+
+
+
+    </ion-list>
 
 
 
 
 
-  </ion-card>
 
 
 

@@ -86,6 +86,7 @@
     </ion-card>
     <ion-row>
       <ion-col>
+        <ion-button *ngIf="islogged$" >Aggiungi ai preferiti</ion-button>
          <ion-row *ngIf="copie$>0">
            <ion-col>
            <ion-button  [routerLink]="['/prenotazione-libro',libro]" > Prenota </ion-button>
@@ -103,7 +104,7 @@
         </ion-row>
 
 
-        <ion-button ion-button  large >Aggiungi ai preferiti</ion-button>
+
       </ion-col>
     </ion-row>
 

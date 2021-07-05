@@ -22,7 +22,6 @@ export class PrenotazioneLibroPage implements OnInit {
    private copie$;
    private id$;
    private idbiblio$;
-   private scadenza$;
    private utente$;
 
    constructor( private storage: Storage,
@@ -59,8 +58,6 @@ export class PrenotazioneLibroPage implements OnInit {
     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
     var yyyy = today.getFullYear();
     var string= dd + '/' + mm + '/' + yyyy;
-    dd = String(parseInt(String(today.getDate()))+3).padStart(2, '0');
-    this.scadenza$=dd + '/' + mm + '/' + yyyy;
     return string;
 
   }

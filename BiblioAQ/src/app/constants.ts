@@ -18,6 +18,8 @@ export const URL = {
     APREFERITO: URL_BASE + '/preferiti/aggiungi.php',
     RPREFERITO: URL_BASE + '/preferiti/rimuovi.php',
     CPREFERITO: URL_BASE + '/preferiti/verifica.php',
+    PREFERITI:  URL_BASE + '/preferiti/readbyutente.php',
+    LIBRIPREFERITI: URL_BASE + '/libro/readpreferiti.php',
     SIGNUP: URL_BASE + '/utente/signup.php',
     CERCA: URL_BASE + '/catalogo/list.php',
     IMMAGINI: URL_BASE + '/immagini',

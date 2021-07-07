@@ -91,3 +91,6 @@ INSERT INTO prenotazioni_libri VALUES (NULL, '10082021',3,1);
 INSERT INTO prenotazioni_libri VALUES (NULL, '25082021',6,1);
 INSERT INTO prenotazioni_accesso VALUES (NULL, '25082021',1,1);
 INSERT INTO prenotazioni_accesso VALUES (NULL, '6082021',2,1);
+INSERT INTO preferiti VALUES (NULL, 1,1);
+INSERT INTO preferiti VALUES (NULL, 1,13);
+INSERT INTO preferiti VALUES (NULL, 1,6);

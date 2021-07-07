@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {AlertController, NavController, ToastController} from '@ionic/angular';
-import {Biblioteca} from '../../model/biblioteca.model';
-import {Utente} from '../../model/utente.model';
+import {AlertController, NavController} from '@ionic/angular';
 import { Account, UtenteService } from 'src/app/services/utente.service';
 import { HttpErrorResponse } from '@angular/common/http';
 
@@ -20,7 +18,7 @@ export class RegistrazionePage implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private utenteService: UtenteService,
               private navController: NavController,
-              private toastController: ToastController) { }
+              private alertController: AlertController) { }
 
   ngOnInit() {
     this.signupFormModel = this.formBuilder.group({
@@ -42,20 +40,20 @@ export class RegistrazionePage implements OnInit {
   signup(){
     const account: Account = this.signupFormModel.value;
     this.utenteService.signup(account).subscribe((data) => {
-        this.presentToast('utente creato!');
+
 
       },
       (err: HttpErrorResponse) => {
 
         if(err.status === 406){
-          this.presentToast('email già esistente');
+          this.showAllert('email già esistente');
         }
 else{
         if(err.status === 400){
-          this.presentToast('impossibile create utente');
+          this.showAllert('impossibile create utente');
         }
         else{
-          this.presentToast('utente creato!');
+          this.showAllert('utente creato!');
           this.navController.navigateRoot('/menu')
 
         }
@@ -63,13 +61,13 @@ else{
       }
     );
   }
-  async presentToast(text) {
-    const toast = await this.toastController.create({
-      message: text,
-      duration: 2000,
-      position: 'top'
-    });
-    toast.present();
-  }
 
+  async showAllert(text) {
+    const alert = await this.alertController.create({
+      message: text,
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Observable} from 'rxjs';
+import {async, Observable} from 'rxjs';
 import {Libro} from '../../model/libro.model';
 import {LibroService} from '../../services/libro.service';
 import {ActivatedRoute, ParamMap} from '@angular/router';
@@ -75,7 +75,7 @@ export class LibroPage implements OnInit {
 
   }
   goback(){
-    this.navCtrl.back();
+    this.navCtrl.back() ;
   }
 
 }

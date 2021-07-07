@@ -13,6 +13,7 @@ import {Prenotazioneaccessi} from "../../model/prenotazioneaccesso.model";
 import {PrenotazioniaccessiService} from "../../services/prenotazzioniaccessi.service";
 import {BibliotecaService} from "../../services/biblioteca.service";
 import {Biblioteca} from "../../model/biblioteca.model";
+import {UtenteService} from "../../services/utente.service";
 
 // noinspection JSPotentiallyInvalidUsageOfClassThis
 @Component({
@@ -22,6 +23,7 @@ import {Biblioteca} from "../../model/biblioteca.model";
 })
 export class LibriPrenotatiPage implements OnInit {
 private utente$;
+private idutente$;
 private prenotazionilibri$: Observable<Prenotazionelibro[]>;
 private libri$: Observable<Libro[]>;
 private prenotazioniaccessi$: Observable<Prenotazioneaccessi[]>;
@@ -33,17 +35,19 @@ private biblioteche$: Observable<Biblioteca[]>;
     private pls: PrenotazionilibriService,
     private pas: PrenotazioniaccessiService,
     private libroService: LibroService,
+    private utenteService: UtenteService,
     private bibliotecaService: BibliotecaService,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.route.paramMap.subscribe((params: ParamMap) => {
-      this.utente$=params.get('id');
+    this.utenteService.getUtente().subscribe((utente) => {
+      this.utente$ = utente;
+      this.idutente$= utente.id;
     });
-    this.prenotazionilibri$=this.pls.findByutente(this.utente$);
-    this.libri$= this.libroService.readbyutente(this.utente$);
-    this.prenotazioniaccessi$=this.pas.findByutente(this.utente$);
-    this.biblioteche$= this.bibliotecaService.readbyutente(this.utente$);
+    this.prenotazionilibri$=this.pls.findByutente(this.idutente$);
+    this.libri$= this.libroService.readbyutente(this.idutente$);
+    this.prenotazioniaccessi$=this.pas.findByutente(this.idutente$);
+    this.biblioteche$= this.bibliotecaService.readbyutente(this.idutente$);
   }
   segmentChanged(ev: any) {
     this.argomento$=ev.target.value;

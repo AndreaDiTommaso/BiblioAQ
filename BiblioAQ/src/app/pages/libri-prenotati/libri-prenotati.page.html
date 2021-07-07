@@ -123,19 +123,19 @@
 </ion-content>
 <ion-toolbar>
 <ion-tabs >
-  <ion-tab-bar [routerLink]="'/profilo'" slot="bottom" >
-    <ion-tab-button  tab="profilo">
+  <ion-tab-bar slot="bottom" >
+    <ion-tab-button  [routerLink]="'/profilo'" >
       <ion-icon name="person-circle"></ion-icon>
       <ion-label>Profilo</ion-label>
 
     </ion-tab-button>
 
-    <ion-tab-button selected="true" [routerLink]="['/libri-prenotati']" tab="prenotazioni">
+    <ion-tab-button selected="true" [routerLink]="'/libri-prenotati'" >
       <ion-icon name="bookmark"></ion-icon>
       <ion-label>Prenotazioni</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="map">
+    <ion-tab-button [routerLink]="'/preferiti'" >
       <ion-icon name="star"></ion-icon>
       <ion-label>Preferiti</ion-label>
     </ion-tab-button>

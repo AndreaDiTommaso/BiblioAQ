@@ -35,7 +35,10 @@ export class LibroService {
     const params = {'utente':utente};
     const apiURL = `${URL.LIBRIPRENOTATI}/`;
     return this.http.get<Libro[]>(apiURL, {params});}
-
+  readpreferiti(utente): Observable<Libro[]>{
+    const params = {'utente':utente};
+    const apiURL = `${URL.LIBRIPREFERITI}/`;
+    return this.http.get<Libro[]>(apiURL, {params});}
 
 
 

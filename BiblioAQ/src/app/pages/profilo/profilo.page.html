@@ -59,18 +59,18 @@
   </form>
   <ion-tabs>
     <ion-tab-bar slot="bottom">
-      <ion-tab-button selected="true" tab="profilo">
+      <ion-tab-button [routerLink]="'/profilo'" selected="true" >
         <ion-icon name="person-circle"></ion-icon>
         <ion-label>Profilo</ion-label>
 
       </ion-tab-button>
 
-      <ion-tab-button  [routerLink]="['/libri-prenotati',utente]" tab="speakers">
+      <ion-tab-button  [routerLink]="'/libri-prenotati'" >
         <ion-icon name="bookmark-outline"></ion-icon>
         <ion-label>Prenotazioni</ion-label>
       </ion-tab-button>
 
-      <ion-tab-button tab="map">
+      <ion-tab-button   [routerLink]="'/preferiti'" >
         <ion-icon name="star"></ion-icon>
         <ion-label>Preferiti</ion-label>
       </ion-tab-button>

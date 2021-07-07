@@ -1,0 +1,87 @@
+<ion-header >
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button [routerLink]="'/menu'">
+        <ion-icon  color="light" slot="end" name="home"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>
+      <ion-img src="../../assets/icon/icon.jpg"></ion-img>
+    </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="'/menu'">
+        <ion-icon color="light" slot="end" name="settings-sharp"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-label>
+    <ion-text class="text15">Lista dei Preferiti</ion-text>
+  </ion-label>
+  <ion-refresher   slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      refreshingSpinner="circles"
+    >
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-list >
+    <ion-item  [routerLink]="['/libro',libro]" *ngFor="let libro of libri$ | async" >
+      <ion-row >
+        <ion-col size="3">
+          <img   src="http://localhost:80/BiblioAQ_api/copertine/{{libro.immagine}}" />
+        </ion-col>
+        <ion-col>
+          <ion-row>
+            <ion-text class="text-primary" >{{libro.titolo}}</ion-text>
+          </ion-row>
+          <ion-row >
+            <ion-text>{{libro.autore}}</ion-text>
+          </ion-row>
+          <ion-row >
+            <ion-text class="bold">biblioteca:</ion-text>
+            <ion-text>{{libro.nomebiblioteca}}</ion-text>
+          </ion-row>
+
+        </ion-col>
+      </ion-row>
+
+
+    </ion-item>
+
+
+
+
+  </ion-list>
+
+
+
+
+</ion-content>
+<ion-toolbar>
+  <ion-tabs >
+    <ion-tab-bar  slot="bottom" >
+      <ion-tab-button [routerLink]="'/profilo'"  >
+        <ion-icon name="person-circle"></ion-icon>
+        <ion-label>Profilo</ion-label>
+
+      </ion-tab-button>
+
+      <ion-tab-button [routerLink]="'/libri-prenotati'"  >
+        <ion-icon name="bookmark"></ion-icon>
+        <ion-label>Prenotazioni</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button [routerLink]="'/preferiti'"   selected="true"  >
+        <ion-icon name="star"></ion-icon>
+        <ion-label>Preferiti</ion-label>
+      </ion-tab-button>
+
+
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-toolbar>

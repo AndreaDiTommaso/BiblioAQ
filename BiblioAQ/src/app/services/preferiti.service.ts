@@ -4,6 +4,7 @@ import { URL } from '../constants';
 import { Libro} from '../model/libro.model';
 import { Observable } from'rxjs';
 import {Preferito} from "../model/preferito.model";
+import {Prenotazionelibro} from "../model/prenotazionelibro.model";
 
 @Injectable({
   providedIn: 'root'

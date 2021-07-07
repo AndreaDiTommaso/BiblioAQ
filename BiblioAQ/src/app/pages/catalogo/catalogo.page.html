@@ -52,7 +52,7 @@
   </ion-card>
   <ion-label [routerLink]="['/libro',libro]" *ngFor="let libro of catalogo$ | async" >
 
-  <ion-item *ngIf="!filtra$ || libro.titolo.toLowerCase().includes(ricercapertitolo$)">
+  <ion-item *ngIf="!filtra$ || libro.titolo.toLowerCase().includes(ricercapertitolo$) || libro.autore.toLowerCase().includes(ricercaperautore$) || libro.genere.toLowerCase().includes(ricercapergenere$)">
     <ion-row >
       <ion-col size="3">
     <img   src="http://localhost:80/BiblioAQ_api/copertine/{{libro.immagine}}" />

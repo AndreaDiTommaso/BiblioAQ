@@ -19,6 +19,9 @@ export class CatalogoPage implements OnInit
   private catalogo$: Observable<Libro[]>;
   private filtra$=false;
   private ricercapertitolo$: string;
+  private ricercaperautore$: string;
+  private ricercapergenere$: string;
+  private ricerca$ = 'titolo';
   constructor(private navCtrl: NavController,private catalogoService: CatalogoService,private route: ActivatedRoute) {}
 
   ngOnInit() {
@@ -38,7 +41,12 @@ export class CatalogoPage implements OnInit
   getItems(event) {
     if (event.target.value!==''){
       this.filtra$=true;
-      this.ricercapertitolo$=String(event.target.value).toLowerCase();
+      if(this.ricerca$==='titolo')
+      {this.ricercapertitolo$=String(event.target.value).toLowerCase();}
+      if(this.ricerca$==='autore')
+      {this.ricercaperautore$=String(event.target.value).toLowerCase();}
+      if(this.ricerca$==='genere')
+      {this.ricercapergenere$=String(event.target.value).toLowerCase();}
     }
     else{this.filtra$=false;}
 

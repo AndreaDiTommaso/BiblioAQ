@@ -21,7 +21,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-card [routerLink]="['/biblioteche',biblioteca.id]" router-direction="forward" fill="clear"
+  <ion-card mode="md" [routerLink]="['/biblioteche',biblioteca.id]" router-direction="forward" fill="clear"
             *ngFor="let biblioteca of biblioteche | async" button="true">
     <ion-card-header>
       <ion-card-title>

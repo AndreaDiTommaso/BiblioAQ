@@ -25,7 +25,7 @@
 
 
 <ion-content   padding >
-  <ion-card class="bg-tertiary" >
+  <ion-item  >
 
   <ion-refresher   slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content
@@ -35,18 +35,21 @@
     </ion-refresher-content>
   </ion-refresher>
 
-    <ion-row >
-      <ion-text  class="text15"> CATALOGO</ion-text>
-    </ion-row>
-    <ion-row  >
-      <ion-text  >    {{nomebiblioteca$}}</ion-text>
-    </ion-row>
-  </ion-card>
+    <ion-list >
+
+      <ion-text  class="text15"> CATALOGO</ion-text> <br>
+
+
+      <ion-text class="text12" >    {{nomebiblioteca$}}</ion-text>
+
+      
+    </ion-list>
+  </ion-item>
 
   <ion-searchbar   (ionInput)="getItems($event)" [debounce]="500" placeholder="Cerca">
 
   </ion-searchbar>
-  <ion-item>
+  <ion-item >
     <ion-text>Filtra ricerca per: </ion-text>
     <ion-select (ionChange)="setfiltro($event.detail.value)"  placeholder="{{this.ricerca$}}">
       <ion-select-option value="titolo">titolo</ion-select-option>

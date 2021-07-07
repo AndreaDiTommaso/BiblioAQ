@@ -19,6 +19,9 @@ export class CercaPage implements OnInit {
   private catalogo$: Observable<Libro[]>;
   private filtra$=false;
   private ricercapertitolo$: string;
+  private ricercaperautore$: string;
+  private ricercapergenere$: string;
+  private ricerca$ = 'titolo';
 
   constructor(private navCtrl: NavController,private catalogoService: CatalogoService, private route: ActivatedRoute) { }
 
@@ -29,7 +32,23 @@ export class CercaPage implements OnInit {
   getItems(event) {
     if (event.target.value!==''){
       this.filtra$=true;
-      this.ricercapertitolo$=String(event.target.value).toLowerCase();
+      if(this.ricerca$==='titolo')
+      {this.ricercapertitolo$=String(event.target.value).toLowerCase();
+        this.ricercaperautore$=null;
+        this.ricercapergenere$=null;
+
+      }
+      if(this.ricerca$==='autore')
+      {this.ricercaperautore$=String(event.target.value).toLowerCase();
+        this.ricercapertitolo$=null;
+        this.ricercapergenere$=null;
+      }
+
+      if(this.ricerca$==='genere')
+      {this.ricercapergenere$=String(event.target.value).toLowerCase();
+        this.ricercaperautore$=null;
+        this.ricercapertitolo$=null;
+      }
     }
     else{this.filtra$=false;}
 
@@ -38,5 +57,7 @@ export class CercaPage implements OnInit {
   goback(){
     this.navCtrl.back();
   }
-
+  setfiltro(value){
+    this.ricerca$=value;
+  }
 }

@@ -42,11 +42,22 @@ export class CatalogoPage implements OnInit
     if (event.target.value!==''){
       this.filtra$=true;
       if(this.ricerca$==='titolo')
-      {this.ricercapertitolo$=String(event.target.value).toLowerCase();}
+      {this.ricercapertitolo$=String(event.target.value).toLowerCase();
+        this.ricercaperautore$=null;
+        this.ricercapergenere$=null;
+
+      }
       if(this.ricerca$==='autore')
-      {this.ricercaperautore$=String(event.target.value).toLowerCase();}
+      {this.ricercaperautore$=String(event.target.value).toLowerCase();
+        this.ricercapertitolo$=null;
+        this.ricercapergenere$=null;
+      }
+
       if(this.ricerca$==='genere')
-      {this.ricercapergenere$=String(event.target.value).toLowerCase();}
+      {this.ricercapergenere$=String(event.target.value).toLowerCase();
+        this.ricercaperautore$=null;
+        this.ricercapertitolo$=null;
+      }
     }
     else{this.filtra$=false;}
 
@@ -55,5 +66,7 @@ export class CatalogoPage implements OnInit
   goback(){
     this.navCtrl.back();
   }
-
+setfiltro(value){
+    this.ricerca$=value;
+}
 }

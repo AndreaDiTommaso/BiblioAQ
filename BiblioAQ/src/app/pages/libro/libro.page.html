@@ -29,20 +29,23 @@
     <ion-slides pager>
       <ion-slide >
         <ion-col>
+          <ion-item>
+            <ion-text class="text-primary">
+              {{libro.titolo}}
+            </ion-text>
+
+          </ion-item>
+
 
 
           <img   src="{{path$}}{{libro.immagine}}" />
 
 
 
+
           <ion-list class="bg-tertiary">
 
-            <ion-item>
-              <ion-text class="text-primary">
-                {{libro.titolo}}
-              </ion-text>
 
-            </ion-item>
             <ion-item>
               <ion-text class="text-dark">
                 {{libro.autore}}

@@ -26,7 +26,7 @@
 
 <ion-content   padding >
   <ion-card class="bg-tertiary" >
-    <ion-list class="bg-tertiary">
+
   <ion-refresher   slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content
       pullingIcon="arrow-dropdown"
@@ -41,15 +41,25 @@
     <ion-row  >
       <ion-text  >    {{nomebiblioteca$}}</ion-text>
     </ion-row>
+  </ion-card>
 
   <ion-searchbar   (ionInput)="getItems($event)" [debounce]="500" placeholder="Cerca">
 
   </ion-searchbar>
+  <ion-item>
+    <ion-text>Filtra ricerca per: </ion-text>
+    <ion-select (ionChange)="setfiltro($event.detail.value)"  placeholder="{{this.ricerca$}}">
+      <ion-select-option value="titolo">titolo</ion-select-option>
+      <ion-select-option value="autore">autore</ion-select-option>
+      <ion-select-option value="genere">genere</ion-select-option>
+    </ion-select>
 
 
 
-    </ion-list>
-  </ion-card>
+  </ion-item>
+
+
+
   <ion-label [routerLink]="['/libro',libro]" *ngFor="let libro of catalogo$ | async" >
 
   <ion-item *ngIf="!filtra$ || libro.titolo.toLowerCase().includes(ricercapertitolo$) || libro.autore.toLowerCase().includes(ricercaperautore$) || libro.genere.toLowerCase().includes(ricercapergenere$)">

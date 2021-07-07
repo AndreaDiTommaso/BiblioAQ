@@ -24,8 +24,8 @@
 
 
 
-<ion-content  padding >
-  <ion-item >
+<ion-content  >
+
     <ion-list>
 
 
@@ -37,15 +37,26 @@
       <ion-searchbar   (ionInput)="getItems($event)" [debounce]="500" placeholder="Cerca">
 
       </ion-searchbar>
+      <ion-item >
+        <ion-text>Filtra ricerca per: </ion-text>
+        <ion-select (ionChange)="setfiltro($event.detail.value)"  placeholder="{{this.ricerca$}}">
+          <ion-select-option value="titolo">titolo</ion-select-option>
+          <ion-select-option value="autore">autore</ion-select-option>
+          <ion-select-option value="genere">genere</ion-select-option>
+        </ion-select>
 
+
+
+      </ion-item>
 
 
     </ion-list>
-  </ion-item>
+
   <ion-label [routerLink]="['/libro',libro]" *ngFor="let libro of catalogo$ | async" >
 
-    <ion-item *ngIf="!filtra$ || libro.titolo.toLowerCase().includes(ricercapertitolo$)">
-      <ion-row>
+    <ion-item *ngIf="!filtra$ || libro.titolo.toLowerCase().includes(ricercapertitolo$) || libro.autore.toLowerCase().includes(ricercaperautore$) || libro.genere.toLowerCase().includes(ricercapergenere$)">
+
+    <ion-row>
         <ion-col size="3">
           <img   src="http://localhost:80/BiblioAQ_api/copertine/{{libro.immagine}}" />
         </ion-col>

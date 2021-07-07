@@ -52,7 +52,9 @@ ion-text
 .bg-main {
   background-image: linear-gradient(-135deg, var(--ion-color-medium), var(--ion-color-light))
 }
-.center{ margin-left:25%; margin-right: 25%; width:50%}
+.center{align-content: center;
+align-items: center;
+text-align: center;}
 
 // Helpers //
 .w100 {
@@ -88,6 +90,7 @@ ion-text
 
 .text20 {
   font-size: 2rem;
+  color: var(--ion-color-primary);
 }
 
 .text-white {

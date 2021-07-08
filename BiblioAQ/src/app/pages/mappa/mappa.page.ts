@@ -1,55 +1,45 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import {Geolocation, Geoposition} from '@ionic-native/geolocation/ngx';
 import {ElementRef} from '@angular/core';
+import {Observable} from 'rxjs';
+import { Biblioteca} from '../../model/biblioteca.model';
+import {BibliotecaService} from '../../services/biblioteca.service';
+import {ParamMap} from '@angular/router';
+import {NavController} from '@ionic/angular';
 
-declare var google:any;
+
+declare let google: any;
 
 @Component({
   selector: 'app-mappa',
   templateUrl: './mappa.page.html',
   styleUrls: ['./mappa.page.scss'],
 })
-export class MappaPage {
+export class MappaPage implements OnInit {
 
-  map :any;
-  @ViewChild('map', {read:ElementRef,static: false}) mapRef:ElementRef;
+  map: any;
+  @ViewChild('map', {read: ElementRef, static: false}) mapRef: ElementRef;
 
-  infoWindows:any=[];
-  markers:any=[
-    {
-      title: "National Art Gallery",
-      latitude: "-17.824991",
-      longitude:"31.049295"
-    },
-    {
-      title: "Dominican Convent School",
-      latitude: "-17.822647",
-      longitude:"31.052042"
-    },
-    {
-      title: "West End Hospital",
-      latitude: "-17.820987",
-      longitude:"31.039682"
-    }
+  infoWindows: any = [];
 
-  ];
+  private biblioteche;
 
-  constructor() {}
+  constructor(private bibliotecaService: BibliotecaService,private navController: NavController) {
+  }
 
-  ionViewDidEnter()
-  {
+  ionViewDidEnter() {
     this.showMap();
   }
 
 
-  addMarkersToMap(markers){
-    for(let marker of markers){
-      let position=new google.maps.LatLng(marker.latitude,marker.longitude);
-      let mapMarker=new google.maps.Marker({
-        position:position,
-        title:marker.title,
-        latitude:marker.latitude,
-        longitude:marker.longitude
+  addMarkersToMap(biblioteche) {
+    for (const marker of biblioteche) {
+      const position = new google.maps.LatLng(marker.latitudine, marker.longitudine);
+      const mapMarker = new google.maps.Marker({
+        position,
+        title: marker.nome,
+        latitudine: marker.latitudine,
+        longitudine: marker.longitudine
 
       });
 
@@ -59,57 +49,76 @@ export class MappaPage {
 
   }
 
-  addInfoWindowToMarker(marker){
-    let infoWindowContent= '<div id="content">'+
-                              '<h2 id ="firstHeading" class"firstHeading">'+marker.title+'</h2>'+
-                              '<p>Latitude: ' + marker.latitude + '</p>' +
-                              '<p>Longitide: ' + marker.longitude +'</p>'+
-                              '<ion-button id="navigate">Navigate</ion-button>' +
-                              '</div>';
-  let infoWindow=new google.maps.InfoWindow({
-    content: infoWindowContent
-  });
+  addInfoWindowToMarker(marker) {
+    const infoWindowContent = '<div id="content">' +
+      '<h2 id ="firstHeading" class"firstHeading">' + marker.title + '</h2>' +
+      '<p>Latitude: ' + marker.latitudine + '</p>' +
+      '<p>Longitide: ' + marker.longitudine + '</p>' +
+      '<ion-button id="navigate">Navigate</ion-button>' +
+      '<ion-button id="visita" " >Visita</ion-button>' +
+      '</div>';
+    const infoWindow = new google.maps.InfoWindow({
+      content: infoWindowContent
+    });
 
-  marker.addListener('click',()=>{
-    this.closeAllInfoWindows();
-    infoWindow.open(this.map, marker);
+    marker.addListener('click', () => {
+      this.closeAllInfoWindows();
+      infoWindow.open(this.map, marker);
 
-    google.maps.event.addListenerOnce(infoWindow, 'domready',()=>{
-      document.getElementById('navigate').addEventListener('click',()=>{
-        console.log('navigate button clicked!');
-        //code to navigate using google maps app
-        //window.open('https://www.google.com/maps/dir?api=1&destination='+marker.latitude+','+marker.longitude);
-        window.open('https://www.google.it/maps/dir///'+marker.latitude+','+marker.longitude);
+      google.maps.event.addListenerOnce(infoWindow, 'domready', () => {
+        document.getElementById('navigate').addEventListener('click', () => {
+          console.log('navigate button clicked!');
+          //code to navigate using google maps app
+          //window.open('https://www.google.com/maps/dir?api=1&destination='+marker.latitude+','+marker.longitude);
 
+          window.open('https://www.google.it/maps/dir///' + marker.latitudine + ',' + marker.longitudine);
+
+        });
       });
-    });
+      google.maps.event.addListenerOnce(infoWindow,'event', () =>{
+        document.getElementById('visita').addEventListener('click',() => {
+          console.log('visita');
+          this.visita(marker);
+        });
+      });
 
     });
-  this.infoWindows.push(infoWindow);
+
+    this.infoWindows.push(infoWindow);
   }
 
-  closeAllInfoWindows(){
-    for(let window of this.infoWindows){
+  closeAllInfoWindows() {
+    for (const window of this.infoWindows) {
       window.close();
     }
   }
 
 
-
-
-
-
-
-  showMap(){
-    const location=new google.maps.LatLng(-17.824858,31.053028);
-    const options={
-      center:location,
-      zoom:15,
-      disableDefaultUI:true
-    }
+  showMap() {
+    const location = new google.maps.LatLng(42.3498, 13.3995);
+    const options = {
+      center: location,
+      zoom: 13,
+      disableDefaultUI: true
+    };
     this.map = new google.maps.Map(this.mapRef.nativeElement, options);
-    this.addMarkersToMap(this.markers);
+    this.addMarkersToMap(this.biblioteche);
   }
+
+  ngOnInit(): void {
+
+    this.bibliotecaService.list().subscribe((params: Biblioteca[]) => {
+      this.biblioteche = params;
+    });
+  }
+  visita(marker) {
+    console.log(marker);
+    this.navController.navigateRoot('/biblioteche',marker);
+  }
+
+
+}
+
 
 
 
@@ -198,4 +207,4 @@ export class MappaPage {
 
   }*/
 
-}
+

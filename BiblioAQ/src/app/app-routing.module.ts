@@ -73,7 +73,11 @@ const routes: Routes = [
     path: 'preferiti',
     loadChildren: () => import('./pages/preferiti/preferiti.module').then( m => m.PreferitiPageModule),
     canActivate: [AuthGuard]
+  },  {
+    path: 'impostazioni',
+    loadChildren: () => import('./pages/impostazioni/impostazioni.module').then( m => m.ImpostazioniPageModule)
   },
+
 
 
 

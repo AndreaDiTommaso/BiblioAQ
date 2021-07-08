@@ -1,10 +1,26 @@
-<ion-header [translucent]="true">
+<ion-header >
   <ion-toolbar>
-    <ion-title>Mappa</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="goback()">
+
+        <ion-icon color="light" slot="start" name="chevron-back-outline"></ion-icon>
+
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>
+      <ion-img src="../../assets/icon/icon.jpg"></ion-img>
+    </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="'/menu'">
+        <ion-icon  color="light" slot="end" name="home"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <div #map id="map"></div>
-    
+
 </ion-content>

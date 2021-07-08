@@ -37,6 +37,7 @@ export class MappaPage implements OnInit {
       const position = new google.maps.LatLng(marker.latitudine, marker.longitudine);
       const mapMarker = new google.maps.Marker({
         position,
+        id: marker.id,
         title: marker.nome,
         latitudine: marker.latitudine,
         longitudine: marker.longitudine
@@ -55,7 +56,7 @@ export class MappaPage implements OnInit {
       '<p>Latitude: ' + marker.latitudine + '</p>' +
       '<p>Longitide: ' + marker.longitudine + '</p>' +
       '<ion-button id="navigate">Navigate</ion-button>' +
-      '<ion-button id="visita" " >Visita</ion-button>' +
+      '<ion-button id="visita" > Visita</ion-button>' +
       '</div>';
     const infoWindow = new google.maps.InfoWindow({
       content: infoWindowContent
@@ -75,7 +76,7 @@ export class MappaPage implements OnInit {
 
         });
       });
-      google.maps.event.addListenerOnce(infoWindow,'event', () =>{
+      google.maps.event.addListenerOnce(infoWindow,'domready', () =>{
         document.getElementById('visita').addEventListener('click',() => {
           console.log('visita');
           this.visita(marker);
@@ -113,7 +114,10 @@ export class MappaPage implements OnInit {
   }
   visita(marker) {
     console.log(marker);
-    this.navController.navigateRoot('/biblioteche',marker);
+    this.navController.navigateForward(['/biblioteche',this.biblioteche[marker.id-1].id]);
+  }
+  goback(){
+    this.navController.back();
   }
 
 

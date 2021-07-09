@@ -26,6 +26,7 @@
   "LOGIN_TITLE": "Login",
   "LOGIN_ERROR_TITLE": "Errore Login",
   "LOGIN_ERROR_SUB_TITLE": "Email e/o password errate!",
+  "LOGIN_SUC": "Login effettuato con successo",
 
 
   "MAP": "Mappa",

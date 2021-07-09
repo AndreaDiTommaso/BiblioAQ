@@ -46,7 +46,7 @@ export class UtenteService {
     return this.http.post<any>(URL.LOGIN, account, {observe: 'response'}).pipe(
       map((resp: HttpResponse<any>) => {
         const token = resp.body.jwt;
-        this.storage.create();
+        //this.storage.create();
         this.storage.set(AUTH_TOKEN, token);
         this.storage.set(UTENTE_STORAGE, resp.body.utente);
         this.utente$.next(resp.body.utente);

@@ -7,7 +7,7 @@ import {UtenteService} from './services/utente.service';
 import {TranslateService} from '@ngx-translate/core';
 import {Utente} from './model/utente.model';
 import {BehaviorSubject} from 'rxjs';
-
+import {Storage} from "@ionic/storage";
 
 @Component({
   selector: 'app-root',
@@ -22,12 +22,14 @@ export class AppComponent implements OnInit {
               private linguaService: LinguaService,
               private utenteService: UtenteService,
               private translate: TranslateService,
+              private storage: Storage,
               private navController: NavController) {
     this.initializeApp();
   }
 
   ngOnInit(): void {
     this.utente$ = this.utenteService.getUtente();
+    this.storage.create();
   }
 
 

@@ -16,6 +16,7 @@ export class LoginPage implements OnInit {
   private loginFormModel: FormGroup;
   private loginTitle: string;
   private loginSubTitle: string;
+  private successo: string;
 
   constructor(private formBuilder: FormBuilder,
               private alertController: AlertController,
@@ -63,7 +64,7 @@ export class LoginPage implements OnInit {
 
   async showLoginSuccess() {
     const alert = await this.alertController.create({
-      message: 'login effettuato con successo.',
+      message: this.successo,
       buttons: ['OK']
     });
 
@@ -76,6 +77,9 @@ export class LoginPage implements OnInit {
     });
     this.translateService.get('LOGIN_ERROR_TITLE').subscribe((data) => {
       this.loginTitle = data;
+    });
+    this.translateService.get('LOGIN_SUC').subscribe((data) => {
+      this.successo = data;
     });
   }
 

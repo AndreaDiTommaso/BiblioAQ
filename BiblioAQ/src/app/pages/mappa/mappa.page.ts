@@ -6,6 +6,7 @@ import { Biblioteca} from '../../model/biblioteca.model';
 import {BibliotecaService} from '../../services/biblioteca.service';
 import {ParamMap} from '@angular/router';
 import {NavController} from '@ionic/angular';
+import {TranslateService} from '@ngx-translate/core';
 
 
 declare let google: any;
@@ -23,8 +24,9 @@ export class MappaPage implements OnInit {
   infoWindows: any = [];
 
   private biblioteche;
-
-  constructor(private bibliotecaService: BibliotecaService,private navController: NavController) {
+   private visit;
+   private naviga;
+  constructor(private bibliotecaService: BibliotecaService,private navController: NavController,private translateService: TranslateService) {
   }
 
   ionViewDidEnter() {
@@ -51,12 +53,20 @@ export class MappaPage implements OnInit {
   }
 
   addInfoWindowToMarker(marker) {
+    this.translateService.get('NAVIGATE').subscribe((data) => {
+      this.naviga = data;
+    });
+    this.translateService.get('DETAIL').subscribe((data) => {
+      this.visit = data;
+    });
     const infoWindowContent = '<div id="content">' +
       '<h2 id ="firstHeading" class"firstHeading">' + marker.title + '</h2>' +
-      '<p>Latitude: ' + marker.latitudine + '</p>' +
-      '<p>Longitide: ' + marker.longitudine + '</p>' +
-      '<ion-button id="navigate">Navigate</ion-button>' +
-      '<ion-button id="visita" > Visita</ion-button>' +
+      '<ion-button id="navigate"> ' +
+      this.naviga +
+    '</ion-button>' +
+      '<ion-button id="visita" >' +
+      this.visit +
+      '</ion-button>' +
       '</div>';
     const infoWindow = new google.maps.InfoWindow({
       content: infoWindowContent

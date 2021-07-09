@@ -19,7 +19,7 @@
   "ADD_FAVORITE": "Add to favorites " ,
   "REMOVE_FAV": "Remove from favorites",
   "BOOK_LEFT": "Remaining copies",
-
+  "ALLERT_COPIE":"there, are no copies available for booking at the moment",
 
   "LOGIN_TITLE": "Login",
   "LOGIN_ERROR_TITLE": "Login Error",

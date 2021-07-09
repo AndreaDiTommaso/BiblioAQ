@@ -86,7 +86,11 @@
   "LANGUAGE": "Language",
   "EMAIL_REQUIRED": "Email is required",
   "PREN_REIPILOGO": "Reservation booked on:",
-  "PREN_BIBLIO": "At the library:"
+  "PREN_BIBLIO": "At the library:",
+
+  "EMAIL_ERROR": "Email is already used",
+  "USER_ERROR": "Signup error",
+  "USER_SUCC": "Signup succeded"
 
 
 

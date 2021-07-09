@@ -86,7 +86,11 @@
   "LANGUAGE": "Lingua",
   "EMAIL_REQUIRED": "Email obbligatoria",
   "PREN_REIPILOGO": "Prenotazione effettuata il:",
-  "PREN_BIBLIO": "Presso la biblioteca:"
+  "PREN_BIBLIO": "Presso la biblioteca:",
+
+  "EMAIL_ERROR": "Email già esistente",
+  "USER_ERROR": "Impossibile creare utente",
+  "USER_SUCC": "Utente creato"
 
 
 

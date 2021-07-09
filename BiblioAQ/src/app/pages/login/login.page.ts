@@ -60,6 +60,7 @@ export class LoginPage implements OnInit {
 
     await alert.present();
   }
+
   async showLoginSuccess() {
     const alert = await this.alertController.create({
       message: 'login effettuato con successo.',
@@ -77,7 +78,8 @@ export class LoginPage implements OnInit {
       this.loginTitle = data;
     });
   }
-  goback(){
+
+  goback() {
     this.navController.back();
   }
 }

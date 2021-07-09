@@ -89,11 +89,11 @@
     </ion-card>
     <ion-row>
       <ion-col>
-        <ion-button (click)="aggiungiaipreferiti(libro.id)"  expand="block" *ngIf="islogged$ && !bool" >Aggiungi ai preferiti</ion-button>
-        <ion-button (click)="rimuovidaipreferiti(libro.id)"  expand="block" *ngIf="islogged$ && bool" >Rimuovi dai preferiti</ion-button>
+        <ion-button (click)="aggiungiaipreferiti(libro.id)"  expand="block" *ngIf="islogged$ && !bool" >{{"ADD_FAVORITE" | translate }}</ion-button>
+        <ion-button (click)="rimuovidaipreferiti(libro.id)"  expand="block" *ngIf="islogged$ && bool" >{{"REMOVE_FAV" | translate }}</ion-button>
          <ion-row *ngIf="copie$>0">
            <ion-col>
-           <ion-button  [routerLink]="['/prenotazione-libro',libro]" > Prenota </ion-button>
+           <ion-button  [routerLink]="['/prenotazione-libro',libro]" > {{"BOOK" | translate }} </ion-button>
            </ion-col>
              <ion-col>
 

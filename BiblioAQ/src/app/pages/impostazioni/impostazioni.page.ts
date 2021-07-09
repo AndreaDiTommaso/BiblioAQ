@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Lingua, LinguaService} from "../../services/lingua.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Utente} from "../../model/utente.model";
+import {Utente} from '../../model/utente.model';
 import {TranslateService} from "@ngx-translate/core";
 import {UtenteService} from "../../services/utente.service";
 import {NavController} from "@ionic/angular";

@@ -1,58 +1,93 @@
 {
-  "BACK_BUTTON_TEXT": "Back",
 
+  "BACK_BUTTON_TEXT":  "Back",
   "LOGIN_BUTTON": "Enter",
   "DONE_BUTTON": "Done",
   "SAVE_BUTTON": "Save",
   "CANCEL_BUTTON": "Cancel",
   "DELETE_BUTTON": "Delete",
+  "UPDATE_BUTTON": "Update",
+  "SIGN_UP_BUTTON": "Signup",
+  "CONFIRM_BUTTON": "Confirm",
+  "MENU_BUTTON": "Back to menù",
+  "SELECT_BUTTON":"Select",
+
+
+
+  "BOOK": "Reserve",
+  "CATALOG": "Catalog",
+  "ADD_FAVORITE": "Add to favorites " ,
+  "REMOVE_FAV": "Remove from favorites",
+  "BOOK_LEFT": "Remaining copies",
+
 
   "LOGIN_TITLE": "Login",
-  "LOGIN_ERROR_TITLE": "Login error",
-  "LOGIN_ERROR_SUB_TITLE": "Username and/or password Wrong!",
+  "LOGIN_ERROR_TITLE": "Login Error",
+  "LOGIN_ERROR_SUB_TITLE": "Email or password wrong!",
 
-  "PAGINA_COSTRUZIONE": "Page under construction!!!!!",
+
+  "MAP": "Mapp",
+  "PROFILE": "Profile",
+  "LIST": "List",
+  "SEARCH": "Search",
+
+
+  "ADD_FILTER": "Add filter",
+  "TITLE": "Title",
+  "AUTOR": "Autor",
+  "GENRE": "Genre",
+  "LIBRARY": "Library",
+
+
+  "ADDRESS": "Address",
+  "TELEFONO": "Telefon",
+  "ORARIO_TAB": "Calendar",
+  "SEAT": "Seats",
+
+
+  "DATE": "Date",
+  "SCHEDA": "ACCESS RESERVATION CARD",
+  "DISP": "FREE SEATS ON SELECTED DAY",
+
+
+  "ALLERT": "ATTENTION IF YOU PROCEED WITH THE BOOKING REMEMBER THAT THE BOOK YOU BOOKED WILL BE KEPT FOR 2 WORKING DAYS",
+  "RIEPILOGO": "Reservation summary",
+  "PREN_SUCCESSO": "reservation succeded",
+
+
+
 
   "USERNAME": "Username",
   "PASSWORD": "Password",
-  "USERNAME_REQUIRED": "Username required",
-  "PASSWORD_REQUIRED": "Password required",
 
-  "PIANO_STUDI_MENU": "Piano di Studi",
-  "TASSE_MENU": "Taxes",
-  "LIBRETTO_MENU": "Libretto",
-  "MIE_NOTIZIE_MENU": "My News",
+  "USERNAME_REQUIRED": "Email is required",
+  "PASSWORD_REQUIRED": "Password is required",
 
-  "APPROVAZIONE_PIANI_MENU": "Plan approvement",
-  "DIARIO_MENU": "Agenda",
-  "QUESTIONARIO_MENU": "Questionnaire",
 
-  "PROFILO_MENU": "Profile",
+
+  "NAVIGATE": "navigate",
+  "DETAIL": "Detail",
+
+
+  "PROFILO": "Profile",
   "LOGOUT_MENU": "Logout",
-  "NOTIZIE_TAB": "News",
-  "ORARIO_TAB": "Calendar",
-  "APPELLI_TAB": "Exam sessions",
-  "ESAMI_TAB": "Exams",
-  "LEZIONI_TAB": "Lectures",
+  "PRENOTAZIONI": "Reservations",
+  "PREFERITI": "Favorites",
+  "PREN_LIBRI": "Books",
+  "ACCESSI": "Access",
+  "LISTA_PREF": "Favorites list",
+
+
+
 
   "PROFILO_TITOLO": "Profile",
-  "MATRICOLA": "Matricola",
+
   "EMAIL": "Email",
   "LANGUAGE": "Language",
-  "EMAIL_REQUIRED": "Email mandatory",
+  "EMAIL_REQUIRED": "Email is required",
+  "PREN_REIPILOGO": "Reservation booked on:",
+  "PREN_BIBLIO": "At the library:"
 
-  "DETTAGLIO_NOTIZIA_TITOLO": "News Detail",
 
-  "INSEGNAMENTI_TITOLO": "Courses",
-  "DETTAGLIO_INSEGNAMENTO_TITOLO": "Detail",
-  "APPELLI_TITOLO": "Exam sessions",
-  "APPELLO_TITOLO": "Exam session",
-  "APPELLO_DESCRIZIONE": "Description",
-  "APPELLO_DESCRIZIONE_REQUIRED": "Description mandatory",
-  "APPELLO_DATA": "Date",
-  "APPELLO_DATA_REQUIRED": "Date mandatory",
-  "APPELLO_TIPOLOGIA_ESAME": "Type",
-  "APPELLO_TIPOLOGIA_ESAME_REQUIRED": "Exam Type mandatory",
-  "APPELLO_DELETE_TITLE": "Exam session",
-  "APPELLO_DELETE_MESSAGE": "Do you want to delete the exam session?"
+
 }

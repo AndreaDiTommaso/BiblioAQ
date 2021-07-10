@@ -36,8 +36,6 @@ export class UtenteService {
         this.storage.set(UTENTE_STORAGE, resp.body.utente);
         this.utente$.next(resp.body.utente);
         this.loggedIn$.next(true);
-        this.storage.get(AUTH_TOKEN).then((value: any) => {
-          alert(value);});
         return resp.body;}));
 
 

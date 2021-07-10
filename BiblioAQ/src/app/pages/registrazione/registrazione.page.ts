@@ -41,22 +41,18 @@ export class RegistrazionePage implements OnInit {
     const account: Account = this.signupFormModel.value;
     this.utenteService.signup(account).subscribe((data) => {
 
-
+      this.showAllert('utente creato!');
+      this.navController.navigateRoot('/menu')
       },
       (err: HttpErrorResponse) => {
 
         if(err.status === 406){
           this.showAllert('email già esistente');
         }
-else{
-        if(err.status === 400){
-          this.showAllert('impossibile create utente');
-        }
         else{
-          this.showAllert('utente creato!');
-          this.navController.navigateRoot('/menu')
-
-        }
+          if(err.status === 400){
+            this.showAllert('impossibile create utente');
+          }
         }
       }
     );
@@ -69,5 +65,9 @@ else{
     });
 
     await alert.present();
+  }
+
+  goback(){
+    this.navController.back() ;
   }
 }

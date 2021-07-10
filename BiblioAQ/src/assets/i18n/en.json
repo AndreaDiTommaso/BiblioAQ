@@ -11,6 +11,7 @@
   "CONFIRM_BUTTON": "Confirm",
   "MENU_BUTTON": "Back to menù",
   "SELECT_BUTTON":"Select",
+  "CONF_PREN_BUTTON": "Confirm reservation",
 
 
 
@@ -20,6 +21,7 @@
   "REMOVE_FAV": "Remove from favorites",
   "BOOK_LEFT": "Remaining copies",
   "ALLERT_COPIE":"there, are no copies available for booking at the moment",
+  "ALLERT_POSTI": "there are no seats available for booking at selected day",
 
   "LOGIN_TITLE": "Login",
   "LOGIN_ERROR_TITLE": "Login Error",
@@ -37,10 +39,11 @@
   "AUTOR": "Autor",
   "GENRE": "Genre",
   "LIBRARY": "Library",
+  "BIBLIO": "LIBRARY:",
 
 
   "ADDRESS": "Address",
-  "TELEFONO": "Telefon",
+  "TELEFONO": "Telephon",
   "ORARIO_TAB": "Calendar",
   "SEAT": "Seats",
 

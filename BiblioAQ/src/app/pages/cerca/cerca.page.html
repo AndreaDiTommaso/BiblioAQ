@@ -30,7 +30,7 @@
 
 
       <ion-row >
-        <ion-text  class="text15"> CERCA</ion-text>
+        <ion-text  class="text15"> {{"SEARCH" | translate }}</ion-text>
       </ion-row>
 
 
@@ -38,11 +38,11 @@
 
       </ion-searchbar>
       <ion-item >
-        <ion-text>Filtra ricerca per: </ion-text>
+        <ion-text> {{"ADD_FILTER" | translate }}: </ion-text>
         <ion-select (ionChange)="setfiltro($event.detail.value)"  placeholder="{{this.ricerca$}}">
-          <ion-select-option value="titolo">titolo</ion-select-option>
-          <ion-select-option value="autore">autore</ion-select-option>
-          <ion-select-option value="genere">genere</ion-select-option>
+          <ion-select-option value="titolo"> {{"TITLE" | translate}}</ion-select-option>
+          <ion-select-option value="autore">{{"AUTOR" | translate}}</ion-select-option>
+          <ion-select-option value="genere">{{"GENRE" | translate}}</ion-select-option>
         </ion-select>
 
 
@@ -68,7 +68,7 @@
             <ion-text>{{libro.autore}}</ion-text>
           </ion-row>
           <ion-row >
-            <ion-text class="bold">biblioteca:</ion-text>
+            <ion-text class="bold">{{"BIBLIO" | translate}}</ion-text>
             <ion-text>{{libro.nomebiblioteca}}</ion-text>
           </ion-row>
         </ion-col>

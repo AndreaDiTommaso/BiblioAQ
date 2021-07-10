@@ -11,6 +11,7 @@
   "CONFIRM_BUTTON": "Conferma",
   "MENU_BUTTON": "Torna al menù",
   "SELECT_BUTTON":"Seleziona",
+  "CONF_PREN_BUTTON": "Conferma prenotazione",
 
 
 
@@ -21,6 +22,7 @@
   "REMOVE_FAV": "Rimuovi dai preferiti",
   "BOOK_LEFT": "Copie rimanenti",
   "ALLERT_COPIE":  "non ci sono copie disponibili per la prenotazione al momento",
+  "ALLERT_POSTI": "non ci sono posti liberi per il giorno selezionato",
 
 
   "LOGIN_TITLE": "Login",
@@ -40,6 +42,7 @@
   "AUTOR": "Autore",
   "GENRE": "Genere",
   "LIBRARY": "Biblioteca",
+  "BIBLIO": "BIBLIOTECA:",
 
 
   "ADDRESS": "Indirizzo",

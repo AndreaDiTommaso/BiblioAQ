@@ -7,12 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { AccessoPageRoutingModule } from './accesso-routing.module';
 
 import { AccessoPage } from './accesso.page';
+import{ TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    TranslateModule.forChild(),
     AccessoPageRoutingModule
   ],
   declarations: [AccessoPage]

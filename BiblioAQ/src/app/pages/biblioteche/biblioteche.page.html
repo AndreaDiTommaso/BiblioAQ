@@ -33,16 +33,16 @@
 
       <ul>
         <li>
-          <ion-label><strong>Indirizzo: </strong>{{biblioteca.indirizzo}}</ion-label>
+          <ion-label><strong>{{"ADDRESS" | translate}}: </strong>{{biblioteca.indirizzo}}</ion-label>
         </li>
         <li>
-          <ion-label><strong>Tel: </strong>{{biblioteca.telefono}}</ion-label>
+          <ion-label><strong>{{"TELEFONO" | translate}}: </strong>{{biblioteca.telefono}}</ion-label>
         </li>
         <li>
-          <ion-label><strong>Orari: </strong>{{biblioteca.orari}}</ion-label>
+          <ion-label><strong>{{"ORARIO_TAB" | translate }}: </strong>{{biblioteca.orari}}</ion-label>
         </li>
         <li>
-          <ion-label><strong>Posti: </strong>{{biblioteca.posti}}</ion-label>
+          <ion-label><strong>{{"SEAT" | translate}}: </strong>{{biblioteca.posti}}</ion-label>
         </li>
       </ul>
 
@@ -51,10 +51,10 @@
     <ion-grid>
       <ion-row>
         <ion-col size="6">
-          <ion-button  expand="block" [routerLink]="['/catalogo',biblioteca]" router-direction="forward"> Catalogo </ion-button>
+          <ion-button  expand="block" [routerLink]="['/catalogo',biblioteca]" router-direction="forward"> {{"CATALOG" | translate}} </ion-button>
         </ion-col>
         <ion-col size="6" >
-          <ion-button  expand="block" [routerLink]="['/accesso',biblioteca]" router-direction="forward"> Prenota </ion-button>
+          <ion-button  expand="block" [routerLink]="['/accesso',biblioteca]" router-direction="forward"> {{"BOOK" | translate}} </ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>

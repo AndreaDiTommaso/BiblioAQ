@@ -7,12 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { CatalogoPageRoutingModule } from './catalogo-routing.module';
 
 import { CatalogoPage } from './catalogo.page';
+import {TranslateModule} from "@ngx-translate/core";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    TranslateModule.forChild(),
     CatalogoPageRoutingModule
   ],
   declarations: [CatalogoPage]

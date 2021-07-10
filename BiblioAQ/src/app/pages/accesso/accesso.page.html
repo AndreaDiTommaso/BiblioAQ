@@ -28,7 +28,7 @@
       <br>
       <ion-list-header >
         <ion-text   class="text-primary">
-          SCHEDA DI PRENOTAZIONE ACCESSO:
+          {{'SCHEDA' | translate }}
         </ion-text>
       </ion-list-header>
     </ion-card-title>
@@ -38,7 +38,7 @@
           <ion-label>
             <ion-row>
               <ion-text class="bold">
-                BIBLIOTECA:
+                {{'BIBLIO' | translate }}
               </ion-text>
             </ion-row>
 
@@ -52,14 +52,14 @@
 
         </ion-item>
         <ion-item>
-          <ion-label>Data:</ion-label>
+          <ion-label>{{'DATE' | translate }}</ion-label>
           <ion-datetime (ionChange)="aggiornaposti()" min="{{event.giorno}}" max="2022" displayFormat="DD MM YYYY" [(ngModel)]="event.giorno"></ion-datetime>
         </ion-item>
         <ion-item>
           <ion-label>
             <ion-row>
               <ion-text class="bold">
-                POSTI DISPONIBILI <br> IL GIORNO SELEZIONATO:
+                {{'DISP' | translate }}
               </ion-text>
             </ion-row>
 
@@ -73,8 +73,8 @@
 
         </ion-item>
 
-        <ion-button *ngIf="this.posti$>0" (click)="prenota()" >Conferma Prenotazione</ion-button>
-        <ion-text *ngIf="this.posti$===0">non ci sono posti liberi per il giorno selezionato</ion-text>
+        <ion-button *ngIf="this.posti$>0" (click)="prenota()" >{{"CONF_PREN_BUTTON" | translate }}</ion-button>
+        <ion-text *ngIf="this.posti$===0">{{"ALLERT_POSTI" | translate }}</ion-text>
 
 
 

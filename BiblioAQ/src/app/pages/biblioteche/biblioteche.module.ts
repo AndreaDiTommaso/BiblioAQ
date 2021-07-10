@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { BibliotechePageRoutingModule } from './biblioteche-routing.module';
 
 import { BibliotechePage } from './biblioteche.page';
+import {TranslateModule} from "@ngx-translate/core";
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { BibliotechePage } from './biblioteche.page';
     CommonModule,
     ReactiveFormsModule,
     IonicModule,
+    TranslateModule.forChild(),
     BibliotechePageRoutingModule
   ],
   declarations: [BibliotechePage]

@@ -92,8 +92,12 @@
 
   "EMAIL_ERROR": "Email già esistente",
   "USER_ERROR": "Impossibile creare utente",
-  "USER_SUCC": "Utente creato"
+  "USER_SUCC": "Utente creato",
 
-
-
+   "NOME": "Nome",
+   "COGNOME": "Cognome",
+   "NAME_REQUIRED": "Nome richiesto",
+   "LASTNAME_REQUIRED":"Cognome richiesto",
+   "EMAIL_REQUIRED": "Email richiesta",
+   "PASSWORD_REQUIRED": "Password richiesta"
 }

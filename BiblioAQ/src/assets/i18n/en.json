@@ -90,8 +90,13 @@
 
   "EMAIL_ERROR": "Email is already used",
   "USER_ERROR": "Signup error",
-  "USER_SUCC": "Signup succeded"
+  "USER_SUCC": "Signup succeded",
 
-
+  "NOME": "First name",
+  "COGNOME": "Last name",
+  "NAME_REQUIRED": "Name required",
+  "LASTNAME_REQUIRED":"Last name required",
+  "EMAIL_REQUIRED": "Email required",
+  "PASSWORD_REQUIRED": "Password required"
 
 }

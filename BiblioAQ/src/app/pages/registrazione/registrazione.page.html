@@ -23,35 +23,35 @@
 <ion-content>
   <form [formGroup]="signupFormModel" class="list-form">
     <ion-item lines="full" class="animated fadeInUp">
-      <ion-label position="floating">First name</ion-label>
+      <ion-label position="floating">{{"NOME" | translate }}</ion-label>
       <ion-input type="text" formControlName="nome"></ion-input>
     </ion-item>
     <p ion-text class="text08" *ngIf="signupFormModel.get('nome').touched && signupFormModel.get('nome').invalid">
-      <ion-text color="danger">NAME_REQUIRED</ion-text>
+      <ion-text color="danger">{{"NAME_REQUIRED" | translate }}</ion-text>
     </p>
 
     <ion-item lines="full" class="animated fadeInUp">
-      <ion-label position="floating">Last name</ion-label>
+      <ion-label position="floating">{{"COGNOME" | translate }}</ion-label>
       <ion-input type="text" formControlName="cognome"></ion-input>
     </ion-item>
     <p ion-text class="text08" *ngIf="signupFormModel.get('cognome').touched && signupFormModel.get('cognome').invalid">
-      <ion-text color="danger">LASTNAME_REQUIRED</ion-text>
+      <ion-text color="danger">{{"LASTNAME_REQUIRED" | translate }}</ion-text>
     </p>
 
     <ion-item lines="full" class="animated fadeInUp">
-      <ion-label position="floating">Email</ion-label>
+      <ion-label position="floating">{{"EMAIL" | translate }}</ion-label>
       <ion-input type="text" formControlName="email"></ion-input>
     </ion-item>
     <p ion-text class="text08" *ngIf="signupFormModel.get('email').touched && signupFormModel.get('email').invalid">
-      <ion-text color="danger">EMAIL_REQUIRED</ion-text>
+      <ion-text color="danger">{{"EMAIL_REQUIRED" | translate }}</ion-text>
     </p>
 
     <ion-item lines="full" class="animated fadeInUp">
-      <ion-label position="floating">Password</ion-label>
+      <ion-label position="floating">{{"PASSWORD" | translate }}</ion-label>
       <ion-input type="password" formControlName="password"></ion-input>
     </ion-item>
     <p ion-text class="text08" *ngIf="signupFormModel.get('password').touched && signupFormModel.get('password').invalid">
-      <ion-text color="danger">PASSWORD_REQUIRED</ion-text>
+      <ion-text color="danger">{{"PASSWORD_REQUIRED" | translate }}</ion-text>
     </p>
 
     <ion-row>

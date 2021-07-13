@@ -82,7 +82,7 @@
       </ion-button>
     </div>
     <div margin-top="30px" align="center">
-      <ion-button [routerLink]="['/registrazione']" expand="block" size="medium"  color="primary" >
+      <ion-button *ngIf="!islogged$" [routerLink]="['/registrazione']" expand="block" size="medium"  color="primary" >
         {{"SIGN_UP_BUTTON" | translate }}
       </ion-button>
     </div>

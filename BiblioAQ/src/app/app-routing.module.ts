@@ -8,10 +8,7 @@ const routes: Routes = [
     redirectTo: 'menu',
     pathMatch: 'full'
   },
-  {
-    path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule)
-  },
+ 
   {
     path: 'menu',
     loadChildren: () => import('./pages/menu/menu.module').then(m => m.MenuPageModule)
@@ -73,7 +70,8 @@ const routes: Routes = [
     path: 'preferiti',
     loadChildren: () => import('./pages/preferiti/preferiti.module').then( m => m.PreferitiPageModule),
     canActivate: [AuthGuard]
-  },  {
+  },
+  {
     path: 'impostazioni',
     loadChildren: () => import('./pages/impostazioni/impostazioni.module').then( m => m.ImpostazioniPageModule)
   },

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {NavigationExtras, Router} from '@angular/router';
 import {UtenteService} from "../../services/utente.service";
 
 
@@ -9,7 +8,7 @@ import {UtenteService} from "../../services/utente.service";
   styleUrls: ['./menu.page.scss'],
 })
 export class MenuPage implements OnInit {
-private islogged$;
+private islogged$:boolean;
   constructor(private utenteService: UtenteService) { }
 
   ngOnInit() {

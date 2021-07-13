@@ -5,7 +5,6 @@ import {Libro} from '../../model/libro.model';
 import {CatalogoService} from '../../services/catalogo.service';
 import {tap} from 'rxjs/internal/operators/tap';
 import {IonRefresher, NavController} from '@ionic/angular';
-import {newArray} from '@angular/compiler/src/util';
 import {TranslateService} from "@ngx-translate/core";
 @Component({
   selector: 'app-catalogo',
@@ -32,7 +31,7 @@ export class CatalogoPage implements OnInit
   ngOnInit() {
        this.route.paramMap.subscribe((params: ParamMap) => {
          this.idbiblioteca$=params.get('id');
-         //this.idbiblioteca$=params;
+
          this.nomebiblioteca$ =  params.get('nome');
        });
        this.catalogo$ = this.catalogoService.findBybiblio(this.idbiblioteca$);

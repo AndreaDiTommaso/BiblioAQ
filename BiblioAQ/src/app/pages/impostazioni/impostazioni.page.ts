@@ -49,9 +49,7 @@ export class ImpostazioniPage implements OnInit {
     this.translateService.use(this.profiloFormModel.value.linguaPreferita);
     this.linguaService.updateLingua(this.profiloFormModel.value.linguaPreferita);
     this.utente.email = this.profiloFormModel.value.email;
-    //this.utenteService.updateProfilo(this.utente).subscribe((nuovoUtente: Utente) => {
-    // this.navController.back();
-    //});
+
   }
 
 

@@ -1,13 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, ParamMap} from '@angular/router';
 import {Observable} from 'rxjs';
 import {Libro} from '../../model/libro.model';
 import {CatalogoService} from '../../services/catalogo.service';
-import {tap} from 'rxjs/internal/operators/tap';
-import {IonRefresher, NavController} from '@ionic/angular';
-import {BibliotecaService} from '../../services/biblioteca.service';
-import {Biblioteca} from '../../model/biblioteca.model';
-import {TranslateService} from "@ngx-translate/core";
+import { NavController} from '@ionic/angular';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-cerca',
@@ -16,7 +12,6 @@ import {TranslateService} from "@ngx-translate/core";
 })
 export class CercaPage implements OnInit {
 
-  private idbiblioteca$;
   private catalogo$: Observable<Libro[]>;
   private filtra$=false;
   private ricercapertitolo$: string;
@@ -27,8 +22,7 @@ export class CercaPage implements OnInit {
 
   constructor(private navCtrl: NavController,
               private catalogoService: CatalogoService,
-              private translateService: TranslateService,
-              private route: ActivatedRoute) { }
+              private translateService: TranslateService) { }
 
   ngOnInit() {
     this.catalogo$ = this.catalogoService.findAll();

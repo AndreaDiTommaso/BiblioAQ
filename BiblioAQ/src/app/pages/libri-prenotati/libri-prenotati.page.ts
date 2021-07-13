@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {NavController} from "@ionic/angular";
-import {CatalogoService} from "../../services/catalogo.service";
-import {UTENTE_STORAGE} from "../../constants";
 import {Storage} from "@ionic/storage";
 import {LibroService} from "../../services/libro.service";
 import {PrenotazionilibriService} from "../../services/prenotazionilibri.service";
-import {ActivatedRoute, ParamMap} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
 import {Prenotazionelibro} from "../../model/prenotazionelibro.model";
 import {Libro} from "../../model/libro.model";
 import {Observable} from "rxjs";
@@ -14,16 +11,17 @@ import {PrenotazioniaccessiService} from "../../services/prenotazzioniaccessi.se
 import {BibliotecaService} from "../../services/biblioteca.service";
 import {Biblioteca} from "../../model/biblioteca.model";
 import {UtenteService} from "../../services/utente.service";
+import {Utente} from "../../model/utente.model";
 
-// noinspection JSPotentiallyInvalidUsageOfClassThis
+
 @Component({
   selector: 'app-libri-prenotati',
   templateUrl: './libri-prenotati.page.html',
   styleUrls: ['./libri-prenotati.page.scss'],
 })
 export class LibriPrenotatiPage implements OnInit {
-private utente$;
-private idutente$;
+private utente$: Utente;
+private idutente$: string;
 private prenotazionilibri$: Observable<Prenotazionelibro[]>;
 private libri$: Observable<Libro[]>;
 private prenotazioniaccessi$: Observable<Prenotazioneaccessi[]>;

@@ -6,6 +6,7 @@ import {Biblioteca} from "../../model/biblioteca.model";
 import {UTENTE_STORAGE} from "../../constants";
 import {Storage} from "@ionic/storage";
 import {AlertController, NavController} from "@ionic/angular";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-accesso',
@@ -14,18 +15,20 @@ import {AlertController, NavController} from "@ionic/angular";
 })
 export class AccessoPage implements OnInit {
   private biblioteca$: Observable<Biblioteca[]>;
-  private id$=1;
+  private id$: number;
   private event = {
     giorno:''
 
   };
-  private data$;
-  private utente$;
-  private posti$;
+  private data$: string;
+  private utente$: number;
+  private posti$: number;
+  private mex: string;
   constructor(
     private navCtrl: NavController,
     private storage: Storage,
     private route: ActivatedRoute,
+    private translateService: TranslateService,
     private _router:Router,
     private  alertController: AlertController,
     private bibliotecaService: BibliotecaService) { }
@@ -41,7 +44,10 @@ export class AccessoPage implements OnInit {
     this.event.giorno=this.recuperodata();
     this.aggiornaposti();
     this.storage.get(UTENTE_STORAGE).then((value: string)=>{
-      this.utente$=String(value['id']);
+      this.utente$=value['id'];
+    });
+    this.translateService.get('PREN_SUCCESSO').subscribe((data) => {
+      this.mex  = data;
     });
 
   }
@@ -54,10 +60,10 @@ export class AccessoPage implements OnInit {
     const alert = await this.alertController.create({
 
 
-      message: 'prenotazione effettuata con successo.',
+      message: this.mex,
       buttons: [
         {
-          text:'Torna al menù',
+          text:'OK',
           handler: () => {
             this._router.navigate(['/menu']);
           }
@@ -68,7 +74,7 @@ export class AccessoPage implements OnInit {
 
     await alert.present();
 
-    //const { role } = await alert.onDidDismiss();
+
 
   }
   aggiornaposti(){

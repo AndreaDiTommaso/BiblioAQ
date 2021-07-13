@@ -8,9 +8,7 @@ import{Router} from '@angular/router';
 import {BibliotecaService} from '../../services/biblioteca.service';
 import {CatalogoService} from '../../services/catalogo.service';
 import {UTENTE_STORAGE} from '../../constants';
-
 import {Storage} from '@ionic/storage';
-import {Utente} from '../../model/utente.model';
 import {TranslateService} from "@ngx-translate/core";
 
 @Component({
@@ -20,10 +18,10 @@ import {TranslateService} from "@ngx-translate/core";
 })
 export class PrenotazioneLibroPage implements OnInit {
    private libro$: Observable<Libro>;
-   private copie$;
-   private id$;
-   private idbiblio$;
-   private utente$;
+   private copie$: number;
+   private id$: number;
+   private idbiblio$: number;
+   private utente$: string;
    private message$: string;
 
    constructor( private storage: Storage,
@@ -76,7 +74,7 @@ export class PrenotazioneLibroPage implements OnInit {
     const alert = await this.alertController.create({
 
 
-      message: 'prenotazione effettuata con successo.',
+      message: this.message$,
       buttons: [
         {
           text:'OK',
@@ -90,7 +88,6 @@ export class PrenotazioneLibroPage implements OnInit {
 
     await alert.present();
 
-    //const { role } = await alert.onDidDismiss();
 
   }
   goback(){

@@ -9,7 +9,6 @@ import {UtenteService} from "../../services/utente.service";
 import {Storage} from "@ionic/storage";
 import {PreferitiService} from "../../services/preferiti.service";
 import {Preferito} from "../../model/preferito.model";
-import {tap} from "rxjs/internal/operators/tap";
 
 
 @Component({
@@ -20,12 +19,12 @@ import {tap} from "rxjs/internal/operators/tap";
 export class LibroPage implements OnInit {
   private path$ = `${URL.COPERTINE}/`;
   private libro$: Observable<Libro>;
-  private copie$;
-  private islogged$;
-  private utente$;
-  private id$;
-  private preferito$: Observable<Preferito>
-  private bool;
+  private copie$: number ;
+  private islogged$: boolean;
+  private utente$: string ;
+  private id$: string;
+  private preferito$: Observable<Preferito>;
+  private bool: boolean;
 
 
   constructor(private navCtrl: NavController,

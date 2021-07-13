@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Lingua, LinguaService} from '../../services/lingua.service';
 import {UtenteService} from '../../services/utente.service';
-import {BehaviorSubject} from 'rxjs';
 import {Utente} from '../../model/utente.model';
 import {NavController} from '@ionic/angular';
 import {TranslateService} from '@ngx-translate/core';
@@ -51,9 +50,7 @@ export class ProfiloPage implements OnInit {
     this.translateService.use(this.profiloFormModel.value.linguaPreferita);
     this.linguaService.updateLingua(this.profiloFormModel.value.linguaPreferita);
     this.utente.email = this.profiloFormModel.value.email;
-    //this.utenteService.updateProfilo(this.utente).subscribe((nuovoUtente: Utente) => {
-     // this.navController.back();
-    //});
+
   }
 
 

@@ -4,6 +4,7 @@ import {LibroService} from "../../services/libro.service";
 import {Observable} from "rxjs";
 import {Libro} from "../../model/libro.model";
 import {tap} from "rxjs/internal/operators/tap";
+import {Utente} from "../../model/utente.model";
 
 
 @Component({
@@ -12,8 +13,8 @@ import {tap} from "rxjs/internal/operators/tap";
   styleUrls: ['./preferiti.page.scss'],
 })
 export class PreferitiPage implements OnInit {
-private utente$;
-private idutente$;
+private utente$: Utente ;
+private idutente$: string;
 private libri$: Observable<Libro[]>;
   constructor(
     private utenteService: UtenteService,

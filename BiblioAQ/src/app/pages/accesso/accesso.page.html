@@ -52,14 +52,14 @@
 
         </ion-item>
         <ion-item>
-          <ion-label>{{'DATE' | translate }}</ion-label>
+          <ion-text class="bold" >{{'DATE' | translate }}:</ion-text>
           <ion-datetime (ionChange)="aggiornaposti()" min="{{event.giorno}}" max="2022" displayFormat="DD MM YYYY" [(ngModel)]="event.giorno"></ion-datetime>
         </ion-item>
         <ion-item>
           <ion-label>
             <ion-row>
               <ion-text class="bold">
-                {{'DISP' | translate }}
+                {{'DISP' | translate }}:
               </ion-text>
             </ion-row>
 

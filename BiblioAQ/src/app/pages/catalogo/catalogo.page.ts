@@ -21,7 +21,7 @@ export class CatalogoPage implements OnInit
   private ricercapertitolo$: string;
   private ricercaperautore$: string;
   private ricercapergenere$: string;
-  private ricerca$: string;
+  private ricerca$= 'titolo';
   private placeholder: string;
   constructor(private navCtrl: NavController,
               private catalogoService: CatalogoService,
@@ -35,9 +35,7 @@ export class CatalogoPage implements OnInit
          this.nomebiblioteca$ =  params.get('nome');
        });
        this.catalogo$ = this.catalogoService.findBybiblio(this.idbiblioteca$);
-        this.translateService.get('TITLE').subscribe((data) => {
-          this.ricerca$  = data;
-       });
+
     this.translateService.get('SEARCH').subscribe((data) => {
       this.placeholder  = data;
     });

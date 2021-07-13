@@ -39,7 +39,7 @@
       </ion-searchbar>
       <ion-item >
         <ion-text> {{"ADD_FILTER" | translate }}: </ion-text>
-        <ion-select (ionChange)="setfiltro($event.detail.value)"  placeholder="{{this.ricerca$}}">
+        <ion-select (ionChange)="setfiltro($event.detail.value)" >
           <ion-select-option value="titolo"> {{"TITLE" | translate}}</ion-select-option>
           <ion-select-option value="autore">{{"AUTOR" | translate}}</ion-select-option>
           <ion-select-option value="genere">{{"GENRE" | translate}}</ion-select-option>

@@ -17,7 +17,7 @@ export class CercaPage implements OnInit {
   private ricercapertitolo$: string;
   private ricercaperautore$: string;
   private ricercapergenere$: string;
-  private ricerca$: string;
+  private ricerca$ = "titolo";
   private placeholder: string;
 
   constructor(private navCtrl: NavController,
@@ -26,9 +26,7 @@ export class CercaPage implements OnInit {
 
   ngOnInit() {
     this.catalogo$ = this.catalogoService.findAll();
-    this.translateService.get('TITLE').subscribe((data) => {
-      this.ricerca$  = data;
-    });
+
     this.translateService.get('SEARCH').subscribe((data) => {
       this.placeholder  = data;
     });
@@ -37,7 +35,7 @@ export class CercaPage implements OnInit {
   getItems(event) {
     if (event.target.value!==''){
       this.filtra$=true;
-      if(this.ricerca$==='titolo')
+      if(this.ricerca$==='titolo'  )
       {this.ricercapertitolo$=String(event.target.value).toLowerCase();
         this.ricercaperautore$=null;
         this.ricercapergenere$=null;

@@ -11,6 +11,7 @@ import {UTENTE_STORAGE} from '../../constants';
 
 import {Storage} from '@ionic/storage';
 import {Utente} from '../../model/utente.model';
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-prenotazione-libro',
@@ -23,6 +24,7 @@ export class PrenotazioneLibroPage implements OnInit {
    private id$;
    private idbiblio$;
    private utente$;
+   private message$: string;
 
    constructor( private storage: Storage,
                 private navCtrl: NavController,
@@ -31,6 +33,7 @@ export class PrenotazioneLibroPage implements OnInit {
                 private  alertController: AlertController,
                 private bibliotecaService: BibliotecaService,
                 private route: ActivatedRoute,
+                private translateService: TranslateService,
                 private libroService: LibroService) { }
 
   ngOnInit() {
@@ -48,7 +51,9 @@ export class PrenotazioneLibroPage implements OnInit {
       this.utente$=String(value['id']);
 
     });
-
+    this.translateService.get('PREN_SUCCESSO').subscribe((data) => {
+      this.message$  = data;
+    });
 
 
   }
@@ -74,7 +79,7 @@ export class PrenotazioneLibroPage implements OnInit {
       message: 'prenotazione effettuata con successo.',
       buttons: [
         {
-          text:'Torna al menù',
+          text:'OK',
           handler: () => {
             this._router.navigate(['/menu']);
           }

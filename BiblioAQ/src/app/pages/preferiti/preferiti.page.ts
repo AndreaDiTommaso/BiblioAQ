@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {UtenteService} from "../../services/utente.service";
-import {PreferitiService} from "../../services/preferiti.service";
 import {LibroService} from "../../services/libro.service";
 import {Observable} from "rxjs";
 import {Libro} from "../../model/libro.model";

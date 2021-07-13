@@ -28,7 +28,7 @@
     <br>
     <ion-list-header >
     <ion-text   class="text-primary">
-          RIEPILOGO PRENOTAZIONE:
+      {{"RIEPILOGO" | translate}}:
     </ion-text>
     </ion-list-header>
   </ion-card-title>
@@ -38,7 +38,7 @@
       <ion-label>
         <ion-row>
         <ion-text class="bold">
-          TITOLO:
+          {{"TITLE" | translate}}:
         </ion-text>
       </ion-row>
         <ion-row>
@@ -50,7 +50,7 @@
       <ion-label>
         <ion-row>
           <ion-text class="bold">
-            BIBLIOTECA:
+            {{"LIBRARY" | translate}}:
           </ion-text>
         </ion-row>
         <ion-row>
@@ -63,7 +63,7 @@
       <ion-label>
         <ion-row>
           <ion-text class="bold">
-            DATA PRENOTAZIONE:
+            {{"DATE" | translate}}:
           </ion-text>
         </ion-row>
         <ion-row>
@@ -76,13 +76,13 @@
       <ion-label>
         <ion-row>
           <ion-text class="text1">
-            {{libro.copie}} COPIE DISPONIBILI NEL CATALOGO.
+            {{libro.copie}} {{"BOOK_LEFT" | translate}}.
           </ion-text>
         </ion-row>
 
       </ion-label>
 
-      <ion-button (click)="prenota()">Conferma prenotazione</ion-button>
+      <ion-button (click)="prenota()">{{"CONFIRM_BUTTON" | translate}}</ion-button>
     </ion-list>
 
 
@@ -94,7 +94,7 @@
     <ion-item>
 
       <ion-text class="text15" >
-        ATTENZIONE! se procedi con la prenotazione ricorda che il libro da te prenotato verrà tenuto da parte per due giorni lavorativi .
+        {{"ALLERT" | translate}}
       </ion-text>
     </ion-item>
 

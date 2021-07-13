@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { PreferitiPageRoutingModule } from './preferiti-routing.module';
-
+import {TranslateModule} from '@ngx-translate/core';
 import { PreferitiPage } from './preferiti.page';
 
 @NgModule({
@@ -13,6 +13,7 @@ import { PreferitiPage } from './preferiti.page';
     CommonModule,
     FormsModule,
     IonicModule,
+    TranslateModule.forChild(),
     PreferitiPageRoutingModule
   ],
   declarations: [PreferitiPage]

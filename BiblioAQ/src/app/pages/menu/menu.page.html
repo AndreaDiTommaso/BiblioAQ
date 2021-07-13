@@ -21,7 +21,7 @@
 <ion-tab-button mode="md" class="bg-primary" layout="icon-top" >
 
             <ion-text [class.bold]="true" class="text1">
-              Mappa
+              {{"MAP" | translate }}
             </ion-text>
 <br>
 
@@ -35,7 +35,7 @@
         <ion-tab-button mode="md" layout="icon-start" class="ion-color-primary"  [routerLink]="['/lista']" router-direction="forward" >
           <ion-tab-button mode="md" class="bg-primary" layout="icon-top" >
             <ion-text  [class.bold]="true" class="text1">
-              Lista
+              {{"LIST" | translate }}
             </ion-text>
 
           <br>
@@ -48,7 +48,7 @@
         <ion-tab-button mode="md" layout="icon-start" class="ion-color-primary" [routerLink]="['/profilo']" router-direction="forward" fill="clear">
           <ion-tab-button mode="md" class="bg-primary" layout="icon-top" >
             <ion-text  [class.bold]="true" class="text1">
-              Profilo
+              {{"PROFILE" | translate }}
             </ion-text>
 
           <br>
@@ -61,7 +61,7 @@
         <ion-tab-button  mode="md" layout="icon-start" class="ion-color-primary" [routerLink]="['/cerca']" router-direction="forward" fill="clear">
           <ion-tab-button mode="md" class="bg-primary" layout="icon-top" >
             <ion-text  [class.bold]="true" class="text1">
-              Cerca
+              {{"SEARCH" | translate }}
             </ion-text>
 
           <br>
@@ -73,17 +73,17 @@
     <br>
     <div *ngIf="islogged$" margin-top="30px" align="center">
       <ion-button (click)="logout()" expand="block" size="medium"  color="primary">
-        LOGOUT
+        {{"LOGOUT" | translate }}
       </ion-button>
     </div>
     <div *ngIf="!islogged$" margin-top="30px" align="center">
       <ion-button [routerLink]="['/login']" expand="block" size="medium"  color="primary">
-        LOGIN
+        {{"LOGIN_BUTTON" | translate }}
       </ion-button>
     </div>
     <div margin-top="30px" align="center">
       <ion-button [routerLink]="['/registrazione']" expand="block" size="medium"  color="primary" >
-        REGISTRATI
+        {{"SIGN_UP_BUTTON" | translate }}
       </ion-button>
     </div>
   </ion-grid>

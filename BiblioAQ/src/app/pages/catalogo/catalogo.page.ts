@@ -6,6 +6,7 @@ import {CatalogoService} from '../../services/catalogo.service';
 import {tap} from 'rxjs/internal/operators/tap';
 import {IonRefresher, NavController} from '@ionic/angular';
 import {newArray} from '@angular/compiler/src/util';
+import {TranslateService} from "@ngx-translate/core";
 @Component({
   selector: 'app-catalogo',
   templateUrl: './catalogo.page.html',
@@ -21,8 +22,12 @@ export class CatalogoPage implements OnInit
   private ricercapertitolo$: string;
   private ricercaperautore$: string;
   private ricercapergenere$: string;
-  private ricerca$ = 'titolo';
-  constructor(private navCtrl: NavController,private catalogoService: CatalogoService,private route: ActivatedRoute) {}
+  private ricerca$: string;
+  private placeholder: string;
+  constructor(private navCtrl: NavController,
+              private catalogoService: CatalogoService,
+              private translateService: TranslateService,
+              private route: ActivatedRoute) {}
 
   ngOnInit() {
        this.route.paramMap.subscribe((params: ParamMap) => {
@@ -31,6 +36,12 @@ export class CatalogoPage implements OnInit
          this.nomebiblioteca$ =  params.get('nome');
        });
        this.catalogo$ = this.catalogoService.findBybiblio(this.idbiblioteca$);
+        this.translateService.get('TITLE').subscribe((data) => {
+          this.ricerca$  = data;
+       });
+    this.translateService.get('SEARCH').subscribe((data) => {
+      this.placeholder  = data;
+    });
   }
   doRefresh(event) {
       this.catalogo$ = this.catalogoService.findBybiblio(this.idbiblioteca$)

@@ -28,7 +28,7 @@
   "LOGIN_ERROR_SUB_TITLE": "Email or password wrong!",
   "LOGIN_SUC": "Login successful",
 
-  "MAP": "Mapp",
+  "MAP": "Map",
   "PROFILE": "Profile",
   "LIST": "List",
   "SEARCH": "Search",
@@ -73,7 +73,7 @@
 
 
   "PROFILO": "Profile",
-  "LOGOUT_MENU": "Logout",
+  "LOGOUT": "Logout",
   "PRENOTAZIONI": "Reservations",
   "PREFERITI": "Favorites",
   "PREN_LIBRI": "Books",

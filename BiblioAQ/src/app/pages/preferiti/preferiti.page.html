@@ -20,7 +20,7 @@
 
 <ion-content>
   <ion-label>
-    <ion-text class="text15">Lista dei Preferiti</ion-text>
+    <ion-text class="text15">{{"LISTA_PREF" | translate }}</ion-text>
   </ion-label>
   <ion-refresher   slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content
@@ -43,7 +43,7 @@
             <ion-text>{{libro.autore}}</ion-text>
           </ion-row>
           <ion-row >
-            <ion-text class="bold">biblioteca:</ion-text>
+            <ion-text class="bold">{{"LIBRARY" | translate }}:</ion-text>
             <ion-text>{{libro.nomebiblioteca}}</ion-text>
           </ion-row>
 
@@ -67,18 +67,18 @@
     <ion-tab-bar  slot="bottom" >
       <ion-tab-button [routerLink]="'/profilo'"  >
         <ion-icon name="person-circle"></ion-icon>
-        <ion-label>Profilo</ion-label>
+        <ion-label>{{"PROFILO" | translate}}</ion-label>
 
       </ion-tab-button>
 
       <ion-tab-button [routerLink]="'/libri-prenotati'"  >
         <ion-icon name="bookmark"></ion-icon>
-        <ion-label>Prenotazioni</ion-label>
+        <ion-label>{{"PRENOTAZIONI" | translate}}</ion-label>
       </ion-tab-button>
 
       <ion-tab-button [routerLink]="'/preferiti'"   selected="true"  >
         <ion-icon name="star"></ion-icon>
-        <ion-label>Preferiti</ion-label>
+        <ion-label>{{"PREFERITI" | translate}}</ion-label>
       </ion-tab-button>
 
 

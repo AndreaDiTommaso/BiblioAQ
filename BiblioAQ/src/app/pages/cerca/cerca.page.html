@@ -34,7 +34,7 @@
       </ion-row>
 
 
-      <ion-searchbar   (ionInput)="getItems($event)" [debounce]="500" placeholder="Cerca">
+      <ion-searchbar   (ionInput)="getItems($event)" [debounce]="500" placeholder="{{this.placeholder}}">
 
       </ion-searchbar>
       <ion-item >
